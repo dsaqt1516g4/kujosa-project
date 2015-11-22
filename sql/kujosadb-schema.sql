@@ -26,3 +26,34 @@ last_modified			timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
 creation_timestamp		datetime not null default current_timestamp,
 foreign key(username) references users(username)
 );
+
+create table events (
+	eventid		 	int not null auto_increment primary key,
+	username		varchar(20) not null,
+	groupid		 	int,
+	name			varchar(100) not null,
+	start_date	 	datetime not null,
+	end_date	 	datetime not null,
+	last_modified		timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
+	foreign key (username) 	references users (username) on delete cascade
+	
+);
+
+create table comments (
+	commentid	 	int not null auto_increment primary key,
+	username	 	varchar(30) not null,
+	eventid		 	int not null,
+	content		 	varchar(200) not null,
+	last_modified		timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
+	creation_timestamp	datetime not null default current_timestamp,
+	foreign key (username)  references users (username) on delete cascade,
+	foreign key (eventid) 	references events (eventid) on delete cascade
+);
+
+create table state (
+	username 		varchar(30) not null,
+	eventid			int not null,
+	primary key (username, eventid),
+	foreign key (username) 	references users(username) on delete cascade,
+	foreign key (eventid)	references events (eventid) on delete cascade
+);

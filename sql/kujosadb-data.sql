@@ -105,3 +105,18 @@ select sleep(1);insert into stings (username, subject, content) values ('blas', 
 select sleep(1);insert into stings (username, subject, content) values ('blas', 'Mensaje absurdo#97', 'Fermín Cacho parece buen muchacho.');
 select sleep(1);insert into stings (username, subject, content) values ('alicia', 'Mensaje absurdo#98', 'Fermín Cacho parece buen muchacho.');
 select sleep(1);insert into stings (username, subject, content) values ('alicia', 'Mensaje absurdo#99', 'Fermín Cacho parece buen muchacho.');
+select sleep(1);
+
+insert into events (username, name, start_date, end_date) values ('alicia', 'Fundació de lAESTEC', '2015-12-5 09:00:00', '2015-12-5 11:00:00');
+select sleep(1);
+insert into events (username, name, start_date, end_date) values ('blas', 'Sortida al supercomputador', '2015-12-21 10:00:00', '2015-12-2 11:00:00');
+select sleep(1);
+insert into events (username, name, start_date, end_date) values ('alicia', 'Exposició i demostració de drons', '2016-1-25 17:00:00', '2016-1-25 19:30:00');
+select sleep(1);
+
+insert into state values ('blas','1', 'pending');
+insert into state values ('alicia','1', 'join');
+insert into state values ('blas','2', 'pending');
+insert into state values ('alicia','2', 'join');
+insert into state values ('blas','3', 'decline');
+insert into state values ('alicia','3', 'join');
