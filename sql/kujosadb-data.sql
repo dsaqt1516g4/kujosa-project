@@ -120,3 +120,6 @@ insert into state values ('blas','2', 'pending');
 insert into state values ('alicia','2', 'join');
 insert into state values ('blas','3', 'decline');
 insert into state values ('alicia','3', 'join');
+
+insert into news values ('alicia','Franco inaugura la AESTEC','El caudillo de España recibió a los estudiantes de la EETAC para crear esa asociación afiliada a las juventades falangistas. ¡Arriba España!');
+insert into news values ('blas', 'AESTEC dóna la benvinguda a la nova República', 'AESTEC es posa al costat de la Generalitat per donar suport a la creació de la República Catalana, i està a la seva disposició per al què necessiti.');

@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.beeter;
+package edu.upc.eetac.dsa.kujosa;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

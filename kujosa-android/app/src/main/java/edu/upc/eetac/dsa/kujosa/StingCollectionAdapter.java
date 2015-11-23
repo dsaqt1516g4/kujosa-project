@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.beeter;
+package edu.upc.eetac.dsa.kujosa;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import edu.upc.eetac.dsa.beeter.client.entity.StingCollection;
+import edu.upc.eetac.dsa.kujosa.client.entity.StingCollection;
 
 /**
  * Created by root on 11/11/15.
