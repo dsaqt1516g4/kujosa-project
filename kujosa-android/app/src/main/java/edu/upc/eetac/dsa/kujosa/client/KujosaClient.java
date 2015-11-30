@@ -21,16 +21,16 @@ import edu.upc.eetac.dsa.kujosa.client.entity.AuthToken;
 /**
  * Created by root on 11/11/15.
  */
-public class BeeterClient {
+public class KujosaClient {
     private final static String BASE_URI = "http://192.168.1.37:8080/kujosa";
-    private static BeeterClient instance;
+    private static KujosaClient instance;
     private Root root;
     private ClientConfig clientConfig = null;
     private Client client = null;
     private AuthToken authToken = null;
-    private final static String TAG = BeeterClient.class.toString();
+    private final static String TAG = KujosaClient.class.toString();
 
-    public String getStings(String uri) throws BeeterClientException {
+    public String getStings(String uri) throws KujosaClientException {
         if(uri==null){
             uri = getLink(authToken.getLinks(), "current-stings").getUri().toString();
         }
@@ -39,7 +39,7 @@ public class BeeterClient {
         if (response.getStatus() == Response.Status.OK.getStatusCode())
             return response.readEntity(String.class);
         else
-            throw new BeeterClientException(response.readEntity(String.class));
+            throw new KujosaClientException(response.readEntity(String.class));
     }
 
 
@@ -56,15 +56,15 @@ public class BeeterClient {
     }
 
 
-    private BeeterClient() {
+    private KujosaClient() {
         clientConfig = new ClientConfig();
         client = ClientBuilder.newClient(clientConfig);
         loadRoot();
     }
 
-    public static BeeterClient getInstance() {
+    public static KujosaClient getInstance() {
         if (instance == null)
-            instance = new BeeterClient();
+            instance = new KujosaClient();
         return instance;
     }
 

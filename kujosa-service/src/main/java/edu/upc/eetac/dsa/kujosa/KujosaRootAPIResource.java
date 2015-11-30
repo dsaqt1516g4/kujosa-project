@@ -1,6 +1,6 @@
 package edu.upc.eetac.dsa.kujosa;
 
-import edu.upc.eetac.dsa.kujosa.entity.BeeterRootAPI;
+import edu.upc.eetac.dsa.kujosa.entity.KujosaRootAPI;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -20,12 +20,12 @@ public class KujosaRootAPIResource {
 
     @GET
     @Produces(KujosaMediaType.KUJOSA_ROOT)
-    public BeeterRootAPI getRootAPI() {
+    public KujosaRootAPI getRootAPI() {
         if(securityContext.getUserPrincipal()!=null)
             userid = securityContext.getUserPrincipal().getName();
-        BeeterRootAPI beeterRootAPI = new BeeterRootAPI();
+        KujosaRootAPI kujosaRootAPI = new KujosaRootAPI();
 
-        return beeterRootAPI;
+        return kujosaRootAPI;
     }
 
     public String getUserid() {

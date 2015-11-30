@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by sergio on 14/09/15.
  */
-public class BeeterRootAPI {
+public class KujosaRootAPI {
     @InjectLinks({
             @InjectLink(resource = KujosaRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "self bookmark home", title = "Beeter Root API"),
             @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "login", title = "Login", type= KujosaMediaType.KUJOSA_AUTH_TOKEN),
