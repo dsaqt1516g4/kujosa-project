@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.beeter;
+package edu.upc.eetac.dsa.kujosa;
 
 import org.junit.Test;
 

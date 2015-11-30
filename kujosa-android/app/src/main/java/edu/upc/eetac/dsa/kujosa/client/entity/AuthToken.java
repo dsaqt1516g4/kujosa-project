@@ -1,8 +1,8 @@
-package edu.upc.eetac.dsa.beeter.client.entity;
+package edu.upc.eetac.dsa.kujosa.client.entity;
 
 import java.util.List;
 
-import edu.upc.eetac.dsa.beeter.client.Link;
+import edu.upc.eetac.dsa.kujosa.client.Link;
 
 /**
  * Created by root on 11/11/15.

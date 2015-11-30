@@ -7,8 +7,8 @@ import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 /**
  * Created by sergio on 7/09/15.
  */
-public class BeeterResourceConfig extends ResourceConfig {
-    public BeeterResourceConfig() {
+public class KujosaResourceConfig extends ResourceConfig {
+    public KujosaResourceConfig() {
         packages("edu.upc.eetac.dsa.kujosa");
         packages("edu.upc.eetac.dsa.auth");
         packages("edu.upc.eetac.dsa.cors");

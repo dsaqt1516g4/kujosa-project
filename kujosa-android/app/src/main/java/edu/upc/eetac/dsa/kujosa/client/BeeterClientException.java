@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.beeter.client;
+package edu.upc.eetac.dsa.kujosa.client;
 
 /**
  * Created by root on 11/11/15.

@@ -6,14 +6,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * Created by sergio on 7/09/15.
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class BeeterError {
+public class KujosaError {
     private int status;
     private String reason;
 
-    public BeeterError() {
+    public KujosaError() {
     }
 
-    public BeeterError(int status, String reason) {
+    public KujosaError(int status, String reason) {
         this.status = status;
         this.reason = reason;
     }

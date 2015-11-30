@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.beeter;
+package edu.upc.eetac.dsa.kujosa;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,14 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 
 import com.google.gson.Gson;
 
-import edu.upc.eetac.dsa.beeter.client.BeeterClient;
-import edu.upc.eetac.dsa.beeter.client.BeeterClientException;
-import edu.upc.eetac.dsa.beeter.client.entity.Sting;
-import edu.upc.eetac.dsa.beeter.client.entity.StingCollection;
+import edu.upc.eetac.dsa.kujosa.client.BeeterClient;
+import edu.upc.eetac.dsa.kujosa.client.BeeterClientException;
+import edu.upc.eetac.dsa.kujosa.client.entity.Sting;
+import edu.upc.eetac.dsa.kujosa.client.entity.StingCollection;
 
 public class StingsListActivity extends AppCompatActivity {
 

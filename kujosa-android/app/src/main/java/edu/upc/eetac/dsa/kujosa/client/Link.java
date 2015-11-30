@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.beeter.client;
+package edu.upc.eetac.dsa.kujosa.client;
 
 import java.net.URI;
 import java.util.List;

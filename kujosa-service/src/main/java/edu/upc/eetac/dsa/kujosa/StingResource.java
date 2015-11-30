@@ -3,7 +3,7 @@ package edu.upc.eetac.dsa.kujosa;
 import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.dao.StingDAO;
 import edu.upc.eetac.dsa.kujosa.dao.StingDAOImpl;
-import edu.upc.eetac.dsa.kujosa.entity.Comentari;
+import edu.upc.eetac.dsa.kujosa.entity.Sting;
 import edu.upc.eetac.dsa.kujosa.entity.StingCollection;
 
 import javax.ws.rs.*;
@@ -22,7 +22,7 @@ public class StingResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(BeeterMediaType.BEETER_STING)
+    @Produces(KujosaMediaType.KUJOSA_STING)
     public Response createSting(@FormParam("subject") String subject, @FormParam("content") String content, @Context UriInfo uriInfo) throws URISyntaxException {
         if (subject == null || content == null)
             throw new BadRequestException("all parameters are mandatory");
@@ -34,12 +34,12 @@ public class StingResource {
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
-        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + comentari.getId());
-        return Response.created(uri).type(BeeterMediaType.BEETER_STING).entity(comentari).build();
+        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + sting.getId());
+        return Response.created(uri).type(KujosaMediaType.KUJOSA_STING).entity(sting).build();
     }
 
     @GET
-    @Produces(BeeterMediaType.BEETER_STING_COLLECTION)
+    @Produces(KujosaMediaType.KUJOSA_STING_COLLECTION)
     public StingCollection getStings(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
         StingCollection stingCollection = null;
         StingDAO stingDAO = new StingDAOImpl();
@@ -54,7 +54,7 @@ public class StingResource {
 
     @Path("/{id}")
     @GET
-    @Produces(BeeterMediaType.BEETER_STING)
+    @Produces(KujosaMediaType.KUJOSA_STING)
     public Response getSting(@PathParam("id") String id, @Context Request request) {
         // Create cache-control
         CacheControl cacheControl = new CacheControl();
@@ -89,10 +89,10 @@ public class StingResource {
 
     @Path("/{id}")
     @PUT
-    @Consumes(BeeterMediaType.BEETER_STING)
-    @Produces(BeeterMediaType.BEETER_STING)
-    public Comentari updateSting(@PathParam("id") String id, Comentari comentari) {
-        if (comentari == null)
+    @Consumes(KujosaMediaType.KUJOSA_STING)
+    @Produces(KujosaMediaType.KUJOSA_STING)
+    public Sting updateSting(@PathParam("id") String id, Sting sting) {
+        if (sting == null)
             throw new BadRequestException("entity is null");
         if (!id.equals(comentari.getId()))
             throw new BadRequestException("path parameter id and entity parameter id doesn't match");

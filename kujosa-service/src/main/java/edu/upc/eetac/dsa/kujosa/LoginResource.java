@@ -23,7 +23,7 @@ public class LoginResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(BeeterMediaType.BEETER_AUTH_TOKEN)
+    @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
     public AuthToken login(@FormParam("login") String loginid, @FormParam("password") String password) {
         if(loginid == null || password == null)
             throw new BadRequestException("all parameters are mandatory");

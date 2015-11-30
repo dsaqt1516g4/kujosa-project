@@ -19,7 +19,7 @@ public class Main {
     public static String getBaseURI() {
         if (baseURI == null) {
             PropertyResourceBundle prb = (PropertyResourceBundle) ResourceBundle.getBundle("kujosa");
-            baseURI = prb.getString("beeter.context");
+            baseURI = prb.getString("kujosa.context");
         }
         return baseURI;
     }
@@ -32,7 +32,7 @@ public class Main {
     public static HttpServer startServer() {
         // create a resource config that scans for JAX-RS resources and providers
         // in edu.upc.eetac.dsa.kujosa package
-        final ResourceConfig rc = new BeeterResourceConfig();
+        final ResourceConfig rc = new KujosaResourceConfig();
 
         // create and start a new instance of grizzly http server
         // exposing the Jersey application at BASE_URI

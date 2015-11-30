@@ -23,7 +23,7 @@ public class UserResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(BeeterMediaType.BEETER_AUTH_TOKEN)
+    @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
     public Response registerUser(@FormParam("loginid") String loginid, @FormParam("password") String password, @FormParam("email") String email, @FormParam("fullname") String fullname, @Context UriInfo uriInfo) throws URISyntaxException {
         if(loginid == null || password == null || email == null || fullname == null)
             throw new BadRequestException("all parameters are mandatory");
@@ -39,12 +39,12 @@ public class UserResource {
             throw new InternalServerErrorException();
         }
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + user.getId());
-        return Response.created(uri).type(BeeterMediaType.BEETER_AUTH_TOKEN).entity(authToken).build();
+        return Response.created(uri).type(KujosaMediaType.KUJOSA_AUTH_TOKEN).entity(authToken).build();
     }
 
     @Path("/{id}")
     @GET
-    @Produces(BeeterMediaType.BEETER_USER)
+    @Produces(KujosaMediaType.KUJOSA_USER)
     public User getUser(@PathParam("id") String id) {
         User user = null;
         try {
@@ -59,8 +59,8 @@ public class UserResource {
 
     @Path("/{id}")
     @PUT
-    @Consumes(BeeterMediaType.BEETER_USER)
-    @Produces(BeeterMediaType.BEETER_USER)
+    @Consumes(KujosaMediaType.KUJOSA_USER)
+    @Produces(KujosaMediaType.KUJOSA_USER)
     public User updateUser(@PathParam("id") String id, User user) {
         if(user == null)
             throw new BadRequestException("entity is null");

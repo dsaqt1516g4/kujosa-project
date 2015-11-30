@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.beeter;
+package edu.upc.eetac.dsa.kujosa;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import edu.upc.eetac.dsa.beeter.client.BeeterClient;
+import edu.upc.eetac.dsa.kujosa.client.BeeterClient;
 
 /**
  * A login screen that offers login via email/password.

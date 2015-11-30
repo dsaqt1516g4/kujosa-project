@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.beeter;
+package edu.upc.eetac.dsa.kujosa;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

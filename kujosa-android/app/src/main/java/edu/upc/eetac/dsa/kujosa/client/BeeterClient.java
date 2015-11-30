@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa.beeter.client;
+package edu.upc.eetac.dsa.kujosa.client;
 
 import android.util.Log;
 
@@ -16,13 +16,13 @@ import javax.ws.rs.core.Form;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import edu.upc.eetac.dsa.beeter.client.entity.AuthToken;
+import edu.upc.eetac.dsa.kujosa.client.entity.AuthToken;
 
 /**
  * Created by root on 11/11/15.
  */
 public class BeeterClient {
-    private final static String BASE_URI = "http://192.168.1.37:8080/beeter";
+    private final static String BASE_URI = "http://192.168.1.37:8080/kujosa";
     private static BeeterClient instance;
     private Root root;
     private ClientConfig clientConfig = null;

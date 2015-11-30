@@ -12,14 +12,14 @@ import javax.ws.rs.core.SecurityContext;
  * Created by sergio on 14/09/15.
  */
 @Path("/")
-public class BeeterRootAPIResource {
+public class KujosaRootAPIResource {
     @Context
     private SecurityContext securityContext;
 
     private String userid;
 
     @GET
-    @Produces(BeeterMediaType.BEETER_ROOT)
+    @Produces(KujosaMediaType.KUJOSA_ROOT)
     public BeeterRootAPI getRootAPI() {
         if(securityContext.getUserPrincipal()!=null)
             userid = securityContext.getUserPrincipal().getName();
