@@ -1,8 +1,8 @@
 package edu.upc.eetac.dsa.kujosa.dao;
 
+import edu.upc.eetac.dsa.kujosa.entity.Comentari;
 import edu.upc.eetac.dsa.kujosa.entity.StingCollection;
 import edu.upc.eetac.dsa.kujosa.db.Database;
-import edu.upc.eetac.dsa.kujosa.entity.Sting;
 
 import java.sql.*;
 
@@ -12,7 +12,7 @@ import java.sql.*;
 public class StingDAOImpl implements StingDAO {
 
     @Override
-    public Sting createSting(String userid, String subject, String content) throws SQLException {
+    public Comentari createSting(String userid, String subject, String content) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
         String id = null;
@@ -45,8 +45,8 @@ public class StingDAOImpl implements StingDAO {
     }
 
     @Override
-    public Sting getStingById(String id) throws SQLException {
-        Sting sting = null;
+    public Comentari getStingById(String id) throws SQLException {
+        Comentari comentari = null;
 
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -58,14 +58,14 @@ public class StingDAOImpl implements StingDAO {
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                sting = new Sting();
-                sting.setId(rs.getString("id"));
-                sting.setUserid(rs.getString("userid"));
-                sting.setCreator(rs.getString("fullname"));
-                sting.setSubject(rs.getString("subject"));
-                sting.setContent(rs.getString("content"));
-                sting.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
-                sting.setLastModified(rs.getTimestamp("last_modified").getTime());
+                comentari = new Comentari();
+                comentari.setId(rs.getString("id"));
+                comentari.setUserid(rs.getString("userid"));
+                comentari.setCreator(rs.getString("fullname"));
+                comentari.setSubject(rs.getString("subject"));
+                comentari.setContent(rs.getString("content"));
+                comentari.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
+                comentari.setLastModified(rs.getTimestamp("last_modified").getTime());
             }
         } catch (SQLException e) {
             throw e;
@@ -73,7 +73,7 @@ public class StingDAOImpl implements StingDAO {
             if (stmt != null) stmt.close();
             if (connection != null) connection.close();
         }
-        return sting;
+        return comentari;
     }
 
     @Override
@@ -94,19 +94,19 @@ public class StingDAOImpl implements StingDAO {
             ResultSet rs = stmt.executeQuery();
             boolean first = true;
             while (rs.next()) {
-                Sting sting = new Sting();
-                sting.setId(rs.getString("id"));
-                sting.setUserid(rs.getString("userid"));
-                sting.setCreator(rs.getString("fullname"));
-                sting.setSubject(rs.getString("subject"));
-                sting.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
-                sting.setLastModified(rs.getTimestamp("last_modified").getTime());
+                Comentari comentari = new Comentari();
+                comentari.setId(rs.getString("id"));
+                comentari.setUserid(rs.getString("userid"));
+                comentari.setCreator(rs.getString("fullname"));
+                comentari.setSubject(rs.getString("subject"));
+                comentari.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
+                comentari.setLastModified(rs.getTimestamp("last_modified").getTime());
                 if (first) {
-                    stingCollection.setNewestTimestamp(sting.getLastModified());
+                    stingCollection.setNewestTimestamp(comentari.getLastModified());
                     first = false;
                 }
-                stingCollection.setOldestTimestamp(sting.getLastModified());
-                stingCollection.getStings().add(sting);
+                stingCollection.setOldestTimestamp(comentari.getLastModified());
+                stingCollection.getComentaris().add(comentari);
             }
         } catch (SQLException e) {
             throw e;
@@ -118,8 +118,8 @@ public class StingDAOImpl implements StingDAO {
     }
 
     @Override
-    public Sting updateSting(String id, String subject, String content) throws SQLException {
-        Sting sting = null;
+    public Comentari updateSting(String id, String subject, String content) throws SQLException {
+        Comentari comentari = null;
 
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -133,7 +133,7 @@ public class StingDAOImpl implements StingDAO {
 
             int rows = stmt.executeUpdate();
             if (rows == 1)
-                sting = getStingById(id);
+                comentari = getStingById(id);
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -141,7 +141,7 @@ public class StingDAOImpl implements StingDAO {
             if (connection != null) connection.close();
         }
 
-        return sting;
+        return comentari;
     }
 
     @Override

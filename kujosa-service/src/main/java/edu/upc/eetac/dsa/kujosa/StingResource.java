@@ -3,7 +3,7 @@ package edu.upc.eetac.dsa.kujosa;
 import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.dao.StingDAO;
 import edu.upc.eetac.dsa.kujosa.dao.StingDAOImpl;
-import edu.upc.eetac.dsa.kujosa.entity.Sting;
+import edu.upc.eetac.dsa.kujosa.entity.Comentari;
 import edu.upc.eetac.dsa.kujosa.entity.StingCollection;
 
 import javax.ws.rs.*;
@@ -27,15 +27,15 @@ public class StingResource {
         if (subject == null || content == null)
             throw new BadRequestException("all parameters are mandatory");
         StingDAO stingDAO = new StingDAOImpl();
-        Sting sting = null;
+        Comentari comentari = null;
         AuthToken authToken = null;
         try {
-            sting = stingDAO.createSting(securityContext.getUserPrincipal().getName(), subject, content);
+            comentari = stingDAO.createSting(securityContext.getUserPrincipal().getName(), subject, content);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
-        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + sting.getId());
-        return Response.created(uri).type(BeeterMediaType.BEETER_STING).entity(sting).build();
+        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + comentari.getId());
+        return Response.created(uri).type(BeeterMediaType.BEETER_STING).entity(comentari).build();
     }
 
     @GET
@@ -58,15 +58,15 @@ public class StingResource {
     public Response getSting(@PathParam("id") String id, @Context Request request) {
         // Create cache-control
         CacheControl cacheControl = new CacheControl();
-        Sting sting = null;
+        Comentari comentari = null;
         StingDAO stingDAO = new StingDAOImpl();
         try {
-            sting = stingDAO.getStingById(id);
-            if (sting == null)
-                throw new NotFoundException("Sting with id = " + id + " doesn't exist");
+            comentari = stingDAO.getStingById(id);
+            if (comentari == null)
+                throw new NotFoundException("Comentari with id = " + id + " doesn't exist");
 
             // Calculate the ETag on last modified date of user resource
-            EntityTag eTag = new EntityTag(Long.toString(sting.getLastModified()));
+            EntityTag eTag = new EntityTag(Long.toString(comentari.getLastModified()));
 
             // Verify if it matched with etag available in http request
             Response.ResponseBuilder rb = request.evaluatePreconditions(eTag);
@@ -80,7 +80,7 @@ public class StingResource {
             // If rb is null then either it is first time request; or resource is
             // modified
             // Get the updated representation and return with Etag attached to it
-            rb = Response.ok(sting).cacheControl(cacheControl).tag(eTag);
+            rb = Response.ok(comentari).cacheControl(cacheControl).tag(eTag);
             return rb.build();
         } catch (SQLException e) {
             throw new InternalServerErrorException();
@@ -91,25 +91,25 @@ public class StingResource {
     @PUT
     @Consumes(BeeterMediaType.BEETER_STING)
     @Produces(BeeterMediaType.BEETER_STING)
-    public Sting updateSting(@PathParam("id") String id, Sting sting) {
-        if (sting == null)
+    public Comentari updateSting(@PathParam("id") String id, Comentari comentari) {
+        if (comentari == null)
             throw new BadRequestException("entity is null");
-        if (!id.equals(sting.getId()))
+        if (!id.equals(comentari.getId()))
             throw new BadRequestException("path parameter id and entity parameter id doesn't match");
 
         String userid = securityContext.getUserPrincipal().getName();
-        if (!userid.equals(sting.getUserid()))
+        if (!userid.equals(comentari.getUserid()))
             throw new ForbiddenException("operation not allowed");
 
         StingDAO stingDAO = new StingDAOImpl();
         try {
-            sting = stingDAO.updateSting(id, sting.getSubject(), sting.getContent());
-            if (sting == null)
-                throw new NotFoundException("Sting with id = " + id + " doesn't exist");
+            comentari = stingDAO.updateSting(id, comentari.getSubject(), comentari.getContent());
+            if (comentari == null)
+                throw new NotFoundException("Comentari with id = " + id + " doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
-        return sting;
+        return comentari;
     }
 
     @Path("/{id}")

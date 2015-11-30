@@ -112,9 +112,9 @@ public class UserDAOImpl implements UserDAO {
             if (rs.next()) {
                 user = new User();
                 user.setId(rs.getString("id"));
-                user.setLoginid(rs.getString("loginid"));
+                user.setUsername(rs.getString("loginid"));
                 user.setEmail(rs.getString("email"));
-                user.setFullname(rs.getString("fullname"));
+                user.setName(rs.getString("fullname"));
             }
         } catch (SQLException e) {
             // Relanza la excepción
@@ -146,9 +146,9 @@ public class UserDAOImpl implements UserDAO {
             if (rs.next()) {
                 user = new User();
                 user.setId(rs.getString("id"));
-                user.setLoginid(rs.getString("loginid"));
+                user.setUsername(rs.getString("loginid"));
                 user.setEmail(rs.getString("email"));
-                user.setFullname(rs.getString("fullname"));
+                user.setName(rs.getString("fullname"));
             }
         } catch (SQLException e) {
             throw e;

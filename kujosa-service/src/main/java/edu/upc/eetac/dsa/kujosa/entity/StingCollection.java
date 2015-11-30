@@ -19,16 +19,16 @@ import java.util.List;
 public class StingCollection {
     @InjectLinks({
             @InjectLink(resource = BeeterRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Beeter Root API"),
-            @InjectLink(resource = StingResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-stings", title = "Current stings"),
-            @InjectLink(resource = StingResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-stings", title = "Current stings"),
-            @InjectLink(resource = StingResource.class, method = "getStings", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer stings", bindings = {@Binding(name = "timestamp", value = "${instance.newestTimestamp}"), @Binding(name = "before", value = "false")}),
-            @InjectLink(resource = StingResource.class, method = "getStings", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older stings", bindings = {@Binding(name = "timestamp", value = "${instance.oldestTimestamp}"), @Binding(name = "before", value = "true")}),
+            @InjectLink(resource = StingResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-comentaris", title = "Current comentaris"),
+            @InjectLink(resource = StingResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-comentaris", title = "Current comentaris"),
+            @InjectLink(resource = StingResource.class, method = "getComentaris", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer comentaris", bindings = {@Binding(name = "timestamp", value = "${instance.newestTimestamp}"), @Binding(name = "before", value = "false")}),
+            @InjectLink(resource = StingResource.class, method = "getComentaris", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older comentaris", bindings = {@Binding(name = "timestamp", value = "${instance.oldestTimestamp}"), @Binding(name = "before", value = "true")}),
             @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout")
     })
     private List<Link> links;
     private long newestTimestamp;
     private long oldestTimestamp;
-    private List<Sting> stings = new ArrayList<>();
+    private List<Comentari> comentaris = new ArrayList<>();
 
     public List<Link> getLinks() {
         return links;
@@ -54,11 +54,11 @@ public class StingCollection {
         this.oldestTimestamp = oldestTimestamp;
     }
 
-    public List<Sting> getStings() {
-        return stings;
+    public List<Comentari> getComentaris() {
+        return comentaris;
     }
 
-    public void setStings(List<Sting> stings) {
-        this.stings = stings;
+    public void setComentaris(List<Comentari> comentaris) {
+        this.comentaris = comentaris;
     }
 }
