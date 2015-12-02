@@ -107,7 +107,7 @@ select sleep(1);insert into stings (username, subject, content) values ('alicia'
 select sleep(1);insert into stings (username, subject, content) values ('alicia', 'Mensaje absurdo#99', 'Fermín Cacho parece buen muchacho.');
 select sleep(1);
 
-insert into events (username, name, coordinates, start_date, end_date) values ('alicia', 'Fundació de lAESTEC', '2015-12-5 09:00:00', '2015-12-5 11:00:00');
+insert into events (username, name, start_date, end_date) values ('alicia', 'Fundació de lAESTEC', '2015-12-5 09:00:00', '2015-12-5 11:00:00');
 select sleep(1);
 insert into events (username, name, start_date, end_date) values ('blas', 'Sortida al supercomputador', '2015-12-21 10:00:00', '2015-12-2 11:00:00');
 select sleep(1);
