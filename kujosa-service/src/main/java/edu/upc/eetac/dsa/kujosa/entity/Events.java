@@ -5,13 +5,15 @@ package edu.upc.eetac.dsa.kujosa.entity;
  */
 public class Events {
     private int eventid;
-    private String username;
-    private String name;
-    private String coordinates;
-    private long start_date;
-    private long end_date;
+    private String titol;
+    private String text;
+    private long lat;
+    private long lon;
+    private long startDate;
+    private long endDate;
+    private int Ratio;
     private long lastModified;
-    private String userid;
+    private String [] assistents;
 
 
     public int getEventid() {
@@ -22,44 +24,52 @@ public class Events {
         this.eventid = eventid;
     }
 
-    public String getUsername() {
-        return username;
+    public String getTitol() {
+        return titol;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setTitol(String titol) {
+        this.titol = titol;
     }
 
-    public String getName() {
-        return name;
+    public long getLat() {
+        return lat;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setLat(long lat) {
+        this.lat = lat;
     }
 
-    public String getCoordinates() {
-        return coordinates;
+    public long getLon() {
+        return lon;
     }
 
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
+    public long getStartDate() {
+        return startDate;
     }
 
-    public long getStart_date() {
-        return start_date;
+    public void setStartDate(long startDate) {
+        this.startDate = startDate;
     }
 
-    public void setStart_date(long start_date) {
-        this.start_date = start_date;
+    public long getEndDate() {
+        return endDate;
     }
 
-    public long getEnd_date() {
-        return end_date;
+    public void setEndDate(long endDate) {
+        this.endDate = endDate;
     }
 
-    public void setEnd_date(long end_date) {
-        this.end_date = end_date;
+    public void setLon(long lon) {
+        this.lon = lon;
+    }
+
+    public int getRatio() {
+        return Ratio;
+    }
+
+    public void setRatio(int ratio) {
+        Ratio = ratio;
     }
 
     public long getLastModified() {
@@ -70,11 +80,19 @@ public class Events {
         this.lastModified = lastModified;
     }
 
-    public String getUserid() {
-        return userid;
+    public String getText() {
+        return text;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String[] getAssistents() {
+        return assistents;
+    }
+
+    public void setAssistents(String[] assistents) {
+        this.assistents = assistents;
     }
 }

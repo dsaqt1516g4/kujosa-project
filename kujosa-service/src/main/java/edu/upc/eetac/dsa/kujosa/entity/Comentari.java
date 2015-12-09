@@ -1,7 +1,7 @@
 package edu.upc.eetac.dsa.kujosa.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import edu.upc.eetac.dsa.kujosa.BeeterRootAPIResource;
+import edu.upc.eetac.dsa.kujosa.KujosaRootAPIResource;
 import edu.upc.eetac.dsa.kujosa.LoginResource;
 import edu.upc.eetac.dsa.kujosa.StingResource;
 import edu.upc.eetac.dsa.kujosa.UserResource;
@@ -19,7 +19,7 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Comentari {
     @InjectLinks({
-            @InjectLink(resource = BeeterRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Beeter Root API"),
+            @InjectLink(resource = KujosaRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Beeter Root API"),
             @InjectLink(resource = StingResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-stings", title = "Current stings"),
             @InjectLink(resource = StingResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-sting", title = "Create sting", type = MediaType.APPLICATION_FORM_URLENCODED),
             @InjectLink(resource = StingResource.class, method = "getSting", style = InjectLink.Style.ABSOLUTE, rel = "self sting", title = "Comentari", bindings = @Binding(name = "id", value = "${instance.id}")),
@@ -66,14 +66,6 @@ public class Comentari {
 
     public void setCreator(String creator) {
         this.creator = creator;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
     }
 
     public String getContent() {
