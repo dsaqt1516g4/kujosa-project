@@ -86,7 +86,13 @@ public class UserResource {
             throw new InternalServerErrorException();
         }
         return user;*/
-        UserDAO.updateUser(username,correu,pass,image);
+        UserDAO userDAO = new UserDAOImpl();
+
+        try {
+            userDAO.updateUser(username,correu,pass,image);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
