@@ -24,7 +24,7 @@ public class LoginResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
-    public AuthToken login(@FormParam("login") String loginid, @FormParam("password") String password) {
+    public AuthToken login(@FormParam("username") String loginid, @FormParam("password") String password) {
         if(loginid == null || password == null)
             throw new BadRequestException("all parameters are mandatory");
 
@@ -32,7 +32,7 @@ public class LoginResource {
         AuthToken authToken = null;
         try{
             UserDAO userDAO = new UserDAOImpl();
-            user = userDAO.getUserByLoginid(loginid);
+            user = userDAO.getUserByUsername(loginid);
             if(user == null)
                 throw new BadRequestException("loginid " + loginid + " not found.");
             if(!userDAO.checkPassword(user.getId(), password))
