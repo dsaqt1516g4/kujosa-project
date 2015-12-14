@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import edu.upc.eetac.dsa.kujosa.client.BeeterClient;
+import edu.upc.eetac.dsa.kujosa.client.KujosaClient;
 
 /**
  * A login screen that offers login via email/password.
@@ -211,7 +211,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             } */
 
-            BeeterClient client = BeeterClient.getInstance();
+            KujosaClient client = KujosaClient.getInstance();
             boolean result = client.login("spongebob", "1234");
 
             // TODO: register the new account here.

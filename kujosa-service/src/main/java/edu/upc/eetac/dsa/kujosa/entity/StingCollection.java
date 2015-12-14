@@ -28,7 +28,7 @@ public class StingCollection {
     private List<Link> links;
     private long newestTimestamp;
     private long oldestTimestamp;
-    private List<Comentari> comentaris = new ArrayList<>();
+    private List<Sting> stings = new ArrayList<>();
 
     public List<Link> getLinks() {
         return links;
@@ -54,11 +54,11 @@ public class StingCollection {
         this.oldestTimestamp = oldestTimestamp;
     }
 
-    public List<Comentari> getComentaris() {
-        return comentaris;
+    public List<Sting> getStings() {
+        return stings;
     }
 
-    public void setComentaris(List<Comentari> comentaris) {
-        this.comentaris = comentaris;
+    public void setStings(List<Sting> stings) {
+        this.stings = stings;
     }
 }

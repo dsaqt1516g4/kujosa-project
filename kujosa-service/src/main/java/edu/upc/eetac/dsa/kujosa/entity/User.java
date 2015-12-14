@@ -27,10 +27,9 @@ public class User {
     })
     private List<Link> links;
     private String id;
-    private String username;
+    private String loginid;
     private String email;
-    private String name;
-    private String image;
+    private String fullname;
 
     public List<Link> getLinks() {
         return links;
@@ -48,12 +47,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getLoginid() {
+        return loginid;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setLoginid(String loginid) {
+        this.loginid = loginid;
     }
 
     public String getEmail() {
@@ -64,19 +63,11 @@ public class User {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getFullname() {
+        return fullname;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 }

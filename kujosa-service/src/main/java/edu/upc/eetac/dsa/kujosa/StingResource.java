@@ -27,10 +27,10 @@ public class StingResource {
         if (subject == null || content == null)
             throw new BadRequestException("all parameters are mandatory");
         StingDAO stingDAO = new StingDAOImpl();
-        Comentari comentari = null;
+        Sting sting = null;
         AuthToken authToken = null;
         try {
-            comentari = stingDAO.createSting(securityContext.getUserPrincipal().getName(), subject, content);
+            sting = stingDAO.createSting(securityContext.getUserPrincipal().getName(), subject, content);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
@@ -58,15 +58,15 @@ public class StingResource {
     public Response getSting(@PathParam("id") String id, @Context Request request) {
         // Create cache-control
         CacheControl cacheControl = new CacheControl();
-        Comentari comentari = null;
+        Sting sting = null;
         StingDAO stingDAO = new StingDAOImpl();
         try {
-            comentari = stingDAO.getStingById(id);
-            if (comentari == null)
-                throw new NotFoundException("Comentari with id = " + id + " doesn't exist");
+            sting = stingDAO.getStingById(id);
+            if (sting == null)
+                throw new NotFoundException("Sting with id = " + id + " doesn't exist");
 
             // Calculate the ETag on last modified date of user resource
-            EntityTag eTag = new EntityTag(Long.toString(comentari.getLastModified()));
+            EntityTag eTag = new EntityTag(Long.toString(sting.getLastModified()));
 
             // Verify if it matched with etag available in http request
             Response.ResponseBuilder rb = request.evaluatePreconditions(eTag);
@@ -80,7 +80,7 @@ public class StingResource {
             // If rb is null then either it is first time request; or resource is
             // modified
             // Get the updated representation and return with Etag attached to it
-            rb = Response.ok(comentari).cacheControl(cacheControl).tag(eTag);
+            rb = Response.ok(sting).cacheControl(cacheControl).tag(eTag);
             return rb.build();
         } catch (SQLException e) {
             throw new InternalServerErrorException();
@@ -94,22 +94,22 @@ public class StingResource {
     public Sting updateSting(@PathParam("id") String id, Sting sting) {
         if (sting == null)
             throw new BadRequestException("entity is null");
-        if (!id.equals(comentari.getId()))
+        if (!id.equals(sting.getId()))
             throw new BadRequestException("path parameter id and entity parameter id doesn't match");
 
         String userid = securityContext.getUserPrincipal().getName();
-        if (!userid.equals(comentari.getUserid()))
+        if (!userid.equals(sting.getUserid()))
             throw new ForbiddenException("operation not allowed");
 
         StingDAO stingDAO = new StingDAOImpl();
         try {
-            comentari = stingDAO.updateSting(id, comentari.getSubject(), comentari.getContent());
-            if (comentari == null)
-                throw new NotFoundException("Comentari with id = " + id + " doesn't exist");
+            sting = stingDAO.updateSting(id, sting.getSubject(), sting.getContent());
+            if (sting == null)
+                throw new NotFoundException("Sting with id = " + id + " doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
-        return comentari;
+        return sting;
     }
 
     @Path("/{id}")

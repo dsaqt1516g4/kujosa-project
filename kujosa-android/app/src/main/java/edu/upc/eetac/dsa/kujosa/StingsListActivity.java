@@ -11,8 +11,8 @@ import android.view.View;
 
 import com.google.gson.Gson;
 
-import edu.upc.eetac.dsa.kujosa.client.BeeterClient;
-import edu.upc.eetac.dsa.kujosa.client.BeeterClientException;
+import edu.upc.eetac.dsa.kujosa.client.KujosaClient;
+import edu.upc.eetac.dsa.kujosa.client.KujosaClientException;
 import edu.upc.eetac.dsa.kujosa.client.entity.Sting;
 import edu.upc.eetac.dsa.kujosa.client.entity.StingCollection;
 
@@ -35,8 +35,8 @@ public class StingsListActivity extends AppCompatActivity {
         protected String doInBackground(Void... params) {
             String jsonStingCollection = null;
             try{
-                jsonStingCollection = BeeterClient.getInstance().getStings(uri);
-            }catch(BeeterClientException e){
+                jsonStingCollection = KujosaClient.getInstance().getStings(uri);
+            }catch(KujosaClientException e){
                 // TODO: Handle gracefully
                 Log.d(TAG, e.getMessage());
             }
@@ -97,7 +97,7 @@ public class StingsListActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(TAG, BeeterClient.getLink(stings.getStings().get(position).getLinks(), "self").getUri().toString());
+                Log.d(TAG, KujosaClient.getLink(stings.getStings().get(position).getLinks(), "self").getUri().toString());
             }
         });
 */

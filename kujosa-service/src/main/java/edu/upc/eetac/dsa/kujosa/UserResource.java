@@ -79,7 +79,7 @@ public class UserResource {
 
         UserDAO userDAO = new UserDAOImpl();
         try {
-           user = userDAO.updateProfile(userid, user.getEmail(), user.getName());
+           user = userDAO.updateProfile(userid, user.getEmail(), user.getFullname());
             if(user == null)
                 throw new NotFoundException("User with id = "+id+" doesn't exist");
         } catch (SQLException e) {
