@@ -4,7 +4,7 @@ package edu.upc.eetac.dsa.kujosa.dao;
  * Created by Kushal on 2/12/15.
  */
 
-public interface ArticleDAOQuery {
+public interface NewsDAOQuery {
     public final static String UUID = "select REPLACE(UUID(),'-','')";
     public final static String CREATE_ARTICLE = "insert into articles (id, name, content, creator, Tag) values (UNHEX(?), ?, UNHEX(MD5(?)), ?, ?);";
     public final static String UPDATE_ARTICLE = "update articles set name=?, content=? where id=unhex(?)";

@@ -3,7 +3,7 @@ package edu.upc.eetac.dsa.kujosa.entity;
 /**
  * Created by kenshin on 23/11/15.
  */
-public class Events {
+public class Event {
     private int eventid;
     private String titol;
     private String text;
