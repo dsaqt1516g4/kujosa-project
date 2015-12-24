@@ -73,11 +73,13 @@ create table news (
 );
 
 create table document (
-        username    varchar(30) not null,
+        userid      int not null,
         docid       int not null,
         name        varchar(50) not null,
         description varchar(200) not null,
-        path        varchar(20) not null
+        last_modified      timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
+	creation_timestamp datetime not null default current_timestamp,
+	foreign key (userid) references users(userid) on delete cascade
 );
 
 create table commentsdoc (

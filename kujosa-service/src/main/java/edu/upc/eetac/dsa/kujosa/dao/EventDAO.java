@@ -11,13 +11,13 @@ import java.sql.SQLException;
 public interface EventDAO {
     public Event createEvent(String titol, String text, long lat, long lon, long startDate, long endDate, int Ratio)
             throws SQLException;
-    public Event getEventByRatio(String id)
+    public Event getEventByRatio(int Ratio)
             throws SQLException;
-    public EventCollection getEvents(long timestamp, boolean before)
+    public EventCollection getEvents(long startDate, long endDate)
             throws SQLException;
-    public Event updateEvent(String id, String subject, String content)
+    public Event updateEvent(int Eventid, String titol, String text, long startDate, long endDate, int Ratio)
             throws SQLException;
-    public void deleteEvent(String id)
+    public void deleteEvent(int Eventid)
             throws SQLException;
 
 }
