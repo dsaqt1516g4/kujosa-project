@@ -5,6 +5,16 @@ package edu.upc.eetac.dsa.kujosa.entity;
  */
 public class Event {
     private int eventid;
+
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    private int userid;
     private String titol;
     private String text;
     private long lat;
@@ -13,7 +23,7 @@ public class Event {
     private long endDate;
     private int Ratio;
     private long lastModified;
-    private String [] assistents;
+    /* private String [] assistents; */
 
 
     public int getEventid() {
@@ -88,11 +98,11 @@ public class Event {
         this.text = text;
     }
 
-    public String[] getAssistents() {
+    /* public String[] getAssistents() {
         return assistents;
     }
 
     public void setAssistents(String[] assistents) {
         this.assistents = assistents;
-    }
+    } */
 }
