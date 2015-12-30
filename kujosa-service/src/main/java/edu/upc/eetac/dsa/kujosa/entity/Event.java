@@ -6,15 +6,15 @@ package edu.upc.eetac.dsa.kujosa.entity;
 public class Event {
     private int eventid;
 
-    public int getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 
-    private int userid;
+    private String userid;
     private String titol;
     private String text;
     private long lat;
