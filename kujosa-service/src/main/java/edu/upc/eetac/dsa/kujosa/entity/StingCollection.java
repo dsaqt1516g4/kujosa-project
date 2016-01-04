@@ -11,6 +11,7 @@ import org.glassfish.jersey.linking.InjectLinks;
 import javax.ws.rs.core.Link;
 import java.util.ArrayList;
 import java.util.List;
+//@InjectLink(resource = StingResource.class//el recurs esta a Sting Resource, method = "getStings"//Metode que ens referim dintre de la clase, style = InjectLink.Style.ABSOLUTE//sempre igual, rel = "next"//ID del enllaç, title = "Newer stings"//titol, bin0dings = {@Binding(name = "timestamp"//id del camp, value = "${instance.newestTimestamp}//ref a l'objecte"), @Binding(name = "before", value = "false")}),
 
 /**
  * Created by sergio on 7/09/15.
@@ -28,7 +29,7 @@ public class StingCollection {
     private List<Link> links;
     private long newestTimestamp;
     private long oldestTimestamp;
-    private List<Comentari> comentaris = new ArrayList<>();
+    private List<Sting> stings = new ArrayList<>();
 
     public List<Link> getLinks() {
         return links;
@@ -54,11 +55,11 @@ public class StingCollection {
         this.oldestTimestamp = oldestTimestamp;
     }
 
-    public List<Comentari> getComentaris() {
-        return comentaris;
+    public List<Sting> getStings() {
+        return stings;
     }
 
-    public void setComentaris(List<Comentari> comentaris) {
-        this.comentaris = comentaris;
+    public void setStings(List<Sting> stings) {
+        this.stings = stings;
     }
 }

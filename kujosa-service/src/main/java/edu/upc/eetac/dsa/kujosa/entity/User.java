@@ -14,7 +14,18 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
- * Created by sergio on 7/09/15.
+ * Created by Mr.Croqueto
+ * +---------------------+
+ * | KUJOSA PROJECT      |
+ * +---------------------+
+ * | DONE:               |
+ * +---------------------+
+ * |                     |
+ * | -All atributes      |
+ * |                     |
+ * +---------------------+
+ *
+ *
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
@@ -48,20 +59,20 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {

@@ -31,14 +31,16 @@ foreign key(userid) references users(userid)
 
 create table events (
 	eventid		 	int not null auto_increment primary key,
-        userid                  int not null,
-	name			varchar(100) not null,
+	titol			varchar(100) not null,
+	text			varchar(600) not null,
 	lat                     long not null,
 	lon                     long not null,
         start_date	 	datetime not null,
 	end_date	 	datetime not null,
 	last_modified		timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
 	foreign key (userid) 	references users (userid) on delete cascade
+	ratio			int,
+	nomVots			int
 	
 );
 
@@ -73,11 +75,13 @@ create table news (
 );
 
 create table document (
-        username    varchar(30) not null,
+        userid      int not null,
         docid       int not null,
         name        varchar(50) not null,
         description varchar(200) not null,
-        path        varchar(20) not null
+        last_modified      timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
+	creation_timestamp datetime not null default current_timestamp,
+	foreign key (userid) references users(userid) on delete cascade
 );
 
 create table commentsdoc (

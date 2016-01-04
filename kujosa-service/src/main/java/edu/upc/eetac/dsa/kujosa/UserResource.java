@@ -13,8 +13,14 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 
-/**
- * Created by sergio on 8/09/15.
+ /**    +-------------------------------------+
+ *     |           KUJOSA PROJECT            |
+ *     +-------------------------------------+
+ *     DONE:
+ *     -registerUser
+ *     -getUser
+ *     -updateUser
+ *     -deleteUser
  */
 @Path("users")
 public class UserResource {
@@ -24,17 +30,17 @@ public class UserResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
-    public Response registerUser(@FormParam("loginid") String loginid, @FormParam("password") String password, @FormParam("email") String email, @FormParam("fullname") String fullname, @Context UriInfo uriInfo) throws URISyntaxException {
-        if(loginid == null || password == null || email == null || fullname == null)
-            throw new BadRequestException("all parameters are mandatory");
+    public Response registerUser(@FormParam("username") String username,  @FormParam("email") String email, @FormParam("password") String password, @FormParam("fullname") String fullname, @Context UriInfo uriInfo) throws URISyntaxException {
+        if(username == null || password == null || email == null || fullname == null)
+            throw new BadRequestException("S'han de plenar tots els camps");
         UserDAO userDAO = new UserDAOImpl();
         User user = null;
         AuthToken authToken = null;
         try{
-            user = userDAO.createUser(loginid, password, email, fullname);
+            user = userDAO.createUser(username, fullname, email, password);
             authToken = (new AuthTokenDAOImpl()).createAuthToken(user.getId());
         }catch (UserAlreadyExistsException e){
-            throw new WebApplicationException("loginid already exists", Response.Status.CONFLICT);
+            throw new WebApplicationException("Username already exists", Response.Status.CONFLICT);
         }catch(SQLException e){
             throw new InternalServerErrorException();
         }
@@ -45,15 +51,15 @@ public class UserResource {
     @Path("/{id}")
     @GET
     @Produces(KujosaMediaType.KUJOSA_USER)
-    public User getUser(@PathParam("id") String id) {
+    public User getUser(@PathParam("username") String username) {
         User user = null;
         try {
-            user = (new UserDAOImpl()).getUserById(id);
+            user = (new UserDAOImpl()).getUserByUsername(username);
         } catch (SQLException e) {
             throw new InternalServerErrorException(e.getMessage());
         }
         if(user == null)
-            throw new NotFoundException("User with id = "+id+" doesn't exist");
+            throw new NotFoundException("User with Username = "+ username +" doesn't exist");
         return user;
     }
 
@@ -61,10 +67,10 @@ public class UserResource {
     @PUT
     @Consumes(KujosaMediaType.KUJOSA_USER)
     @Produces(KujosaMediaType.KUJOSA_USER)
-    public User updateUser(@PathParam("id") String id, User user) {
-        if(user == null)
+    public void updateUser(@PathParam("username") String username,@FormParam("correu") String correu, @FormParam("pass") String pass,@FormParam("image") String image) {
+        if(username == null)
             throw new BadRequestException("entity is null");
-        if(!id.equals(user.getId()))
+  /*      if(!id.equals(user.getId()))
             throw new BadRequestException("path parameter id and entity parameter id doesn't match");
 
         String userid = securityContext.getUserPrincipal().getName();
@@ -73,13 +79,21 @@ public class UserResource {
 
         UserDAO userDAO = new UserDAOImpl();
         try {
-           user = userDAO.updateProfile(userid, user.getEmail(), user.getName());
+           user = userDAO.updateProfile(userid, user.getEmail(), user.getFullname());
             if(user == null)
                 throw new NotFoundException("User with id = "+id+" doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
-        return user;
+        return user;*/
+        UserDAO userDAO = new UserDAOImpl();
+
+        try {
+            userDAO.updateUser(username,correu,pass,image);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Path("/{id}")
@@ -87,7 +101,7 @@ public class UserResource {
     public void deleteUser(@PathParam("id") String id){
         String userid = securityContext.getUserPrincipal().getName();
         if(!userid.equals(id))
-            throw new ForbiddenException("operation not allowed");
+            throw new ForbiddenException("Operation not allowed");
         UserDAO userDAO = new UserDAOImpl();
         try {
             if(!userDAO.deleteUser(id))
