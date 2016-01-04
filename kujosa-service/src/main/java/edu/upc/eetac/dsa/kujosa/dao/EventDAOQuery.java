@@ -17,8 +17,9 @@ public class EventDAOQuery {
     public final static String UPDATE_STATE_QUERY = "update state set state = ifnull(?, state) where userid = ? and eventid = ?";
     public final static String GET_EVENTS_STATE_QUERY = "select eventid from state where userid = ? and state = ?";
     public final static String VALIDATE_USER = "select * from users where userid = ?";
-    public final static String CREATE_EVENT_STATE_PENDING_QUERY = "insert into state values (?, ?, 'pending')";
+    public final static String CREATE_EVENT = "insert into events (id, userid, titol, text, lat, lon, startdate, enddate, ratio, nomVots) values (?,?,?,?,?,?,?,?,?,?)\";\n";
     public final static String GET_USERS_OF_EVENT = "select userid from events e where e.eventid = ?";
     public final static String GET_EVENT_FROM_LAST="SELECT * FROM events WHERE creation_date > ? ORDER BY creation_date DESC";
     public final static String GET_EVENT_FROM_FIRST="SELECT * FROM events WHERE creation_date < ifnull(?, now()) ORDER BY creation_date DESC LIMIT ?";
+    public final static String GET_EVENT_BY_RATIO="SELECT * FROM events WHERE ratio >?";
 }

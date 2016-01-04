@@ -12,7 +12,7 @@ import java.util.List;
 
 
 /**
- * Created by juan on 02/12/15.
+ * Created by Juan on 02/12/15.
  */
 public class Comment {
     @InjectLinks({

@@ -23,6 +23,7 @@ public class Event {
     private long endDate;
     private int Ratio;
     private long lastModified;
+    private int numVots;
     /* private String [] assistents; */
 
 
@@ -96,6 +97,14 @@ public class Event {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getNumVots() {
+        return numVots;
+    }
+
+    public void setNumVots(int numVots) {
+        this.numVots = numVots;
     }
 
     /* public String[] getAssistents() {

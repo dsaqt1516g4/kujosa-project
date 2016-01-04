@@ -5,6 +5,11 @@ package edu.upc.eetac.dsa.kujosa.entity;
  */
 public class Document {
     public String username;
+    public int docid;
+    public String name;
+    public String description;
+    public String path;
+
 
     public int getDocid() {
         return docid;
@@ -12,14 +17,6 @@ public class Document {
 
     public void setDocid(int docid) {
         this.docid = docid;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getName() {
@@ -46,9 +43,8 @@ public class Document {
         this.path = path;
     }
 
-    public int docid;
-    public String name;
-    public String description;
-    public String path;
-
+    public String getUsername(){
+        return this.username;
+    }
+    public void setUsername(String us){username=us;}
 }

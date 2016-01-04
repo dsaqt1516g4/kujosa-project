@@ -1,7 +1,18 @@
 package edu.upc.eetac.dsa.kujosa.entity;
 
 /**
- * Created by Kushal on 2/12/15.
+ * Created by Kushal
+ * +---------------------+
+ * | KUJOSA PROJECT      |
+ * +---------------------+
+ * | DONE:               |
+ * +---------------------+
+ * |                     |
+ * | -All atributes      |
+ * |                     |
+ * +---------------------+
+ *
+ *
  */
 public class News {
     //@InjectLinks({})
@@ -9,15 +20,15 @@ public class News {
     private String name;
     private String content;
     private String creator;
-    private String Tag;
+    private String Tags;
     private long creationTimestamp;
 
-    public String getTag() {
-        return Tag;
+    public String getTags() {
+        return Tags;
     }
 
-    public void setTag(String tag) {
-        Tag = tag;
+    public void setTags(String tags) {
+        Tags = tags;
     }
 
     public long getCreationTimestamp() {

@@ -3,9 +3,15 @@ package edu.upc.eetac.dsa.kujosa.dao;
 import edu.upc.eetac.dsa.kujosa.entity.User;
 
 import java.sql.SQLException;
-
-/**
- * Created by sergio on 7/09/15.
+/**    +-------------------------------------+
+ *     |           KUJOSA PROJECT            |
+ *     +-------------------------------------+
+ *     DONE:
+ *     -createUser
+ *     -getUserByUsername
+ *     -updateUser
+ *     -deleteUser
+ *     -checkPassword
  */
 public interface UserDAO {
     public User createUser( String username, String fullname, String email, String password) throws SQLException, UserAlreadyExistsException ;
