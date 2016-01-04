@@ -11,6 +11,7 @@ import org.glassfish.jersey.linking.InjectLinks;
 import javax.ws.rs.core.Link;
 import java.util.ArrayList;
 import java.util.List;
+//@InjectLink(resource = StingResource.class//el recurs esta a Sting Resource, method = "getStings"//Metode que ens referim dintre de la clase, style = InjectLink.Style.ABSOLUTE//sempre igual, rel = "next"//ID del enllaç, title = "Newer stings"//titol, bin0dings = {@Binding(name = "timestamp"//id del camp, value = "${instance.newestTimestamp}//ref a l'objecte"), @Binding(name = "before", value = "false")}),
 
 /**
  * Created by sergio on 7/09/15.

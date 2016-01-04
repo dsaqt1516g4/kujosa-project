@@ -305,10 +305,11 @@ public class EventDAOImpl implements EventDAO {
             connection = Database.getConnection();
             stmt = connection.prepareStatement(EventDAOQuery.GET_USERS_OF_EVENT);
             stmt.setString(1, eventid);
+            UserDAO userDAO = new UserDAOImpl();
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
 
-                User user = UserDAO.getUserById(rs.getString("userid"));
+                User user = userDAO.getUserById(rs.getString("userid"));
                 user.setId(rs.getString("userid"));
                 users.addUser(user);
             }
