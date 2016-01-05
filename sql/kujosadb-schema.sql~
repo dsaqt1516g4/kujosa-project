@@ -38,9 +38,9 @@ create table events (
         start_date	 	datetime not null,
 	end_date	 	datetime not null,
 	last_modified		timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
-	foreign key (userid) 	references users (userid) on delete cascade
+	foreign key (userid) 	references users (userid) on delete cascade,
 	ratio			int,
-	nomVots			int
+	numVots			int
 	
 );
 
@@ -54,7 +54,7 @@ create table commentsevent (
 	foreign key (userid)    references users (userid) on delete cascade,
 	foreign key (eventid) 	references events (eventid) on delete cascade,
 	image                   varchar(20) not null,
-	ratio                   int MAX 9  MIN 0
+	ratio                   int
 );
 
 create table participantes (
