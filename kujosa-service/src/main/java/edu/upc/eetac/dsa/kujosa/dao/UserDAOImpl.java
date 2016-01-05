@@ -20,6 +20,7 @@ import java.sql.SQLException;
  *     -getUserByUsername
  *     -updateUser
  *     -deleteUser
+ *     -checkPassword
  */
 public class UserDAOImpl implements UserDAO {
 

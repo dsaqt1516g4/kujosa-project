@@ -33,7 +33,7 @@ public class EventResource {
         Event event = null;
         AuthToken authToken = null;
         try {
-            event = eventDAO.createEvent(securityContext.getUserPrincipal().getName(), titol, text, lat, lon, startdate, enddate, ratio);
+            event = eventDAO.createEvent(securityContext.getUserPrincipal().getName(), titol, text, lat, lon, startdate, enddate);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
@@ -106,7 +106,7 @@ public class EventResource {
 
         EventDAO eventDAO = new EventDAOImpl();
         try {
-            event = eventDAO.updateEvent(id, event.getTitol(), event.getText(), event.getStartDate(),event.getEndDate(),event.getRatio());
+            event = eventDAO.updateEvent(id, event.getTitol(), event.getText(), event.getStartDate(),event.getEndDate());
             if (event == null)
                 throw new NotFoundException("Event with id = " + id + " doesn't exist");
         } catch (SQLException e) {
