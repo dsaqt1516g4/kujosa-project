@@ -1,34 +1,68 @@
 package edu.upc.eetac.dsa.kujosa.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import edu.upc.eetac.dsa.kujosa.KujosaRootAPIResource;
+import edu.upc.eetac.dsa.kujosa.LoginResource;
+import edu.upc.eetac.dsa.kujosa.UserResource;
+import org.glassfish.jersey.linking.Binding;
+import org.glassfish.jersey.linking.InjectLink;
+import org.glassfish.jersey.linking.InjectLinks;
+
+import javax.ws.rs.core.Link;
+import javax.ws.rs.core.MediaType;
+import java.util.List;
+
 /**
- * Created by Kushal
- * +---------------------+
- * | KUJOSA PROJECT      |
- * +---------------------+
- * | DONE:               |
- * +---------------------+
- * |                     |
- * | -All atributes      |
- * |                     |
- * +---------------------+
- *
- *
+ * Created by Kushal on 23/11/15.
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class News {
-    //@InjectLinks({})
-    private int articleid;
-    private String name;
-    private String content;
-    private String creator;
-    private String Tags;
+    //@InjectLinks({ })
+    private List<Link> links;
+    private int userid;
+    private String headline;
+    private String body;
+    private long lastModified;
     private long creationTimestamp;
 
-    public String getTags() {
-        return Tags;
+    public int getUserid() {
+        return userid;
     }
 
-    public void setTags(String tags) {
-        Tags = tags;
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public String getHeadline() {
+        return headline;
+    }
+
+    public void setHeadline(String headline) {
+        this.headline = headline;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public long getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(long lastModified) {
+        this.lastModified = lastModified;
     }
 
     public long getCreationTimestamp() {
@@ -37,37 +71,5 @@ public class News {
 
     public void setCreationTimestamp(long creationTimestamp) {
         this.creationTimestamp = creationTimestamp;
-    }
-
-    public int getArticleid() {
-        return articleid;
-    }
-
-    public void setArticleid(int articleid) {
-        this.articleid = articleid;
-    }
-
-    public String getname() {
-        return name;
-    }
-
-    public void setname(String name) {
-        this.name = name;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
     }
 }

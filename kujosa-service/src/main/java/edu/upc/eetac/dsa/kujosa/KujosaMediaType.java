@@ -12,6 +12,8 @@ public interface KujosaMediaType {
     String KUJOSA_DOCUMENT = "application/vnd.dsa.kujosa.document+json";
     String KUJOSA_DOCUMENT_COLLECTION = "application/vnd.dsa.kujosa.document.collection+json";
     String KUJOSA_ROOT = "application/vnd.dsa.kujosa.root+json";
+     String KUJOSA_NEWS = "application/vnd.dsa.kujosa.news+json";
+    String KUJOSA_NEWS_COLLECTION = "application/vnd.dsa.kujosa.news.collection+json";
     String KUJOSA_ERROR = "application/vnd.dsa.kujosa.error+json";
     String KUJOSA_API_COMMENT = "application/vnd.dsa.kujosa.comment+json";
     String KUJOSA_API_COMMENT_COLLECTION = "application/vnd.dsa.kujosa.comment.collection+json";
