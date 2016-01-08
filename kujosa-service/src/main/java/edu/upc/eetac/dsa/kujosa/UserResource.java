@@ -70,22 +70,6 @@ public class UserResource {
     public void updateUser(@PathParam("username") String username,@FormParam("correu") String correu, @FormParam("pass") String pass,@FormParam("image") String image) {
         if(username == null)
             throw new BadRequestException("entity is null");
-  /*      if(!id.equals(user.getId()))
-            throw new BadRequestException("path parameter id and entity parameter id doesn't match");
-
-        String userid = securityContext.getUserPrincipal().getName();
-        if(!userid.equals(id))
-            throw new ForbiddenException("operation not allowed");
-
-        UserDAO userDAO = new UserDAOImpl();
-        try {
-           user = userDAO.updateProfile(userid, user.getEmail(), user.getFullname());
-            if(user == null)
-                throw new NotFoundException("User with id = "+id+" doesn't exist");
-        } catch (SQLException e) {
-            throw new InternalServerErrorException();
-        }
-        return user;*/
         UserDAO userDAO = new UserDAOImpl();
 
         try {
