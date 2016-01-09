@@ -1,13 +1,13 @@
 source kujosadb-schema.sql;
-insert into users values('alicia', MD5('alicia'), 'Alicia tiene malicia', 'alicia@acme.com',null);
+insert into users values('1','alicia', MD5('alicia'), 'Alicia tiene malicia', 'alicia@acme.com',null);
 insert into user_roles values ('1', 'registered');
 
-insert into users values('blas', MD5('blas'), 'Blas te nas', 'blas@acme.com',null);
+insert into users values('2','blas', MD5('blas'), 'Blas te nas', 'blas@acme.com',null);
 insert into user_roles values ('2', 'registered');
 
 insert into events (titol,text, lat, lon, start_date, end_date, ratio, numVots) values ('TITOL1', 'Fundació de lAESTEC', '0', '0', '2015-12-5 09:00:00', '2015-12-5 11:00:00', 5, 1);
 select sleep(1);
-insert into events (titol,text, lat, lon, start_date, end_date, ratio, numVots) values ('TITOL2', 'Sortida al supercomputador', '2015-12-21 10:00:00', '2015-12-2 11:00:00',3,2);
+insert into events (titol,text, lat, lon, start_date, end_date, ratio, numVots) values ('TITOL2', 'Sortida al supercomputador', '42','2', '2015-12-21 10:00:00', '2015-12-2 11:00:00',3,2);
 select sleep(1);
 insert into events (titol,text, lat, lon, start_date, end_date, ratio, numVots) values ('TITOL3', 'Exposició i demostració de drons', '0', '0', '2016-1-25 17:00:00', '2016-1-25 19:30:00',1,1);
 select sleep(1);
