@@ -30,9 +30,11 @@ public class UserResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
-    public Response registerUser(@FormParam("username") String username,  @FormParam("email") String email, @FormParam("password") String password, @FormParam("fullname") String fullname, @Context UriInfo uriInfo) throws URISyntaxException {
-        if(username == null || password == null || email == null || fullname == null)
-            throw new BadRequestException("S'han de plenar tots els camps");
+    public Response registerUser(@FormParam("username") String username,  @FormParam("email") String email, @FormParam("password") String password, @FormParam("nombre") String fullname, @Context UriInfo uriInfo) throws URISyntaxException {
+      System.out.println("username :"+username+" email :"+email+" password : "+password+" name :"+fullname);
+
+       if(username == null || password == null || email == null || fullname == null)
+            throw new BadRequestException("S'han de plenar tots els camps 222");
         UserDAO userDAO = new UserDAOImpl();
         User user = null;
         AuthToken authToken = null;
