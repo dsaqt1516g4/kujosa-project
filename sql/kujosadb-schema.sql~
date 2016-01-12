@@ -4,16 +4,16 @@ create database kujosadb;
 use kujosadb;
  
 create table users (
-userid   int not null auto_increment primary key,
+userid   binary(16) not null auto_increment primary key,
 username varchar(20) not null,
-userpass char(32) not null,
+userpass binary(16) not null,
 name     varchar(70) not null,
 email    varchar(255) not null,
 image    varchar(20)
 );
- 
+
 create table user_roles (
-userid   int not null,
+userid   binary(16) not null,
 rolename varchar(20) not null,
 foreign key(userid) references users(userid) on delete cascade,
 primary key (userid, rolename)
@@ -21,7 +21,7 @@ primary key (userid, rolename)
  
 create table social (
 stingid                         int not null auto_increment primary key,
-userid                          int not null,
+userid                          binary(16) not null,
 subject                         varchar(100) not null,
 content                         varchar(500) not null,
 last_modified			timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
@@ -38,7 +38,6 @@ create table events (
         start_date	 	datetime not null,
 	end_date	 	datetime not null,
 	last_modified		timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
-	foreign key (userid) 	references users (userid) on delete cascade,
 	ratio			int,
 	numVots			int
 	
@@ -46,7 +45,7 @@ create table events (
 
 create table commentsevent (
 	commentid	 	int not null auto_increment primary key,
-	userid   	 	int not null,
+	userid   	 	binary(16) not null,
 	eventid		 	int not null,
 	content		 	varchar(200) not null,
 	last_modified		timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
@@ -58,7 +57,7 @@ create table commentsevent (
 );
 
 create table participantes (
-        userid                  int not null,
+        userid                  binary(16) not null,
 	eventid			int not null,
 	primary key (userid, eventid),
 	foreign key (userid) 	references users(userid) on delete cascade,
@@ -66,7 +65,7 @@ create table participantes (
 );
 
 create table news (
-        userid             int not null,
+        userid             binary(16) not null,
         headline           varchar(50) not null primary key,
         body               varchar(500) not null,
 	last_modified      timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
@@ -75,7 +74,7 @@ create table news (
 );
 
 create table document (
-        userid      int not null,
+        userid      binary(16) not null,
         docid       int not null,
         name        varchar(50) not null,
         description varchar(200) not null,
@@ -87,7 +86,7 @@ create table document (
 create table commentsdoc (
         commentid	 	int not null auto_increment primary key,
 	eventid		 	int not null ,
-	userid	 	        int not null,
+	userid	 	        binary(16) not null,
 	docid		 	int not null,
 	content		 	varchar(200) not null,
 	last_modified		timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
