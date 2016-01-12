@@ -1,15 +1,16 @@
 package edu.upc.eetac.dsa.kujosa.dao;
 
 /**
- * Created by Kushal on 2/12/15.
+ * Created by Kushal on 16/12/15.
  */
-
-public interface NewsDAOQuery {
+public class NewsDAOQuery {
     public final static String UUID = "select REPLACE(UUID(),'-','')";
-    public final static String CREATE_ARTICLE = "insert into articles (id, name, content, creator, Tag) values (UNHEX(?), ?, UNHEX(MD5(?)), ?, ?);";
-    public final static String UPDATE_ARTICLE = "update articles set name=?, content=? where id=unhex(?)";
-    public final static String GET_ARTICLE_BY_ID = "select hex(u.id) as id, u.articleid, u.name, u.content from users u where id=unhex(?)";
-    public final static String GET_ARTICLE_BY_NAME = "select hex(u.id) as id, u.articleid, u.name, u.content from article u where u.articleid=?";
-    public final static String GET_ARTICLE_BY_TAG = "select hex(u.id) as id, u.articleid, u.name, u.content from article u where u.articleid=?";
-    public final static String DELETE_ARTICLE = "delete from articles where id=unhex(?)";
+    public final static String CREATE_NEWS = "insert into news (userid, headline, body) values (UNHEX(?), unhex(?), ?)";
+    public final static String GET_NEWS_BY_USER = "select hex(n.headline) as headline, hex(n.userid) as userid, n.headline, n.body, n.creation_timestamp, n.last_modified from news n, users u where s.id=unhex(?) and u.id=s.userid";
+    public final static String GET_NEWS = "select hex(s.userid) as userid, s.headline, s.body, s.creation_timestamp, s.last_modified from news s, users u where creation_timestamp < ? and u.id=s.userid order by creation_timestamp desc limit 25";
+    public final static String GET_NEWS_AFTER = "select hex(s.userid) as userid, s.headline, s.body, s.creation_timestamp, s.last_modified from news s, users u where creation_timestamp  > ? and u.id=s.userid order by creation_timestamp desc limit 25";
+    public final static String UPDATE_NEWS = "update news set userid =?, set body =?, where headline=unhex(?) ";
+    public final static String DELETE_NEWS = "delete from news where headline=unhex(?)";
 }
+
+
