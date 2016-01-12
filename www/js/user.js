@@ -228,7 +228,7 @@ function loadMyEvents(url){
 	var events = getEvents(url, function(eventCollection){
 		$.each(eventCollection.events, function(index,item){
 			var event = new Event(item);
-			var link = $('<div class="well well-sm"><div class="media" ><div class="media-body"><h4 class="media-heading">'+event.title+'</h4><h6>Followers: '+event.popularity+'</h6><h6>Estado: '+event.state+'</h6><p><a class="btn btn-xs btn-default"><span class="glyphicon glyphicon-map-marker"></span>Ver evento</a></p></div></div></div>');
+			var link = $('<div class="well well-sm"><div class="media" ><div class="media-body"><h4 class="media-heading">'+event.titol+'</h4><h6>Ràtio '+event.ratio+'</h6><p><a class="btn btn-xs btn-default"><span class="glyphicon glyphicon-map-marker"></span>Veure esdeveniment</a></p></div></div></div>');
 			link.click(function(e){
 				 $.cookie('link-event',  event.getLink("self").href);
 				 window.location.replace("/event.html");
@@ -252,9 +252,9 @@ function loadMyProfile(url){
 		var year = date.getFullYear();
 		var register_date = day+'/'+month+'/'+year;
 		$('<h1>'+ user.username +'</h1>').appendTo($('#username'));
-		$('<li class="list-group-item text-right"><span class="pull-left"><strong>Fecha de registro</strong></span>' + register_date + '</li>').appendTo($('#result_profile'));
-		$('<li class="list-group-item text-right"><span class="pull-left"><strong>Nombre</strong></span>' + user.name + '</li>').appendTo($('#result_profile'));
-		$('<li class="list-group-item text-right"><span class="pull-left"><strong>E-mail</strong></span>' + user.email + '</li>').appendTo($('#result_profile'));
+		$('<li class="list-group-item text-right"><span class="pull-left"><strong>Data de registre</strong></span>' + register_date + '</li>').appendTo($('#result_profile'));
+		$('<li class="list-group-item text-right"><span class="pull-left"><strong>Nom</strong></span>' + user.name + '</li>').appendTo($('#result_profile'));
+		$('<li class="list-group-item text-right"><span class="pull-left"><strong>Correu electrònic</strong></span>' + user.email + '</li>').appendTo($('#result_profile'));
 	});
 	
 

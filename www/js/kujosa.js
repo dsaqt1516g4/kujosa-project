@@ -18,7 +18,7 @@ $("#post_comment").click(function(e){
 	e.preventDefault();
 	$("#result_comments2").text('');
 	if($('#comment_text').val().length > 200){
-		$('<div class="alert alert-danger">El comentario es demasiado largo (200 caracteres max)</div>').appendTo($("#result_comments2"));
+		$('<div class="alert alert-danger">El comentari és massa llarg, té més de 200 caràcters</div>').appendTo($("#result_comments2"));
 	}else{
 		postComment();
 	}
