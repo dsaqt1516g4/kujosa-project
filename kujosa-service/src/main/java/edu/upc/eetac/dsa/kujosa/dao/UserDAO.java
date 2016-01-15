@@ -20,7 +20,7 @@ public interface UserDAO {
 
     public User getUserById(String id) throws SQLException;
 
-    public User getUserByUsername(String username) throws SQLException ;
+    public User getUserByUsername(String username) throws SQLException;
 
     public boolean deleteUser(String id) throws SQLException;
 

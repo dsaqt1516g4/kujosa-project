@@ -4,10 +4,7 @@ import edu.upc.eetac.dsa.kujosa.db.Database;
 import edu.upc.eetac.dsa.kujosa.entity.Document;
 import edu.upc.eetac.dsa.kujosa.entity.DocumentCollection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Created by juan on 16/12/15.
@@ -23,7 +20,7 @@ public class DocumentDAOImpl implements DocumentDAO {
 
             connection = Database.getConnection();
 
-            stmt = connection.prepareStatement(DocumentDAOQuery.UUID);
+            stmt = connection.prepareStatement(UserDAOQuery.UUID);
             ResultSet rs = stmt.executeQuery();
             if (rs.next())
                 id = rs.getString(1);
@@ -38,6 +35,7 @@ public class DocumentDAOImpl implements DocumentDAO {
             stmt.setString(2, userid);
             stmt.setString(3, name);
             stmt.setString(4, description);
+            stmt.setString(5, path);
             connection.commit();
         } catch (SQLException e) {
             throw e;
@@ -76,6 +74,7 @@ public class DocumentDAOImpl implements DocumentDAO {
                 doc.setUserid(rs.getString("userid"));
                 doc.setName(rs.getString("name"));
                 doc.setDescription(rs.getString("description"));
+                doc.setPath(rs.getString("path"));
             }
         } catch (SQLException e) {
             // Relanza la excepción
@@ -91,37 +90,36 @@ public class DocumentDAOImpl implements DocumentDAO {
     }
 
     @Override
-    public DocumentCollection getDocuments(long lastmodified) throws SQLException {
-/*
-StingCollection stingCollection = new StingCollection();
-
+    public DocumentCollection getDocuments(long timestamp, boolean before) throws SQLException {
+        DocumentCollection documentCollection = new DocumentCollection();
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
 
             if (before)
-                stmt = connection.prepareStatement(StingDAOQuery.GET_STINGS);
+                stmt = connection.prepareStatement(DocumentDAOQuery.GET_DOCUMENTS);
             else
-                stmt = connection.prepareStatement(StingDAOQuery.GET_STINGS_AFTER);
+                stmt = connection.prepareStatement(DocumentDAOQuery.GET_DOCUMENTS_AFTER);
             stmt.setTimestamp(1, new Timestamp(timestamp));
 
             ResultSet rs = stmt.executeQuery();
             boolean first = true;
             while (rs.next()) {
-                Sting sting = new Sting();
-                sting.setId(rs.getString("id"));
-                sting.setUserid(rs.getString("userid"));
-                sting.setCreator(rs.getString("fullname"));
-                sting.setSubject(rs.getString("subject"));
-                sting.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
-                sting.setLastModified(rs.getTimestamp("last_modified").getTime());
+                Document document = new Document();
+                document.setId(rs.getString("id"));
+                document.setUserid(rs.getString("userid"));
+                document.setName(rs.getString("name"));
+                document.setDescription(rs.getString("description"));
+                document.setPath(rs.getString("path"));
+                document.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
+                document.setLastModified(rs.getTimestamp("last_modified").getTime());
                 if (first) {
-                    stingCollection.setNewestTimestamp(sting.getLastModified());
+                    documentCollection.setNewestTimestamp(document.getLastModified());
                     first = false;
                 }
-                stingCollection.setOldestTimestamp(sting.getLastModified());
-                stingCollection.getStings().add(sting);
+                documentCollection.setOldestTimestamp(document.getLastModified());
+                documentCollection.getDocuments().add(document);
             }
         } catch (SQLException e) {
             throw e;
@@ -129,29 +127,27 @@ StingCollection stingCollection = new StingCollection();
             if (stmt != null) stmt.close();
             if (connection != null) connection.close();
         }
-        return stingCollection;
- */
-        return null;
+        return documentCollection;
     }
 
     @Override
-    public Document updateDocument(String id, String description) throws SQLException {
-        /*
-        Sting sting = null;
+    public Document updateDocument(String id, String name, String description) throws SQLException {
+
+        Document document = null;
 
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
 
-            stmt = connection.prepareStatement(StingDAOQuery.UPDATE_STING);
-            stmt.setString(1, subject);
-            stmt.setString(2, content);
+            stmt = connection.prepareStatement(DocumentDAOQuery.UPDATE_DOCUMENT);
+            stmt.setString(1, name);
+            stmt.setString(2, description);
             stmt.setString(3, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)
-                sting = getStingById(id);
+                document = getDocumentById(id);
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -159,20 +155,18 @@ StingCollection stingCollection = new StingCollection();
             if (connection != null) connection.close();
         }
 
-        return sting;
-         */
-        return null;
+        return document;
     }
 
     @Override
     public boolean deleteDocumment(String id) throws SQLException{
-        /*
+
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
 
-            stmt = connection.prepareStatement(StingDAOQuery.DELETE_STING);
+            stmt = connection.prepareStatement(DocumentDAOQuery.DELETE_DOCUMENT);
             stmt.setString(1, id);
 
             int rows = stmt.executeUpdate();
@@ -183,8 +177,5 @@ StingCollection stingCollection = new StingCollection();
             if (stmt != null) stmt.close();
             if (connection != null) connection.close();
         }
-         */
-        return false;
-
     }
 }
