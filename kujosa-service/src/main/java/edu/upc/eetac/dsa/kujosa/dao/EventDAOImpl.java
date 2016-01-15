@@ -48,7 +48,6 @@ public class EventDAOImpl implements EventDAO {
             stmt.setLong(7,startDate);
             stmt.setLong(8,endDate);
             stmt.setInt(9,0);
-            stmt.setInt(10,0);
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -64,7 +63,7 @@ public class EventDAOImpl implements EventDAO {
 
 
     @Override
-    public Event getEventByRatio(int Ratio) throws SQLException {
+    public Event getEventByRatio(int ratio) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
         String id = null;
@@ -79,7 +78,7 @@ public class EventDAOImpl implements EventDAO {
                 throw new SQLException();
 
             stmt = connection.prepareStatement(EventDAOQuery.GET_EVENT_BY_RATIO);
-            stmt.setInt(1, Ratio);
+            stmt.setInt(1, ratio);
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -218,7 +217,7 @@ public class EventDAOImpl implements EventDAO {
     }
 
     @Override
-    public Event updateEvent(String eventid, String titol, String text, long startDate, long endDate) throws SQLException{
+    public Event updateEvent(String id, String titol, String text, long startDate, long endDate) throws SQLException{
     Event event = null;
 
         Connection connection = null;
@@ -230,13 +229,13 @@ public class EventDAOImpl implements EventDAO {
             stmt.setString(1, titol);
             stmt.setLong(2, startDate);
             stmt.setLong(3, endDate);
-            stmt.setString(4, eventid);
+            stmt.setString(4, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)
-                event = getEvent(eventid);
+                event = getEvent(id);
             else {
-                throw new NotFoundException("There's no event with eventid = "+ eventid);
+                throw new NotFoundException("There's no event with eventid = "+ id);
             }
         } catch (SQLException e) {
             throw e;
@@ -249,14 +248,14 @@ public class EventDAOImpl implements EventDAO {
     }
 
     @Override
-    public boolean deleteEvent(String eventid) throws SQLException {
+    public boolean deleteEvent(String id) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
 
             stmt = connection.prepareStatement(EventDAOQuery.DELETE_EVENT_QUERY);
-            stmt.setString(1, eventid);
+            stmt.setString(1, id);
 
             int rows = stmt.executeUpdate();
             return (rows == 1);
@@ -296,7 +295,7 @@ public class EventDAOImpl implements EventDAO {
     }*/
 
     @Override
-    public UserCollection getUsersofEventId(String eventid) throws SQLException {
+    public UserCollection getUsersofEventId(String id) throws SQLException {
         UserCollection users = new UserCollection();
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -304,7 +303,7 @@ public class EventDAOImpl implements EventDAO {
         try {
             connection = Database.getConnection();
             stmt = connection.prepareStatement(EventDAOQuery.GET_USERS_OF_EVENT);
-            stmt.setString(1, eventid);
+            stmt.setString(1, id);
             UserDAO userDAO = new UserDAOImpl();
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
@@ -340,8 +339,8 @@ public class EventDAOImpl implements EventDAO {
                 while (rs.next()) {
                     User user = new User();
                     user.setId(rs.getString("userid"));
-                    user.setUsername(rs.getString("username"));
-                    user.setName(rs.getString("name"));
+                    user.setLoginid(rs.getString("username"));
+                    user.setFullname(rs.getString("name"));
                     user.setEmail(rs.getString("email"));
                     users.addUser(user);
                 }

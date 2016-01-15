@@ -56,7 +56,7 @@ public class UserResource {
     public User getUser(@PathParam("username") String username) {
         User user = null;
         try {
-            user = (new UserDAOImpl()).getUserByUsername(username);
+            user = (new UserDAOImpl()).getUserByLoginid(username);
         } catch (SQLException e) {
             throw new InternalServerErrorException(e.getMessage());
         }

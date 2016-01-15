@@ -26,7 +26,7 @@ public class CommentResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(KujosaMediaType.KUJOSA_API_COMMENT)
+    @Produces(KujosaMediaType.KUJOSA_COMMENT)
     public Response createComment(@FormParam("eventid") int eventid, @FormParam("content") String content,
                                   @FormParam("image") String image, @FormParam("ratio") int ratio, @Context UriInfo uriInfo) throws URISyntaxException {
         if (content == null)
@@ -44,7 +44,7 @@ public class CommentResource {
     }
 
     @GET
-    @Produces(KujosaMediaType.KUJOSA_API_COMMENT_COLLECTION)
+    @Produces(KujosaMediaType.KUJOSA_COMMENT_COLLECTION)
     public CommentCollection getComments(@QueryParam("length") int length,
                                          @PathParam("eventid") String eventid,
                                          @QueryParam("before") long before, @QueryParam("after") long after) {
@@ -60,7 +60,7 @@ public class CommentResource {
 
     @Path("/{id}")
     @GET
-    @Produces(KujosaMediaType.KUJOSA_API_COMMENT)
+    @Produces(KujosaMediaType.KUJOSA_COMMENT)
     public Response getComment(@PathParam("id") String id, @Context Request request) {
         // Create cache-control
         CacheControl cacheControl = new CacheControl();

@@ -3,7 +3,7 @@ package edu.upc.eetac.dsa.kujosa;
 import edu.upc.eetac.dsa.kujosa.dao.NewsDAO;
 import edu.upc.eetac.dsa.kujosa.dao.NewsDAOImpl;
 import edu.upc.eetac.dsa.kujosa.entity.News;
-import edu.upc.eetac.dsa.kujosa.entity.Newscollection;
+import edu.upc.eetac.dsa.kujosa.entity.NewsCollection;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -38,8 +38,8 @@ public class NewsResource {
 
         @GET
         @Produces(KujosaMediaType.KUJOSA_NEWS_COLLECTION)
-        public Newscollection getStings(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
-            Newscollection newsCollection = null;
+        public NewsCollection getStings(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
+            NewsCollection newsCollection = null;
             NewsDAO newsDAO = new NewsDAOImpl();
             try {
                 if (before && timestamp == 0) timestamp = System.currentTimeMillis();

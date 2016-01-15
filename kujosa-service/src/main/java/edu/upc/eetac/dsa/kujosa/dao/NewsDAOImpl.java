@@ -2,7 +2,7 @@ package edu.upc.eetac.dsa.kujosa.dao;
 
 import edu.upc.eetac.dsa.kujosa.db.Database;
 import edu.upc.eetac.dsa.kujosa.entity.News;
-import edu.upc.eetac.dsa.kujosa.entity.Newscollection;
+import edu.upc.eetac.dsa.kujosa.entity.NewsCollection;
 
 import java.sql.*;
 
@@ -78,8 +78,8 @@ public class NewsDAOImpl implements NewsDAO{
 
 
     @Override
-    public Newscollection getNews(long timestamp, boolean before) throws SQLException {
-        Newscollection newsCollection = new Newscollection();
+    public NewsCollection getNews(long timestamp, boolean before) throws SQLException {
+        NewsCollection newsCollection = new NewsCollection();
 
         Connection connection = null;
         PreparedStatement stmt = null;

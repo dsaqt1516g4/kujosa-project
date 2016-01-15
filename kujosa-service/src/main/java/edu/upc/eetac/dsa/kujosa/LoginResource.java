@@ -32,7 +32,7 @@ public class LoginResource {
         AuthToken authToken = null;
         try{
             UserDAO userDAO = new UserDAOImpl();
-            user = userDAO.getUserByUsername(loginid);
+            user = userDAO.getUserByLoginid(loginid);
             if(user == null)
                 throw new BadRequestException("loginid " + loginid + " not found.");
             if(!userDAO.checkPassword(user.getId(), password))
