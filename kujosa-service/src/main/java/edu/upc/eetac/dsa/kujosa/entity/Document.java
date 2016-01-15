@@ -1,23 +1,65 @@
 package edu.upc.eetac.dsa.kujosa.entity;
 
+import javax.ws.rs.core.Link;
+import java.util.List;
+
 /**
  * Created by juan on 16/12/15.
  */
 public class Document {
-    public String username;
-    public String docid;
-    public String name;
-    public String description;
-    public String path;
 
+    private List<Link> links;
+    private String id;
+    private String userid;
+    private String name;
+    private String description;
+    private String path;
 
-    public String getDocid() {
-        return docid;
+    private long creationTimestamp;
+    private long lastModified;
+
+    public long getCreationTimestamp() {
+        return creationTimestamp;
     }
 
-    public void setDocid(String docid) {
-        this.docid = docid;
+    public void setCreationTimestamp(long creationTimestamp) {
+        this.creationTimestamp = creationTimestamp;
     }
+
+    public long getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(long lastModified) {
+        this.lastModified = lastModified;
+    }
+
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
+
+
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
@@ -41,9 +83,4 @@ public class Document {
     public void setPath(String path) {
         this.path = path;
     }
-
-    public String getUsername(){
-        return this.username;
-    }
-    public void setUsername(String us){username=us;}
 }

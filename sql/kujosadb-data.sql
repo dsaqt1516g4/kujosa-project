@@ -12,5 +12,7 @@ select sleep(1);
 insert into events (titol,text, lat, lon, start_date, end_date, ratio, numVots) values ('TITOL3', 'Exposició i demostració de drons', '0', '0', '2016-1-25 17:00:00', '2016-1-25 19:30:00',1,1);
 select sleep(1);
 
+
+
 insert into news values ('1','Franco inaugura la AESTEC','El caudillo de España recibió a los estudiantes de la EETAC para crear esa asociación afiliada a las juventades falangistas. ¡Arriba España!', '2015-1-25 17:00:00', '2015-1-25 19:30:00');
-insert into news values ('2', 'AESTEC dóna la benvinguda a la nova República', 'AESTEC es posa al costat de la Generalitat per donar suport a la creació de la República Catalana, i està a la seva disposició per al què necessiti.', '2016-1-01 17:00:00', '2016-1-07 19:30:00');
+insert into news values ('2', 'AESTEC dóna la benvinguda a la nova República', 'AESTEC es posa al costat de la Generalitat per donar suport a la creació de la República Catalana i està a la seva disposició per al què necessiti.', '2016-1-01 17:00:00', '2016-1-07 19:30:00');
