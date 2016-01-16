@@ -109,7 +109,7 @@ public class NewsResource {
             }
             return news;
         }
-
+//check
         @Path("/{headline}")
         @DELETE
         public void deleteSting(@PathParam("headline") String id) {

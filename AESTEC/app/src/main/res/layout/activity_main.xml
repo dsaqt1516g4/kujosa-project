@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/as"
+    android:scaleType = "centerCrop"
+    tools:context="com.eetc.aestec.aestec.MainActivity">
+<Button
+    android:id="@+id/signin"
+
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:imeActionLabel="@string/action_sign_in_short"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:background="#4299d3"
+    android:text="@string/action_sign_in_short"
+    android:layout_alignTop="@+id/register"
+    android:onClick="Signin"/>
+
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:imeActionLabel="@string/action_register"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="#4299d3"
+        android:text="Register"
+        android:onClick="Register"/>
+</RelativeLayout>
