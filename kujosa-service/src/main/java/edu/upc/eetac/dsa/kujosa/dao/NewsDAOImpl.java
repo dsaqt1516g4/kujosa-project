@@ -11,7 +11,7 @@ import java.sql.*;
  */
 public class NewsDAOImpl implements NewsDAO{
     @Override
-    public News createNews(int userid, String headline, String body) throws SQLException {
+    public News createNews(String userid, String headline, String body) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
         String id  = null;
@@ -25,7 +25,7 @@ public class NewsDAOImpl implements NewsDAO{
             else
                 throw new SQLException();
 
-            stmt = connection.prepareStatement(StingDAOQuery.CREATE_STING);
+            stmt = connection.prepareStatement(NewsDAOQuery.CREATE_NEWS);
             stmt.setString(1, id);
             stmt.setString(2, headline);
             stmt.setString(3, body);
@@ -39,15 +39,11 @@ public class NewsDAOImpl implements NewsDAO{
                 connection.close();
             }
         }
-        return getNewsbyuser(userid);
+        return getNewsById(userid);
     }
 
     @Override
-    public News getNewsbyheadline(String headline) throws SQLException {
-        return null;
-    }
-    @Override
-    public News getNewsbyuser(int userid) throws SQLException {
+    public News getNewsById(String id) throws SQLException {
         News news = null;
 
         Connection connection = null;
@@ -56,12 +52,13 @@ public class NewsDAOImpl implements NewsDAO{
             connection = Database.getConnection();
 
             stmt = connection.prepareStatement(NewsDAOQuery.GET_NEWS_BY_USER);
-            stmt.setInt(1, userid);
+            stmt.setString(1, id);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 news = new News();
-                news.setUserid(rs.getInt("userid"));
+                news.setId(rs.getString("id"));
+                news.setUserid(rs.getString("userid"));
                 news.setHeadline(rs.getString("headline"));
                 news.setBody(rs.getString("body"));
                 news.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
@@ -75,7 +72,6 @@ public class NewsDAOImpl implements NewsDAO{
         }
         return news;
     }
-
 
     @Override
     public NewsCollection getNews(long timestamp, boolean before) throws SQLException {
@@ -96,7 +92,8 @@ public class NewsDAOImpl implements NewsDAO{
             boolean first = true;
             while (rs.next()) {
                 News news = new News();
-                news.setUserid(rs.getInt("userid"));
+                news.setId(rs.getString("id"));
+                news.setUserid(rs.getString("userid"));
                 news.setHeadline(rs.getString("headline"));
                 news.setBody(rs.getString("body"));
                 news.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
@@ -118,7 +115,7 @@ public class NewsDAOImpl implements NewsDAO{
     }
 
     @Override
-    public News updateNews(int userid, String headline, String body) throws SQLException {
+    public News updateNews(String id, String headline, String body) throws SQLException {
         News news = null;
 
         Connection connection = null;
@@ -127,13 +124,13 @@ public class NewsDAOImpl implements NewsDAO{
             connection = Database.getConnection();
 
             stmt = connection.prepareStatement(NewsDAOQuery.UPDATE_NEWS);
-            stmt.setInt(1, userid);
+            stmt.setString(1, id);
             stmt.setString(2, headline);
             stmt.setString(3, body);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)
-                news = getNewsbyuser(userid);
+                news = getNewsById(id);
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -145,14 +142,14 @@ public class NewsDAOImpl implements NewsDAO{
     }
 
     @Override
-    public boolean deleteNews(String headline) throws SQLException {
+    public boolean deleteNews(String id) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
 
             stmt = connection.prepareStatement(NewsDAOQuery.DELETE_NEWS);
-            stmt.setString(1, headline);
+            stmt.setString(1, id);
 
             int rows = stmt.executeUpdate();
             return (rows == 1);

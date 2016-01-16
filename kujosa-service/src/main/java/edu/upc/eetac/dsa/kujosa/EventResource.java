@@ -37,7 +37,7 @@ public class EventResource {
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
-        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + event.getEventid());
+        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + event.getId());
         return Response.created(uri).type(KujosaMediaType.KUJOSA_EVENT).entity(event).build();
     }
 
@@ -97,7 +97,7 @@ public class EventResource {
     public Event updateEvent(@PathParam("id") String id, Event event) {
         if (event == null)
             throw new BadRequestException("entity is null");
-        if (!id.equals(event.getEventid()))
+        if (!id.equals(event.getId()))
             throw new BadRequestException("path parameter id and entity parameter id doesn't match");
 
         String userid = securityContext.getUserPrincipal().getName();

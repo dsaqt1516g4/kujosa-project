@@ -126,7 +126,7 @@ public class UserDAOImpl implements UserDAO {
                 stmt.setString(3, user.getImage());
 
             }
-            stmt.setString(4, user.getUsername());
+            stmt.setString(4, user.getLoginid());
 
             int rows = stmt.executeUpdate();
             if (rows == 1)

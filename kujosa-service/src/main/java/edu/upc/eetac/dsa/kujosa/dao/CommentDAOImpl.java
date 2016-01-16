@@ -18,7 +18,7 @@ import java.sql.*;
 public class CommentDAOImpl implements CommentDAO{
 
     @Override
-    public Comment createComment(String userid, int eventid, String content, String image) throws SQLException {
+    public Comment createComment(String userid, String eventid, String content, String image) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
         String id = null;
@@ -68,7 +68,7 @@ public class CommentDAOImpl implements CommentDAO{
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 comment = new Comment();
-                comment.setCommentid(rs.getInt("commentid"));
+                comment.setId(rs.getInt("commentid"));
                 comment.setUserid(rs.getInt("userid"));
                 comment.setEventid(rs.getInt("eventid"));
                 comment.setContent(rs.getString("content"));
@@ -110,7 +110,7 @@ public class CommentDAOImpl implements CommentDAO{
             boolean first = true;
             while (rs.next()) {
                 Comment comment = new Comment();
-                comment.setCommentid(rs.getInt("commentid"));
+                comment.setId(rs.getInt("commentid"));
                 comment.setUserid(rs.getInt("userid"));
                 comment.setContent(rs.getString("content"));
                 comment.setRatio(rs.getInt("ratio"));

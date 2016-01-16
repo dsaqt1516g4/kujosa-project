@@ -27,7 +27,7 @@ public class CommentResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_COMMENT)
-    public Response createComment(@FormParam("eventid") int eventid, @FormParam("content") String content,
+    public Response createComment(@FormParam("id") String eventid, @FormParam("content") String content,
                                   @FormParam("image") String image, @FormParam("ratio") int ratio, @Context UriInfo uriInfo) throws URISyntaxException {
         if (content == null)
             throw new BadRequestException("all parameters are mandatory");
@@ -35,12 +35,12 @@ public class CommentResource {
         Comment comment = null;
         AuthToken authToken = null;
         try {
-            comment = commentDAO.createComment(securityContext.getUserPrincipal().getName(), eventid, content, image, ratio);
+            comment = commentDAO.createComment(securityContext.getUserPrincipal().getName(), eventid, content, image);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
-        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + comment.getCommentid());
-        return Response.created(uri).type(KujosaMediaType.KUJOSA_STING).entity(comment).build();
+        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + comment.getId());
+        return Response.created(uri).type(KujosaMediaType.KUJOSA_COMMENT).entity(comment).build();
     }
 
     @GET
@@ -65,9 +65,9 @@ public class CommentResource {
         // Create cache-control
         CacheControl cacheControl = new CacheControl();
         Comment comment = null;
-        CommentDAO stingDAO = new CommentDAOImpl();
+        CommentDAO commentDAO = new CommentDAOImpl();
         try {
-            comment = stingDAO.getCommentById(id);
+            comment = commentDAO.getCommentById(id);
             if (comment == null)
                 throw new NotFoundException("Comment with id = " + id + " doesn't exist");
 
@@ -95,12 +95,12 @@ public class CommentResource {
 
     @Path("/{id}")
     @PUT
-    @Consumes(KujosaMediaType.KUJOSA_STING)
-    @Produces(KujosaMediaType.KUJOSA_STING)
+    @Consumes(KujosaMediaType.KUJOSA_COMMENT)
+    @Produces(KujosaMediaType.KUJOSA_COMMENT)
     public Comment updateSting(@PathParam("id") String id, Comment comment) {
         if (comment == null)
             throw new BadRequestException("entity is null");
-        if (!id.equals(comment.getCommentid()))
+        if (!id.equals(comment.getId()))
             throw new BadRequestException("path parameter id and entity parameter id doesn't match");
 
         String userid = securityContext.getUserPrincipal().getName();
@@ -124,7 +124,7 @@ public class CommentResource {
         String userid = securityContext.getUserPrincipal().getName();
         CommentDAO commentDAO = new CommentDAOImpl();
         try {
-            int ownerid = commentDAO.getCommentById(id).getUserid();
+            String ownerid = commentDAO.getCommentById(id).getUserid();
             if (!userid.equals(ownerid))
                 throw new ForbiddenException("operation not allowed");
             if (!commentDAO.deleteComment(id))

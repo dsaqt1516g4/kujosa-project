@@ -22,23 +22,23 @@ public class NewsResource {
         @POST
         @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
         @Produces(KujosaMediaType.KUJOSA_NEWS)
-        public Response createNews(@FormParam("userid") int userid, @FormParam("headline") String headline, @FormParam("body") String body,@Context UriInfo uriInfo) throws URISyntaxException {
-            if ((userid==0 ) ||  (headline==null)   ||(body==null))
+        public Response createNews(@FormParam("headline") String headline, @FormParam("body") String body, @Context UriInfo uriInfo) throws URISyntaxException {
+            if ((headline==null)   ||(body==null))
                 throw new BadRequestException("all parameters are mandatory");
             NewsDAO newsDAO = new NewsDAOImpl();
             News news = null;
             try {
-                news = newsDAO.createNews(userid, headline, body);
+                news = newsDAO.createNews(securityContext.getUserPrincipal().getName(), headline, body);
             } catch (SQLException e) {
                 throw new InternalServerErrorException();
             }
-            URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + news.getHeadline());
+            URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + news.getId());
             return Response.created(uri).type(KujosaMediaType.KUJOSA_NEWS).entity(news).build();
         }
 
         @GET
         @Produces(KujosaMediaType.KUJOSA_NEWS_COLLECTION)
-        public NewsCollection getStings(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
+        public NewsCollection getNews(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
             NewsCollection newsCollection = null;
             NewsDAO newsDAO = new NewsDAOImpl();
             try {
@@ -53,15 +53,15 @@ public class NewsResource {
         @Path("/{id}")
         @GET
         @Produces(KujosaMediaType.KUJOSA_NEWS)
-        public Response news(@PathParam("id") int userid, @Context Request request) {
+        public Response getNews(@PathParam("id") String id, @Context Request request) {
             // Create cache-control
             CacheControl cacheControl = new CacheControl();
             News news = null;
             NewsDAO newsDAO = new NewsDAOImpl();
             try {
-                news = newsDAO.getNewsbyuser(userid);
+                news = newsDAO.getNewsById(id);
                 if (news == null)
-                    throw new NotFoundException("Sting with id = " + userid + " doesn't exist");
+                    throw new NotFoundException("News with id = " + id + " doesn't exist");
 
                 // Calculate the ETag on last modified date of user resource
                 EntityTag eTag = new EntityTag(Long.toString(news.getLastModified()));
@@ -84,14 +84,14 @@ public class NewsResource {
                 throw new InternalServerErrorException();
             }
         }
-        @Path("/{headline}")
+        @Path("/{id}")
         @PUT
         @Consumes(KujosaMediaType.KUJOSA_NEWS)
         @Produces(KujosaMediaType.KUJOSA_NEWS)
-        public News updateSting(@PathParam("headline") String headline, News news) {
+        public News updateNews(@PathParam("id") String id, News news) {
             if (news == null)
                 throw new BadRequestException("news is null");
-            if (!headline.equals(news.getHeadline()))
+            if (!id.equals(news.getId()))
                 throw new BadRequestException("path parameter id and entity parameter id doesn't match");
 
             String userid = securityContext.getUserPrincipal().getName();
@@ -100,27 +100,26 @@ public class NewsResource {
 
             NewsDAO newsDAO = new NewsDAOImpl();
             try {
-                String hl=news.getHeadline();
-                news = newsDAO.updateNews(Integer.getInteger(userid), hl, news.getBody());
+                news = newsDAO.updateNews(id, news.getHeadline(), news.getBody());
                 if (news == null)
-                    throw new NotFoundException("News with headline = " + hl + " doesn't exist");
+                    throw new NotFoundException("News with id = " + id + " doesn't exist");
             } catch (SQLException e) {
                 throw new InternalServerErrorException();
             }
             return news;
         }
 
-        @Path("/{headline}")
+        @Path("/{id}")
         @DELETE
-        public void deleteSting(@PathParam("headline") String id) {
+        public void deleteSting(@PathParam("id") String id) {
             String userid = securityContext.getUserPrincipal().getName();
-            NewsDAO as = new NewsDAOImpl();
+            NewsDAO news = new NewsDAOImpl();
             try {
-                int ownerid = as.getNewsbyuser(Integer.getInteger(userid)).getUserid();
+                String ownerid = news.getNewsById(id).getUserid();
                 if (!userid.equals(ownerid))
                     throw new ForbiddenException("operation not allowed");
-                if (!as.deleteNews(id))
-                    throw new NotFoundException("User with headline = " + id + " doesn't exist");
+                if (!news.deleteNews(id))
+                    throw new NotFoundException("User with id = " + id + " doesn't exist");
             } catch (SQLException e) {
                 throw new InternalServerErrorException();
             }

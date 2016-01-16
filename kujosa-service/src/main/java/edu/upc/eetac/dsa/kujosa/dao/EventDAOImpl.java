@@ -6,7 +6,6 @@ import edu.upc.eetac.dsa.kujosa.entity.EventCollection;
 import edu.upc.eetac.dsa.kujosa.entity.User;
 import edu.upc.eetac.dsa.kujosa.entity.UserCollection;
 
-import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.NotFoundException;
 import java.sql.*;
 
@@ -104,7 +103,7 @@ public class EventDAOImpl implements EventDAO {
             stmt.setInt(1, Integer.valueOf(eventid));
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                event.setEventid(rs.getInt("eventid"));
+                event.setId(rs.getString("id"));
                 event.setUserid(rs.getString("userid"));
                 event.setTitol(rs.getString("titol"));
                 event.setStartDate(rs.getTimestamp("startdate").getTime());
@@ -126,15 +125,15 @@ public class EventDAOImpl implements EventDAO {
 
 
 
-  /*  @Override
+    @Override
     public EventCollection getEventsNow(int userid) throws SQLException {
         EventCollection events = new EventCollection();
         events = getEventsNowUser(events, userid);
         if (events.getEvents().size() == 0)
             throw new NotFoundException("There aren't events");
         return events;
-    }*/
-/*
+    }
+
     @Override
     public EventCollection getEventsNowUser(EventCollection events, int userid) throws SQLException {
         Connection connection = null;
@@ -147,7 +146,7 @@ public class EventDAOImpl implements EventDAO {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Event event = new Event();
-                event.setEventid(rs.getInt("eventid"));
+                event.setId(rs.getString("id"));
                 event.setUserid(rs.getString("userid"));
                 event.setTitol(rs.getString("titol"));
                 event.setStartDate(rs.getTimestamp("startdate").getTime());
@@ -163,7 +162,7 @@ public class EventDAOImpl implements EventDAO {
             if (connection != null) connection.close();
         }
         return events;
-    }*/
+    }
 
     @Override
     public EventCollection getEvents(int length, long before, long after) throws SQLException {
@@ -192,11 +191,11 @@ public class EventDAOImpl implements EventDAO {
             long oldestTimestamp = 0;
             while (rs.next()) {
                 Event event = new Event();
-                event.setEventid(rs.getInt("id"));
+                event.setId(rs.getString("id"));
                 event.setTitol(rs.getString("titol"));
                 event.setText(rs.getString("text"));
-                event.setLat(rs.getLong("latitud"));
-                event.setLon(rs.getLong("longitud"));
+                event.setLat(rs.getLong("lat"));
+                event.setLon(rs.getLong("lon"));
                 event.setRatio(rs.getInt("ratio"));
                 oldestTimestamp = rs.getTimestamp("startdate").getTime();
                 if (first) {

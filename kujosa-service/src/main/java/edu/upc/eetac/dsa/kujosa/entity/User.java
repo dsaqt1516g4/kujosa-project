@@ -38,9 +38,9 @@ public class User {
     })
     private List<Link> links;
     private String id;
-    private String username;
+    private String loginid;
     private String email;
-    private String name;
+    private String fullname;
     private String image;
 
     public List<Link> getLinks() {
@@ -67,20 +67,20 @@ public class User {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
+    public String getLoginid() {
+        return loginid;
     }
 
     public void setLoginid(String username) {
-        this.username = username;
+        this.loginid = username;
     }
 
-    public String getName() {
-        return name;
+    public String getFullname() {
+        return fullname;
     }
 
     public void setFullname(String name) {
-        this.name = name;
+        this.fullname = name;
     }
 
     public String getImage() {

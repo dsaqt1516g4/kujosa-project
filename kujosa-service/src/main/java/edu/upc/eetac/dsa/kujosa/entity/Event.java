@@ -4,8 +4,6 @@ package edu.upc.eetac.dsa.kujosa.entity;
  * Created by kenshin on 23/11/15.
  */
 public class Event {
-    private int eventid;
-
     public String getUserid() {
         return userid;
     }
@@ -13,7 +11,7 @@ public class Event {
     public void setUserid(String userid) {
         this.userid = userid;
     }
-
+    private String id;
     private String userid;
     private String titol;
     private String text;
@@ -27,12 +25,12 @@ public class Event {
     /* private String [] assistents; */
 
 
-    public int getEventid() {
-        return eventid;
+    public String getId() {
+        return id;
     }
 
-    public void setEventid(int eventid) {
-        this.eventid = eventid;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitol() {

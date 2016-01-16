@@ -21,7 +21,5 @@ public interface DocumentDAO {
     public Document getDocumentById (String id) throws SQLException;
     public DocumentCollection getDocuments (long timestamp, boolean before) throws SQLException;
     public Document updateDocument (String id, String name, String description) throws SQLException;
-    public boolean deleteDocumment(String id) throws SQLException;
-
-
+    public boolean deleteDocument(String id) throws SQLException;
 }

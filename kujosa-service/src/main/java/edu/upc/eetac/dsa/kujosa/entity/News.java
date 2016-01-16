@@ -18,14 +18,24 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class News {
     //@InjectLinks({ })
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private List<Link> links;
-    private int userid;
+    private String userid;
     private String headline;
     private String body;
     private long lastModified;
     private long creationTimestamp;
 
-    public int getUserid() {
+    public String getUserid() {
         return userid;
     }
 
@@ -37,7 +47,7 @@ public class News {
         this.links = links;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 

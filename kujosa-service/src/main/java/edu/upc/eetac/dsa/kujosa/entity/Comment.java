@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class Comment {
     @InjectLinks({
-            @InjectLink(resource = CommentResource.class, style = Style.ABSOLUTE, rel = "self", title = "Comment", type = KujosaMediaType.KUJOSA_COMMENT, method = "getComment" ,bindings = @Binding(name = "commentid", value = "${instance.commentid}")),
+            @InjectLink(resource = CommentResource.class, style = Style.ABSOLUTE, rel = "self", title = "Comment", type = KujosaMediaType.KUJOSA_COMMENT, method = "getComment" ,bindings = @Binding(name = "id", value = "${instance.id}")),
             @InjectLink(value = "/comments/{eventid}", style = Style.ABSOLUTE, rel = "comments", title = "Latest comments", type = KujosaMediaType.KUJOSA_COMMENT_COLLECTION, bindings = @Binding(name = "eventid", value = "${instance.eventid}")),
 
             })
@@ -30,9 +30,9 @@ public class Comment {
     }
 
 
-    private int commentid;
-    private int userid;
-    private int eventid;
+    private String id;
+    private String userid;
+    private String eventid;
     private String content;
     private int ratio;
     private String image;
@@ -47,27 +47,27 @@ public class Comment {
         this.content = content;
     }
 
-    public int getCommentid() {
-        return commentid;
+    public String getId() {
+        return id;
     }
 
-    public void setCommentid(int commentid) {
-        this.commentid = commentid;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public int getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(int userid) {
+    public void setUserid(String userid) {
         this.userid = userid;
     }
 
-    public int getEventid() {
+    public String getEventid() {
         return eventid;
     }
 
-    public void setEventid(int eventid) {
+    public void setEventid(String eventid) {
         this.eventid = eventid;
     }
 
