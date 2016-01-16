@@ -2,137 +2,137 @@
 <items version="2" >
 
     <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.bundles.repackaged/jersey-guava/2.22.1/2b79eb893818539370899c24893fac9b2fdc4dbd/jersey-guava-2.22.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="2b79eb893818539370899c24893fac9b2fdc4dbd">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/jersey-guava-2.22.1-2dcd53d4edcba4de72966f251924439d22379366.jar" />
-    </item>
-    <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.4/695b63d702f505b9b916e02272e3b6381bade7f/gson-2.4.jar"
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.4/695b63d702f505b9b916e02272e3b6381bade7f/gson-2.4.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="0695b63d702f505b9b916e02272e3b6381bade7f">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/gson-2.4-9997a89e2f6a8966d3838b74a4f24a5486ba5fc7.jar" />
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/gson-2.4-9bc65567eede61efd29d345ff575399462aedafd.jar" />
     </item>
     <item
-        jar="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-dcdd93230bc5a91b3ba9dc78ed1944a2cd69d46b.jar" />
-    </item>
-    <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/javax.ws.rs/javax.ws.rs-api/2.0.1/104e9c2b5583cfcfeac0402316221648d6d8ea6b/javax.ws.rs-api-2.0.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="104e9c2b5583cfcfeac0402316221648d6d8ea6b">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/javax.ws.rs-api-2.0.1-d04eec58e3a3f0ca66f68fbf6f28b183c12fabc1.jar" />
-    </item>
-    <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.18.1-GA/d9a09f7732226af26bf99f19e2cffe0ae219db5b/javassist-3.18.1-GA.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="d9a09f7732226af26bf99f19e2cffe0ae219db5b">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/javassist-3.18.1-GA-a6f54cbe0de88fe72af28b84fac043b286be37e6.jar" />
-    </item>
-    <item
-        jar="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/classes-ef05c835aae2a31e284eed6c73da2b3a4da737b8.jar" />
-    </item>
-    <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.core/jersey-client/2.22.1/e39297ef90f4b9bdf0a61b6fa73ae275c1b6e8f1/jersey-client-2.22.1.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="e39297ef90f4b9bdf0a61b6fa73ae275c1b6e8f1">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/jersey-client-2.22.1-5262b672139c2e20c5859a122db5158ddb78d0a3.jar" />
-    </item>
-    <item
-        jar="/opt/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
+        jar="/home/pc/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-a03f316aea3fd39f6e5f33a73839d8d5f59ee4ba.jar" />
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-944d36afb80a7d1515f794f0d64a1400b9da1cda.jar" />
     </item>
     <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.core/jersey-common/2.22.1/b5811d8385766f35d10d204952f3d5b57ee2fb60/jersey-common-2.22.1.jar"
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.core/jersey-common/2.22.1/b5811d8385766f35d10d204952f3d5b57ee2fb60/jersey-common-2.22.1.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="b5811d8385766f35d10d204952f3d5b57ee2fb60">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/jersey-common-2.22.1-95fc8a31d0e86b33e136c002daf9fa94c675d853.jar" />
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/jersey-common-2.22.1-1a2e2241dbadf3d6de1ca0fb6429264c589bd435.jar" />
     </item>
     <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-api/2.4.0-b31/c4b5f6c426f8e412e606332b93b7cf745a9a12c5/hk2-api-2.4.0-b31.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="c4b5f6c426f8e412e606332b93b7cf745a9a12c5">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/hk2-api-2.4.0-b31-e67e5ad3faae71528d90c0db8294d65c2c162e15.jar" />
-    </item>
-    <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2.external/javax.inject/2.4.0-b31/4bb71bbdae1064675e36d057bd2c95a00e2e84b/javax.inject-2.4.0-b31.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="04bb71bbdae1064675e36d057bd2c95a00e2e84b">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/javax.inject-2.4.0-b31-7ddeecfc7f0d113d24281046040a3687ab5541c0.jar" />
-    </item>
-    <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/osgi-resource-locator/1.0.1/4ed2b2d4738aed5786cfa64cba5a332779c4c708/osgi-resource-locator-1.0.1.jar"
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/osgi-resource-locator/1.0.1/4ed2b2d4738aed5786cfa64cba5a332779c4c708/osgi-resource-locator-1.0.1.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="4ed2b2d4738aed5786cfa64cba5a332779c4c708">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/osgi-resource-locator-1.0.1-8176f565a97f46bf04399c78018485e0fd13c711.jar" />
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/osgi-resource-locator-1.0.1-5b81367e87eb146ad43b4846237662a4a9358ef3.jar" />
     </item>
     <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-locator/2.4.0-b31/436d6e1ad2b0a3aee939c6e05983b007b3578142/hk2-locator-2.4.0-b31.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="436d6e1ad2b0a3aee939c6e05983b007b3578142">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/hk2-locator-2.4.0-b31-2228a0f8745f0dff40c254fee13a54ff78561135.jar" />
-    </item>
-    <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2.external/aopalliance-repackaged/2.4.0-b31/5e7899ad02fd55f5651a5e5d1a70aee421ba2030/aopalliance-repackaged-2.4.0-b31.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="5e7899ad02fd55f5651a5e5d1a70aee421ba2030">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/aopalliance-repackaged-2.4.0-b31-84d647cc060f0add3ccabb24093a4eb023ed026c.jar" />
-    </item>
-    <item
-        jar="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
-        jumboMode="false"
-        revision="23.0.2"
-        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/classes-049eb11495a2ae24ab1a5b897ef39a320f1c8ade.jar" />
-    </item>
-    <item
-        jar="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
+        jar="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/classes-d30727e6ae14e3bceed01fe6e9745c5451e90c9f.jar" />
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/classes-770b530994b305b6434bf94f45114878ed34d239.jar" />
     </item>
     <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.2/479c1e06db31c432330183f5cae684163f186146/javax.annotation-api-1.2.jar"
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.2/479c1e06db31c432330183f5cae684163f186146/javax.annotation-api-1.2.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="479c1e06db31c432330183f5cae684163f186146">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/javax.annotation-api-1.2-1e007753630aecd4d112f47539a0741fb9ce1439.jar" />
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/javax.annotation-api-1.2-cea95c6a0be623ae236f9bf24e9fe481b8175baa.jar" />
     </item>
     <item
-        jar="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
+        jar="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/classes-4568fd148cbbafd78f11fad77f348a6136a28130.jar" />
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/classes-4c99b68f6c98455cab8c2cf78ae6390bafa82fe5.jar" />
     </item>
     <item
-        jar="/root/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-utils/2.4.0-b31/2c5cb698cfec8dde859c3db854178d03bf7248a6/hk2-utils-2.4.0-b31.jar"
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.bundles.repackaged/jersey-guava/2.22.1/2b79eb893818539370899c24893fac9b2fdc4dbd/jersey-guava-2.22.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="2b79eb893818539370899c24893fac9b2fdc4dbd">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/jersey-guava-2.22.1-b6ac56fa1408aed44a80dda4226c0f5ccdf8da39.jar" />
+    </item>
+    <item
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2.external/javax.inject/2.4.0-b31/4bb71bbdae1064675e36d057bd2c95a00e2e84b/javax.inject-2.4.0-b31.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="04bb71bbdae1064675e36d057bd2c95a00e2e84b">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/javax.inject-2.4.0-b31-238100ced0877cc4a8de94708302449e2eb2f442.jar" />
+    </item>
+    <item
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.core/jersey-client/2.22.1/e39297ef90f4b9bdf0a61b6fa73ae275c1b6e8f1/jersey-client-2.22.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="e39297ef90f4b9bdf0a61b6fa73ae275c1b6e8f1">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/jersey-client-2.22.1-dad633ef6b74b2694bb4d7f48b0671c43c35eb02.jar" />
+    </item>
+    <item
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2.external/aopalliance-repackaged/2.4.0-b31/5e7899ad02fd55f5651a5e5d1a70aee421ba2030/aopalliance-repackaged-2.4.0-b31.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="5e7899ad02fd55f5651a5e5d1a70aee421ba2030">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/aopalliance-repackaged-2.4.0-b31-008707bd12624870780ed8749d95cf662f6588b6.jar" />
+    </item>
+    <item
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-locator/2.4.0-b31/436d6e1ad2b0a3aee939c6e05983b007b3578142/hk2-locator-2.4.0-b31.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="436d6e1ad2b0a3aee939c6e05983b007b3578142">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/hk2-locator-2.4.0-b31-d48bafed85ca0998076ce41161398123d6633a22.jar" />
+    </item>
+    <item
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/javax.ws.rs/javax.ws.rs-api/2.0.1/104e9c2b5583cfcfeac0402316221648d6d8ea6b/javax.ws.rs-api-2.0.1.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="104e9c2b5583cfcfeac0402316221648d6d8ea6b">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/javax.ws.rs-api-2.0.1-4e3943208b3708f5c809189cda1d459bbae5cf45.jar" />
+    </item>
+    <item
+        jar="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/classes-5343fad8429c79a22ff14c2c71467c3f26b3bd8d.jar" />
+    </item>
+    <item
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-api/2.4.0-b31/c4b5f6c426f8e412e606332b93b7cf745a9a12c5/hk2-api-2.4.0-b31.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="c4b5f6c426f8e412e606332b93b7cf745a9a12c5">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/hk2-api-2.4.0-b31-701de9da929a6d5a2215fdb271b1eb7a06e308ee.jar" />
+    </item>
+    <item
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/org.glassfish.hk2/hk2-utils/2.4.0-b31/2c5cb698cfec8dde859c3db854178d03bf7248a6/hk2-utils-2.4.0-b31.jar"
         jumboMode="false"
         revision="23.0.2"
         sha1="2c5cb698cfec8dde859c3db854178d03bf7248a6">
-        <dex dex="/home/juan/IdeaProjects/beeter-project/android/Beeter/app/build/intermediates/pre-dexed/debug/hk2-utils-2.4.0-b31-239dfe15e8b898811455d9c165ca8b1ed06a1779.jar" />
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/hk2-utils-2.4.0-b31-87daa303743c82be15d2a04d1feacadece7e0ba8.jar" />
+    </item>
+    <item
+        jar="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-ee009eff324f5fd07fc4a2cf12b155602e72d17d.jar" />
+    </item>
+    <item
+        jar="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/classes-6c3bd07f3592d5742445520711f242984b4afc3a.jar" />
+    </item>
+    <item
+        jar="/home/twerky/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.18.1-GA/d9a09f7732226af26bf99f19e2cffe0ae219db5b/javassist-3.18.1-GA.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d9a09f7732226af26bf99f19e2cffe0ae219db5b">
+        <dex dex="/home/twerky/Escritorio/DSA2/kujosa-project/kujosa-android/app/build/intermediates/pre-dexed/debug/javassist-3.18.1-GA-b639ecd90db9db52acdbf227a75d9ac7bb5e92b4.jar" />
     </item>
 
 </items>

@@ -14,22 +14,20 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name="edu.upc.eetac.dsa.kujosa.LoginActivity"
-            android:label="@string/app_name" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>/>
         </activity>
         <activity
-            android:name="edu.upc.eetac.dsa.kujosa.StingsListActivity"
+            android:name=".StingsListActivity"
             android:label="@string/title_activity_stings_list"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="edu.upc.eetac.dsa.kujosa.StingDetailActivity"
+            android:name=".StingDetailActivity"
             android:label="@string/title_activity_sting_detail"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
