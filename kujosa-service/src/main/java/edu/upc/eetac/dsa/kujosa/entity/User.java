@@ -71,7 +71,7 @@ public class User {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setLoginid(String username) {
         this.username = username;
     }
 
@@ -79,7 +79,7 @@ public class User {
         return name;
     }
 
-    public void setName(String name) {
+    public void setFullname(String name) {
         this.name = name;
     }
 

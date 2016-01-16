@@ -19,12 +19,12 @@ import java.sql.SQLException;
  *     -getUsersofEventId
  */
 public interface EventDAO {
-    public Event createEvent(String userid, String titol, String text, long lat, long lon, long startDate, long endDate) throws SQLException;
-    public Event getEventByRatio(int Ratio) throws SQLException;
-    public Event getEvent(String eventid) throws SQLException;
-    public EventCollection getEvents(int length, long before, long after) throws SQLException;
-    public Event updateEvent(String eventid, String titol, String text, long startDate, long endDate) throws SQLException;
-    public boolean deleteEvent(String eventid) throws SQLException;
-    public UserCollection getUsersofEventId(String eventid) throws SQLException;
+    Event createEvent(String userid, String titol, String text, long lat, long lon, long startDate, long endDate) throws SQLException;
+    Event getEventByRatio(int ratio) throws SQLException;
+    Event getEvent(String eventid) throws SQLException;
+    EventCollection getEvents(int length, long before, long after) throws SQLException;
+    Event updateEvent(String id, String titol, String text, long startDate, long endDate) throws SQLException;
+    boolean deleteEvent(String id) throws SQLException;
+    UserCollection getUsersofEventId(String id) throws SQLException;
 
 }

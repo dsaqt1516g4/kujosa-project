@@ -30,9 +30,11 @@ public class UserResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
-    public Response registerUser(@FormParam("username") String username,  @FormParam("email") String email, @FormParam("password") String password, @FormParam("fullname") String fullname, @Context UriInfo uriInfo) throws URISyntaxException {
-        if(username == null || password == null || email == null || fullname == null)
-            throw new BadRequestException("S'han de plenar tots els camps");
+    public Response registerUser(@FormParam("username") String username,  @FormParam("email") String email, @FormParam("password") String password, @FormParam("nombre") String fullname, @Context UriInfo uriInfo) throws URISyntaxException {
+      System.out.println("username :"+username+" email :"+email+" password : "+password+" name :"+fullname);
+
+       if(username == null || password == null || email == null || fullname == null)
+            throw new BadRequestException("S'han de plenar tots els camps 222");
         UserDAO userDAO = new UserDAOImpl();
         User user = null;
         AuthToken authToken = null;
@@ -54,7 +56,7 @@ public class UserResource {
     public User getUser(@PathParam("username") String username) {
         User user = null;
         try {
-            user = (new UserDAOImpl()).getUserByUsername(username);
+            user = (new UserDAOImpl()).getUserByLoginid(username);
         } catch (SQLException e) {
             throw new InternalServerErrorException(e.getMessage());
         }
@@ -70,22 +72,6 @@ public class UserResource {
     public void updateUser(@PathParam("username") String username,@FormParam("correu") String correu, @FormParam("pass") String pass,@FormParam("image") String image) {
         if(username == null)
             throw new BadRequestException("entity is null");
-  /*      if(!id.equals(user.getId()))
-            throw new BadRequestException("path parameter id and entity parameter id doesn't match");
-
-        String userid = securityContext.getUserPrincipal().getName();
-        if(!userid.equals(id))
-            throw new ForbiddenException("operation not allowed");
-
-        UserDAO userDAO = new UserDAOImpl();
-        try {
-           user = userDAO.updateProfile(userid, user.getEmail(), user.getFullname());
-            if(user == null)
-                throw new NotFoundException("User with id = "+id+" doesn't exist");
-        } catch (SQLException e) {
-            throw new InternalServerErrorException();
-        }
-        return user;*/
         UserDAO userDAO = new UserDAOImpl();
 
         try {

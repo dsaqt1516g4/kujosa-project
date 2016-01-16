@@ -21,7 +21,7 @@ public class EventResource {
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(KujosaMediaType.KUJOSA_API_EVENT)
+    @Produces(KujosaMediaType.KUJOSA_EVENT)
     public Response createSting(@FormParam("titol") String titol, @FormParam("text") String text,
                                 @FormParam("latitud") long lat, @FormParam("longitud") long lon,
                                 @FormParam("ratio") int ratio, @FormParam("startdate") long startdate,
@@ -38,11 +38,11 @@ public class EventResource {
             throw new InternalServerErrorException();
         }
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + event.getEventid());
-        return Response.created(uri).type(KujosaMediaType.KUJOSA_API_EVENT).entity(event).build();
+        return Response.created(uri).type(KujosaMediaType.KUJOSA_EVENT).entity(event).build();
     }
 
     @GET
-    @Produces(KujosaMediaType.KUJOSA_API_EVENT_COLLECTION)
+    @Produces(KujosaMediaType.KUJOSA_EVENT_COLLECTION)
     public EventCollection getEvents(@QueryParam("length") int length,
                                      @QueryParam("before") long before, @QueryParam("after") long after) {
         EventCollection eventCollection = null;
@@ -57,7 +57,7 @@ public class EventResource {
 
     @Path("/{id}")
     @GET
-    @Produces(KujosaMediaType.KUJOSA_API_EVENT)
+    @Produces(KujosaMediaType.KUJOSA_EVENT)
     public Response getEvent(@PathParam("id") String id, @Context Request request){
         // Create cache-control
         CacheControl cacheControl = new CacheControl();
@@ -92,8 +92,8 @@ public class EventResource {
 
     @Path("/{id}")
     @PUT
-    @Consumes(KujosaMediaType.KUJOSA_API_EVENT)
-    @Produces(KujosaMediaType.KUJOSA_API_EVENT)
+    @Consumes(KujosaMediaType.KUJOSA_EVENT)
+    @Produces(KujosaMediaType.KUJOSA_EVENT)
     public Event updateEvent(@PathParam("id") String id, Event event) {
         if (event == null)
             throw new BadRequestException("entity is null");

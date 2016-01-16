@@ -8,9 +8,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.SecurityContext;
 
-/**
- * Created by sergio on 14/09/15.
- */
+    /**   +---------------------+
+        * |    KUJOSA PROJECT   |
+        * +---------------------+
+        */
+
 @Path("/")
 public class KujosaRootAPIResource {
     @Context

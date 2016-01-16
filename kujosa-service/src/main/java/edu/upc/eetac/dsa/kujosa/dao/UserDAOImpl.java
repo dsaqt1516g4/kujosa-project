@@ -1,6 +1,5 @@
 package edu.upc.eetac.dsa.kujosa.dao;
 
-import com.sun.xml.internal.bind.v2.TODO;
 import edu.upc.eetac.dsa.kujosa.entity.User;
 import edu.upc.eetac.dsa.kujosa.db.Database;
 
@@ -17,7 +16,7 @@ import java.sql.SQLException;
  *     +-------------------------------------+
  *     DONE:
  *     -createUser
- *     -getUserByUsername
+ *     -getUserByLoginid
  *     -updateUser
  *     -deleteUser
  *     -checkPassword
@@ -26,7 +25,7 @@ public class UserDAOImpl implements UserDAO {
 
     /**
      *
-     * @param username serà el nom d'usuari UNIC
+     * @param loginid serà el nom d'usuari UNIC
      * @param fullname nom del manolo
      * @param email correu de contacte
      * @param password clau d'accès als serveis
@@ -35,12 +34,13 @@ public class UserDAOImpl implements UserDAO {
      * @throws UserAlreadyExistsException
      */
     @Override
-    public User createUser( String username, String fullname, String email, String password) throws SQLException, UserAlreadyExistsException {
+    public User createUser(String loginid, String fullname, String email, String password)
+            throws SQLException, UserAlreadyExistsException {
         Connection connection = null;
         PreparedStatement stmt = null;
         String id = null;
         try {
-            User user = getUserByUsername(username);
+            User user = getUserByLoginid(loginid);
             if (user != null)
                 throw new UserAlreadyExistsException();
 
@@ -58,7 +58,7 @@ public class UserDAOImpl implements UserDAO {
             stmt.close();
             stmt = connection.prepareStatement(UserDAOQuery.CREATE_USER);
             stmt.setString(1, id);
-            stmt.setString(2, username);
+            stmt.setString(2, loginid);
             stmt.setString(3, password);
             stmt.setString(4, fullname);
             stmt.setString(5, email);
@@ -85,41 +85,41 @@ public class UserDAOImpl implements UserDAO {
 
     /**
      *
-     * @param username nom d'usuari s'usara per a fer les cerques
-     * @param correu correu si es vol modificar sino null
-     * @param pass clau si es vol modificar sino null
+     * @param loginid nom d'usuari s'usara per a fer les cerques
+     * @param email correu si es vol modificar sino null
+     * @param password clau si es vol modificar sino null
      * @param image path de la imatge in server si no es vol modificar null
      * @return l'usuari un cop modificat
      * @throws SQLException
      */
     @Override
-    public User updateUser(String username, String correu,String pass, String image) throws SQLException {
+    public User updateUser(String loginid, String email, String password, String image) throws SQLException {
         User user = null;
 
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
-            user = getUserByUsername(username);
+            user = getUserByLoginid(loginid);
 
             stmt = connection.prepareStatement(UserDAOQuery.UPDATE_USER);
             //CORREU
-            if(correu!=null) {
-                stmt.setString(1, correu);
+            if(email !=null) {
+                stmt.setString(1, email);
             }
             else{
                 stmt.setString(1, user.getEmail());
 
             }
             //PASS
-            if(correu!=null) {
-                stmt.setString(2, pass);
+            if(password !=null) {
+                stmt.setString(2, password);
             }
             else{
                 //TODO
             }
             //IMAGE
-            if(correu!=null) {
+            if(image !=null) {
                 stmt.setString(3, image);
             }
             else{
@@ -130,7 +130,7 @@ public class UserDAOImpl implements UserDAO {
 
             int rows = stmt.executeUpdate();
             if (rows == 1)
-                user = getUserByUsername(username);
+                user = getUserByLoginid(loginid);
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -163,9 +163,9 @@ public class UserDAOImpl implements UserDAO {
             if (rs.next()) {
                 user = new User();
                 user.setId(rs.getString("id"));
-                user.setUsername(rs.getString("loginid"));
+                user.setLoginid(rs.getString("loginid"));
                 user.setEmail(rs.getString("email"));
-                user.setName(rs.getString("fullname"));
+                user.setFullname(rs.getString("fullname"));
             }
         } catch (SQLException e) {
             // Relanza la excepción
@@ -183,12 +183,12 @@ public class UserDAOImpl implements UserDAO {
 
     /**
      *
-     * @param username nom d'usuari a cercar
+     * @param loginid nom d'usuari a cercar
      * @return torna la entitat usuari
      * @throws SQLException
      */
     @Override
-    public User getUserByUsername(String username) throws SQLException {
+    public User getUserByLoginid(String loginid) throws SQLException {
         User user = null;
 
         Connection connection = null;
@@ -198,15 +198,15 @@ public class UserDAOImpl implements UserDAO {
 
 
             stmt = connection.prepareStatement(UserDAOQuery.GET_USER_BY_USERNAME);
-            stmt.setString(1, username);
+            stmt.setString(1, loginid);
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 user = new User();
-                user.setId(rs.getString("userid"));
-                user.setUsername(rs.getString("username"));
+                user.setId(rs.getString("id"));
+                user.setLoginid(rs.getString("loginid"));
                 user.setEmail(rs.getString("email"));
-                user.setName(rs.getString("name"));
+                user.setFullname(rs.getString("fullname"));
                 user.setImage(rs.getString("image"));
             }
         } catch (SQLException e) {

@@ -17,11 +17,11 @@ import java.sql.SQLException;
  *
  */
 public interface DocumentDAO {
-    public Document createDocument(String userid,String name, String description, String path) throws SQLException;
-    public Document getDocumentById (String documentid) throws SQLException;
-    public DocumentCollection getDocuments (long lastmodified) throws SQLException;
-    public Document updateDocument (String documentid, String description) throws SQLException;
-    public void deleteDocumment(String documentid) throws SQLException;
+    public Document createDocument(String userid, String name, String description, String path) throws SQLException;
+    public Document getDocumentById (String id) throws SQLException;
+    public DocumentCollection getDocuments (long timestamp, boolean before) throws SQLException;
+    public Document updateDocument (String id, String name, String description) throws SQLException;
+    public boolean deleteDocumment(String id) throws SQLException;
 
 
 }

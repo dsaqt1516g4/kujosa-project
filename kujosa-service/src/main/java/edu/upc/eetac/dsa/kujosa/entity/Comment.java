@@ -16,8 +16,8 @@ import java.util.List;
  */
 public class Comment {
     @InjectLinks({
-            @InjectLink(resource = CommentResource.class, style = Style.ABSOLUTE, rel = "self", title = "Comment", type = KujosaMediaType.KUJOSA_API_COMMENT, method = "getComment" ,bindings = @Binding(name = "commentid", value = "${instance.commentid}")),
-            @InjectLink(value = "/comments/{eventid}", style = Style.ABSOLUTE, rel = "comments", title = "Latest comments", type = KujosaMediaType.KUJOSA_API_COMMENT_COLLECTION, bindings = @Binding(name = "eventid", value = "${instance.eventid}")),
+            @InjectLink(resource = CommentResource.class, style = Style.ABSOLUTE, rel = "self", title = "Comment", type = KujosaMediaType.KUJOSA_COMMENT, method = "getComment" ,bindings = @Binding(name = "commentid", value = "${instance.commentid}")),
+            @InjectLink(value = "/comments/{eventid}", style = Style.ABSOLUTE, rel = "comments", title = "Latest comments", type = KujosaMediaType.KUJOSA_COMMENT_COLLECTION, bindings = @Binding(name = "eventid", value = "${instance.eventid}")),
 
             })
     private List<Link> links;
