@@ -2,10 +2,12 @@ package edu.upc.eetac.dsa.kujosa;
 
 import edu.upc.eetac.dsa.kujosa.dao.DocumentDAO;
 import edu.upc.eetac.dsa.kujosa.dao.DocumentDAOImpl;
+import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.entity.Document;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 
@@ -15,23 +17,31 @@ import java.sql.SQLException;
 @Path("documents")
 
 public class DocumentResource {
-        @Context
-        private SecurityContext securityContext;
+    @Context
+    private SecurityContext securityContext;
 
-        @POST
-        @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-        @Produces(KujosaMediaType.KUJOSA_DOCUMENT)
-        public Response createSting(@FormParam("name") String name, @FormParam("description") String description, @Context UriInfo uriInfo) throws URISyntaxException {
-            return null;
-            }
-
-
-
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(KujosaMediaType.KUJOSA_DOCUMENT)
+    public Response createDocument(@FormParam("name") String name, @FormParam("description") String description, @FormParam("path") String path, @Context UriInfo uriInfo) throws URISyntaxException {
+        if (name == null || path == null)
+            throw new BadRequestException("all parameters are mandatory");
+        DocumentDAO documentDAO = new DocumentDAOImpl();
+        Document document = null;
+        AuthToken authToken = null;
+        try {
+            document = documentDAO.createDocument(securityContext.getUserPrincipal().getName(), name, description, path);
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + document.getId());
+        return Response.created(uri).type(KujosaMediaType.KUJOSA_STING).entity(document).build();
+    }
 
     @Path("/{id}")
     @GET
     @Produces(KujosaMediaType.KUJOSA_STING)
-    public Response getSting(@PathParam("id") String id, @Context Request request) {
+    public Response getDocument(@PathParam("id") String id, @Context Request request) {
         // Create cache-control
         CacheControl cacheControl = new CacheControl();
         Document document = null;
@@ -39,7 +49,7 @@ public class DocumentResource {
         try {
             document = documentDAO.getDocumentById(id);
             if (document == null)
-                throw new NotFoundException("Sting with id = " + id + " doesn't exist");
+                throw new NotFoundException("Document with id = " + id + " doesn't exist");
 
             // Calculate the ETag on last modified date of user resource
             EntityTag eTag = new EntityTag(Long.toString(document.getLastModified()));
@@ -92,7 +102,7 @@ public class DocumentResource {
 
     @Path("/{id}")
     @DELETE
-    public void deleteSting(@PathParam("id") String id) {
+    public void deleteDocument(@PathParam("id") String id) {
         String userid = securityContext.getUserPrincipal().getName();
         DocumentDAO documentDAO = new DocumentDAOImpl();
         try {

@@ -1,3 +1,4 @@
+
 package edu.upc.eetac.dsa.kujosa.entity;
 
 /**

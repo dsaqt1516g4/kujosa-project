@@ -112,11 +112,10 @@ create table news (
 
         id                  BINARY(16) NOT NULL,
         userid              BINARY(16) NOT NULL,
-        headline           varchar(50) not null primary key,
+        headline           varchar(50) not null,
         body               varchar(500) not null,
 	last_modified      timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
 	creation_timestamp datetime not null default current_timestamp,
-        foreign key (userid) 	references users(username) on delete cascade,
         FOREIGN KEY (userid) REFERENCES users(id) on delete cascade,
         PRIMARY KEY (id)
 );

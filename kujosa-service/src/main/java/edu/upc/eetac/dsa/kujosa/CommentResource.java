@@ -111,7 +111,7 @@ public class CommentResource {
         try {
             comment = commentDAO.updateComment(id, comment.getContent(), comment.getImage(), comment.getRatio());
             if (comment == null)
-                throw new NotFoundException("Sting with id = " + id + " doesn't exist");
+                throw new NotFoundException("Comment with id = " + id + " doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
