@@ -68,7 +68,7 @@ public class CommentDAOImpl implements CommentDAO{
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 comment = new Comment();
-                comment.setId(rs.getString("commentid"));
+                comment.setId(rs.getString("id"));
                 comment.setUserid(rs.getString("userid"));
                 comment.setEventid(rs.getString("eventid"));
                 comment.setContent(rs.getString("content"));
@@ -110,7 +110,7 @@ public class CommentDAOImpl implements CommentDAO{
             boolean first = true;
             while (rs.next()) {
                 Comment comment = new Comment();
-                comment.setId(rs.getString("commentid"));
+                comment.setId(rs.getString("id"));
                 comment.setUserid(rs.getString("userid"));
                 comment.setContent(rs.getString("content"));
                 comment.setRatio(rs.getInt("ratio"));
