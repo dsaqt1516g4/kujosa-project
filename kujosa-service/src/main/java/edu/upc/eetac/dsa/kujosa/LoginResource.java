@@ -31,6 +31,7 @@ public class LoginResource {
         User user = null;
         AuthToken authToken = null;
         try{
+            System.out.println("Login attempt:"+loginid+" com el pass:"+password);
             UserDAO userDAO = new UserDAOImpl();
             user = userDAO.getUserByLoginid(loginid);
             if(user == null)
