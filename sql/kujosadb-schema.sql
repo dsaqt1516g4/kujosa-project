@@ -46,27 +46,6 @@ create table social (
 
 );
 
-create table user_roles (
-
-    userid BINARY(16) NOT NULL,
-    role ENUM ('registered'),
-    FOREIGN KEY (userid) REFERENCES users(id) on delete cascade,
-    PRIMARY KEY (userid, role)
-
-);
- 
-create table social (
-
-    id BINARY(16) NOT NULL,
-    userid BINARY(16) NOT NULL,
-    subject VARCHAR(100) NOT NULL,
-    content VARCHAR(500) NOT NULL,
-    last_modified TIMESTAMP NOT NULL,
-    creation_timestamp datetime not null default current_timestamp,
-    FOREIGN KEY (userid) REFERENCES users(id) on delete cascade,
-    PRIMARY KEY (id)
-
-);
 
 create table events (
 
