@@ -159,7 +159,7 @@ public class DocumentDAOImpl implements DocumentDAO {
     }
 
     @Override
-    public boolean deleteDocumment(String id) throws SQLException{
+    public boolean deleteDocument(String id) throws SQLException{
 
         Connection connection = null;
         PreparedStatement stmt = null;

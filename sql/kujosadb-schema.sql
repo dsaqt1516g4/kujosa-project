@@ -10,7 +10,7 @@ create table users (
     password BINARY(16) NOT NULL,
     email VARCHAR(255) NOT NULL,
     fullname VARCHAR(255) NOT NULL,
-    image varchar(20)
+    image varchar(20),
     PRIMARY KEY (id)
 
 );

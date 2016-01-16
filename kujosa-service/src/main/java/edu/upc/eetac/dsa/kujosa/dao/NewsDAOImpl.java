@@ -14,7 +14,7 @@ public class NewsDAOImpl implements NewsDAO{
     public News createNews(String userid, String headline, String body) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
-        String id  = null;
+        String id = null;
         try {
             connection = Database.getConnection();
 

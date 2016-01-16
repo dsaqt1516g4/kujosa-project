@@ -35,7 +35,7 @@ public class CommentDAOImpl implements CommentDAO{
             stmt = connection.prepareStatement(CommentDAOQuery.INSERT_COMMENT_QUERY);
             stmt.setString(1, id);
             stmt.setString(2, userid);
-            stmt.setInt(3, eventid);
+            stmt.setString(3, eventid);
             stmt.setString(4, content);
             stmt.setString(5, image);
             /*stmt.setInt(6, ratio);
@@ -68,9 +68,9 @@ public class CommentDAOImpl implements CommentDAO{
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 comment = new Comment();
-                comment.setId(rs.getInt("commentid"));
-                comment.setUserid(rs.getInt("userid"));
-                comment.setEventid(rs.getInt("eventid"));
+                comment.setId(rs.getString("id"));
+                comment.setUserid(rs.getString("userid"));
+                comment.setEventid(rs.getString("eventid"));
                 comment.setContent(rs.getString("content"));
                 comment.setRatio(rs.getInt("ratio"));
                 comment.setImage(rs.getString("image"));
@@ -110,8 +110,8 @@ public class CommentDAOImpl implements CommentDAO{
             boolean first = true;
             while (rs.next()) {
                 Comment comment = new Comment();
-                comment.setId(rs.getInt("commentid"));
-                comment.setUserid(rs.getInt("userid"));
+                comment.setId(rs.getString("id"));
+                comment.setUserid(rs.getString("userid"));
                 comment.setContent(rs.getString("content"));
                 comment.setRatio(rs.getInt("ratio"));
                 comment.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
