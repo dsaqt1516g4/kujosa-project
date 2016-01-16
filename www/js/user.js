@@ -75,19 +75,78 @@ $("#register_btn").click(function(e) {
 
 
 $("#login_btn").click(function(e){
+	console.log("Function")
 	e.preventDefault();
-	Login($("#username").val(), $("#password").val() );
+	login($("#username").val(), $("#password").val() );
 	
 });
 
+function linksToMap(links){
+		console.log("Hfunction links");
+
+	var map = {};
+	$.each(links, function(i, link){
+		$.each(link.rels, function(j, rel){
+			map[rel] = link;
+		});
+	});
+
+	return map;
+}
+
+function loadAPI(complete){
+	console.log("Hfunction API");
+	$.get(BASE_URI)
+		.done(function(data){
+			var api = linksToMap(data.links);
+			sessionStorage["api"] = JSON.stringify(api);
+			complete();
+		})
+		.fail(function(data){
+		});
+}
+
+function login(loginid, password, complete){
+	console.log("Hfunction login: "+loginid+" amb password: " +password+" complete: "+complete)
+	loadAPI(function(){
+		var api = JSON.parse(sessionStorage.api);
+		var uri = API_URL+"login";
+		console.log(uri);
+		$.post(uri,
+			{
+				login: loginid,
+				password: password
+			}).done(function(authToken){
+				authToken.links = linksToMap(authToken.links);
+				sessionStorage["auth-token"] = JSON.stringify(authToken);
+				complete();
+			}).fail(function(jqXHR, textStatus, errorThrown){
+				var error = jqXHR.responseJSON;
+				alert(error.reason);
+			}
+		);
+	});
+}
+/*
 function Login(username, password){
 	//$("#result_login").text('');
-	
-	var credentials = 'username='+username+'&password='+password+'';
-	
+
+
+	Console.log( "Tryng Login with :"+username +"and pass : " +password);
+	var credentials = 'username='+username+'password='+password+'';
+
+
+	$.post({
+		uri : API_URL+'login', {
+		username : username,
+		password: passsword
+	}).done(console.log("Done").fail(console.log("FAIL"));
+
+
+
 	$.ajax({
 		
-		url : AUTH_URL,
+		url : API_URL+'login',
 		type : 'POST',
 		crossDomain : true,
 		data: credentials,
@@ -102,7 +161,7 @@ function Login(username, password){
 
 		if (response=="successadmin")
 		{
-			url = "http://147.83.7.159:8080/kujosa-api/" + 'users/'+ username;
+			url = API_URL + 'users/'+ username;
 			getUser(url, function(user){
 				var userlog= new User(user);
 					$.cookie('username', username);
@@ -134,7 +193,7 @@ function Login(username, password){
 		},
 
 		});
-}
+} */
 
 /* MOSTRAR ALTRES USUARIS */
 
