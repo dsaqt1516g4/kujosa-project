@@ -35,12 +35,12 @@ public class DocumentResource {
             throw new InternalServerErrorException();
         }
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + document.getId());
-        return Response.created(uri).type(KujosaMediaType.KUJOSA_STING).entity(document).build();
+        return Response.created(uri).type(KujosaMediaType.KUJOSA_DOCUMENT).entity(document).build();
     }
 
     @Path("/{id}")
     @GET
-    @Produces(KujosaMediaType.KUJOSA_STING)
+    @Produces(KujosaMediaType.KUJOSA_DOCUMENT)
     public Response getDocument(@PathParam("id") String id, @Context Request request) {
         // Create cache-control
         CacheControl cacheControl = new CacheControl();
