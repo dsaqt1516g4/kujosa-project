@@ -40,7 +40,7 @@ public class UserResource {
     @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
     public Response registerUser(@FormParam("username") String username,  @FormParam("email") String email,
                                  @FormParam("password") String password, @FormParam("nombre") String fullname,
-                                 @FormParam("image") InputStream image,
+                                 @FormParam("image") String image,
                                  @Context UriInfo uriInfo) throws URISyntaxException {
       System.out.println("username :"+username+" email :"+email+" password : "+password+" name :"+fullname);
 
