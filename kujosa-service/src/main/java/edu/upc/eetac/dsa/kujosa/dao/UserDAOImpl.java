@@ -3,6 +3,7 @@ package edu.upc.eetac.dsa.kujosa.dao;
 import edu.upc.eetac.dsa.kujosa.entity.User;
 import edu.upc.eetac.dsa.kujosa.db.Database;
 
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -34,7 +35,7 @@ public class UserDAOImpl implements UserDAO {
      * @throws UserAlreadyExistsException
      */
     @Override
-    public User createUser(String loginid, String fullname, String email, String password)
+    public User createUser(String loginid, String fullname, String email, String password, InputStream image)
             throws SQLException, UserAlreadyExistsException {
         Connection connection = null;
         PreparedStatement stmt = null;

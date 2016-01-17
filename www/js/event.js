@@ -4,10 +4,10 @@ var map;
 var eventsURL;
 var markers =[];
 $(document).ready(function(){
-	if($.cookie('username')==undefined){
-		window.location.replace("index.html");
-	}
-	$('<a id="username_logged">'+ $.cookie('username') +'</a>').appendTo($('#user_logged'));
+	//if($.cookie('username')==undefined){
+	//	window.location.replace("index.html");
+	//}
+	//$('<a id="username_logged">'+ $.cookie('username') +'</a>').appendTo($('#user_logged'));
 	initialize();
 	loadRootAPI(function(rootAPI){
 		eventsURL = rootAPI.getLink('create-event');
@@ -28,11 +28,6 @@ $('#create_btn').click(function(e){
 	}else{
 		createEvent2();
 	}
-});
-
-
-$('#logout_btn').click(function(e){
-	deleteCookie('username');
 });
 
 function initialize() {
@@ -63,7 +58,7 @@ function initialize() {
     handleNoGeolocation(false);
   }
   
-  google.maps.event.addListener(map, "rightclick", function(event) {
+google.maps.event.addListener(map, "rightclick", function(event) {
 	    var lat = event.coordenades.lat();
 	    var lon = event.coordenades.lon();
 	    var myCoordinates = new google.maps.LatLng(lat,lon);
@@ -126,15 +121,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
 function createEvent2(){
 	var event = new Object();
 	event.title = $('#event_title').val();
-	event.coordX = $('#event_lat').val();
-	event.coordY = $('#event_lon').val();
-	event.category = document.getElementById("select_category").value;
-	event.description = $('#event_description').val();
+	event.lat = $('#event_lat').val();
+	event.lon = $('#event_lon').val();
+	event.text = $('#event_description').val();
 	event.owner = $.cookie('username');
-	event.state = "Abierto";
-	event.publicEvent = true;
 	event.eventDate = $('#event_date').val();
-	event.popularity = 0;
+	event.ratio = 0;
 	createEvent(eventsURL.href, eventsURL.type, JSON.stringify(event), function(event){
 		window.location.replace("home.html");
 	});
@@ -177,11 +169,6 @@ $('#save_settings').click(function(e){
 	}
 });
 
-
-$('#logout_btn').click(function(e){
-	deleteCookie('username');
-});
-
 $(document).ready(function(){
 	if($.cookie('username')==undefined){
 		window.location.replace("index.html");
@@ -201,15 +188,13 @@ function loadEvent(url){
 	getEvent(url, function (event){
 		var eventID= event.id;
 		$('#event_title').val(event.title);
-		$('#event_description').text(event.description);
-		$('#event_coordX').val(event.coordX);
-		$('#event_coordY').val(event.coordY);
+		$('#event_description').text(event.text);
+		$('#event_coordX').val(event.lat);
+		$('#event_coordY').val(event.lon);
 		$('#event_date').val(event.eventDate);
-		$.cookie('popularity', event.popularity);
-		document.getElementById("select_category").value=event.category;
-		document.getElementById("select_state").value=event.state;
-		late = event.coordX;
-		lnge = event.coordY;
+		$.cookie('popularity', event.ratio);
+		late = event.lat;
+		lnge = event.lon;
 		initialize();
 	});
 }
@@ -231,7 +216,7 @@ function initialize() {
 	      var infowindow = new google.maps.InfoWindow({
 	        map: map,
 	        position: pos,
-	        content: 'Coordenadas actuales'
+	        content: 'Coordenades actuals'
 	      });
 
 	      map.setCenter(pos);
@@ -277,7 +262,7 @@ function initialize() {
 		    position: myLatlng,
 		    map: map,
 		    draggable: false,
-	        title: 'Nuevo evento'
+	        title: 'New event'
 		  }));
         }
 

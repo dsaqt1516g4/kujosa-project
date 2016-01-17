@@ -1,8 +1,8 @@
-var API_BASE_URL = "http://147.83.7.155:8080/kujosa-api";
+var API_BASE_URL = "http://147.83.7.155:8080/kujosa";
 
-var id = $.cookie('id');
-var password = $.cookie('password')
-var email = $.cookie('email')
+//var id = $.cookie('id');
+//var password = $.cookie('password')
+//var email = $.cookie('email')
 var newsid =id;
 
 

@@ -7,13 +7,21 @@ import edu.upc.eetac.dsa.kujosa.dao.UserAlreadyExistsException;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAOImpl;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAO;
 
+import javax.imageio.ImageIO;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
+import java.util.UUID;
 
- /**    +-------------------------------------+
+/**    +-------------------------------------+
  *     |           KUJOSA PROJECT            |
  *     +-------------------------------------+
  *     DONE:
@@ -30,7 +38,10 @@ public class UserResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
-    public Response registerUser(@FormParam("username") String username,  @FormParam("email") String email, @FormParam("password") String password, @FormParam("nombre") String fullname, @Context UriInfo uriInfo) throws URISyntaxException {
+    public Response registerUser(@FormParam("username") String username,  @FormParam("email") String email,
+                                 @FormParam("password") String password, @FormParam("nombre") String fullname,
+                                 @FormParam("image") InputStream image,
+                                 @Context UriInfo uriInfo) throws URISyntaxException {
       System.out.println("username :"+username+" email :"+email+" password : "+password+" name :"+fullname);
 
        if(username == null || password == null || email == null || fullname == null)
@@ -39,7 +50,7 @@ public class UserResource {
         User user = null;
         AuthToken authToken = null;
         try{
-            user = userDAO.createUser(username, fullname, email, password);
+            user = userDAO.createUser(username, fullname, email, password, image);
             authToken = (new AuthTokenDAOImpl()).createAuthToken(user.getId());
         }catch (UserAlreadyExistsException e){
             throw new WebApplicationException("Username already exists", Response.Status.CONFLICT);
@@ -49,6 +60,27 @@ public class UserResource {
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + user.getId());
         return Response.created(uri).type(KujosaMediaType.KUJOSA_AUTH_TOKEN).entity(authToken).build();
     }
+     private UUID writeAndConvertImage(InputStream file) {
+         BufferedImage image = null;
+         try {
+             image = ImageIO.read(file);
+
+         } catch (IOException e) {
+             throw new InternalServerErrorException(
+                     "Something has been wrong when reading the file.");
+         }
+         UUID uuid = UUID.randomUUID();
+         String filename = uuid.toString() + ".png";
+
+         try {
+             PropertyResourceBundle prb = (PropertyResourceBundle) ResourceBundle.getBundle("kujosa");
+             ImageIO.write(image, "png", new File(prb.getString("uploadFolder") + filename));
+         } catch (IOException e) {
+             throw new InternalServerErrorException("Something has been wrong when converting the file.");
+         }
+
+         return uuid;
+     }
 
     @Path("/{id}")
     @GET
