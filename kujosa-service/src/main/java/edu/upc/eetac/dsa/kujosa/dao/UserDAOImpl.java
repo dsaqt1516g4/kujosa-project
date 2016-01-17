@@ -221,7 +221,7 @@ public class UserDAOImpl implements UserDAO {
 
     /**
      *
-     * @param id ahí va el identificador de usuario
+     * @param id ahí va el id de usuario que sera cogido de la URI.
      * @return torna un bool 1 si tot ha anat com el cul un 0 si tot ok
      * @throws SQLException
      */
