@@ -45,13 +45,13 @@
                 <a class="navbar-brand" href="index.html">Kujosa Webpage</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
+                    <!--<li>
                         <a href="about.html">Identificar-se</a>
-                    </li>
+                    </li> -->
                     <li>
-                        <a href="articles.html">Articles</a>
+                        <a href="news.html">Articles</a>
                     </li>
                     <li>
                         <a href="documents.html">Documents</a>
@@ -92,7 +92,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Articles
-                    <small>Subheading</small>
+                    <small>AESTEC</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">KUJOSA</a>
@@ -112,15 +112,16 @@
         <!-- /.row -->
 
         <!-- Service Panels -->
-      
-
+        <div id="news_result"></div>
+        <button id="editar_news">Editar noticia</button>
+        <button id="create_news">Crea noticia</button>
         <!-- Service Tabs -->
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Articles</h2>
             </div>
             <div class="col-lg-12">
-
+                
                 <ul id="myTab" class="nav nav-tabs nav-justified">
                     <li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-tree"></i> Tema 1</a>
                     </li>
@@ -160,7 +161,7 @@
         </div>
 
         <!-- Service List -->
-        <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+        <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->      
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Llistat de documents</h2>
@@ -298,7 +299,14 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
+    <!-- KUJOSA -->
+    <script src="js/api.js"></script>
+    <script src="js/kujosa.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/documents.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/news.js"></script>
+    <script src="js/login.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
