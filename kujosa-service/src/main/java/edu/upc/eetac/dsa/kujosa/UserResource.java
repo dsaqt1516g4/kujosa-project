@@ -117,13 +117,14 @@ public class UserResource {
     @Path("/{id}")
     @DELETE
     public void deleteUser(@PathParam("id") String id){
+        System.out.println("El usuario :"+id+" se fue a la puta.");
         String userid = securityContext.getUserPrincipal().getName();
         if(!userid.equals(id))
             throw new ForbiddenException("Operation not allowed");
         UserDAO userDAO = new UserDAOImpl();
         try {
             if(!userDAO.deleteUser(id))
-                throw new NotFoundException("User with id = "+id+" doesn't exist");
+                throw new NotFoundException("User with USername = "+id+" doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
