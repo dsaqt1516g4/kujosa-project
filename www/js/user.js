@@ -22,7 +22,7 @@ $(document).ready(function() {
 $("#save_btn").click(function(e) {
 		e.preventDefault();
 		$("#result_edit_process").text('');
-		if($('#password').val()=="" || $('#verify').val()=="" || $('#name').val()=="" || $('#email').val()=="" ){
+		if($('#password_1').val()=="" || $('#verify').val()=="" || $('#nombre_1').val()=="" || $('#email_1').val()=="" ){
 			$('<div class="alert alert-danger">Emplena tots els camps</div>').appendTo($("#result_edit_process"));
 		}else if ($('#password').val() != $('#verify').val()) {
 				$('<div class="alert alert-danger">La contrasenya no coincideix</div>').appendTo($("#result_edit_process"));
@@ -53,20 +53,38 @@ $("#register_btn").click(function(e) {
 		
 		if($('#username_1').val().length > 50 || $('#nombre_1').val().length > 50 || $('#email_1').val().length > 50 || $('#password_1').val().length > 32){
 			$('<div class="alert alert-danger">Algún camp és massa llarg:<br>Nom d\'usuari, nom i correu: 50 caràcters max. <br>Contrasenya: 32 caràcters màx.</div>').appendTo($("#result_register_process"));
-		}else if ($('#username').val() == "" || $('#name').val() == "" || $('#email').val() == ""	|| $('#password').val() == "" || $('#verify').val() == "") {
-				$('<div class="alert alert-danger">Per favor, emplena tots els camps</div>').appendTo($("#result_register_process"));
-		}else if ($('#password').val() != $('#verify').val()) {
+		}else if ($('#username_1').val() == "" || $('#nombre_1').val() == "" || $('#email_1').val() == ""	|| $('#password_1').val() == "" || $('#verify').val() == "") {
+				$('<div class="alert alert-danger">Si us plau, emplena tots els camps</div>').appendTo($("#result_register_process"));
+		}else if ($('#password_1').val() != $('#verify').val()) {
 				$('<div class="alert alert-danger">La contrasenya no coincideix</div>').appendTo($("#result_register_process"));
 		}else {
-				
-				var user = new Object();
+						var api = JSON.parse(sessionStorage.api);
+						var uri = API_URL+"users";
+						console.log("uri : "+uri);
+						$.post(uri,
+						{
+							username: $('#nombre_1').val(),
+							password: $('#password_1').val(),
+							email: $('#email_1').val(),
+							nombre: $('#nombre_1').val(),
+							image: "chapuza.png"
+						}).done(function(authToken){
+							authToken.links = linksToMap(authToken.links);
+							sessionStorage["auth-token"] = JSON.stringify(authToken);
+							complete();
+						}).fail(function(jqXHR, textStatus, errorThrown){
+							var error = jqXHR.responseJSON;
+							alert(error.reason);
+						}
+					);
+				/*var user = new Object();
 				user.name = $('#nombre_1').val();
 				user.username = $('#username_1').val();
 				user.userpass = $('#password_1').val();
 				user.email = $('#email_1').val();
-				createUser(userURL.href, userURL.type, JSON.stringify(user), function(user) {
+			//s	createUser(userURL.href, userURL.type, JSON.stringify(user), function(user) {
 				window.location.replace("/index.html");
-				});
+				});*/
 		}
 });
 
@@ -96,7 +114,7 @@ function linksToMap(links){
 
 function loadAPI(complete){
 	console.log("Hfunction API");
-	$.get(BASE_URI)
+	$.get(API_URL)
 		.done(function(data){
 			var api = linksToMap(data.links);
 			sessionStorage["api"] = JSON.stringify(api);
@@ -111,10 +129,10 @@ function login(loginid, password, complete){
 	loadAPI(function(){
 		var api = JSON.parse(sessionStorage.api);
 		var uri = API_URL+"login";
-		console.log(uri);
+		console.log("uri : "+uri);
 		$.post(uri,
 			{
-				login: loginid,
+				username: loginid,
 				password: password
 			}).done(function(authToken){
 				authToken.links = linksToMap(authToken.links);
