@@ -1,0 +1,166 @@
+{
+	"id": "a90bb456-2f75-93e3-aa98-05ff7c81c714",
+	"name": "KUJOSA",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "bbbd5f67-5be8-07ef-dbfb-2a087bf54cd6",
+			"name": "USER",
+			"description": "",
+			"order": [
+				"13e0f979-4d75-8ae8-34ff-a5c940f24198",
+				"f2991727-df80-0f5e-8be1-a4e8722bfdd8",
+				"a39ffcfd-0fb9-9d18-14a3-9b42c8099494",
+				"73c5c4d6-37cd-3e3d-7b90-88ffb9904190"
+			],
+			"owner": 0
+		}
+	],
+	"timestamp": 1450100093956,
+	"owner": 0,
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "13e0f979-4d75-8ae8-34ff-a5c940f24198",
+			"headers": "Authorization: Basic bnVsbDpudWxs\n",
+			"url": "http://localhost:8080/kujosa/users",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "POST",
+			"collectionId": "a90bb456-2f75-93e3-aa98-05ff7c81c714",
+			"data": [
+				{
+					"key": "username",
+					"value": "User",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "user@mail.com",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "123",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "nombre",
+					"value": "UserTest",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "http://localhost:8080/kujosa/users",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1452360201700,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "bbbd5f67-5be8-07ef-dbfb-2a087bf54cd6"
+		},
+		{
+			"id": "73c5c4d6-37cd-3e3d-7b90-88ffb9904190",
+			"headers": "X-Auth-Token: e5a59586bdc911e58503240a64d0f97f\n",
+			"url": "http://localhost:8080/kujosa/users/01000000000000000000000000000000",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "PUT",
+			"collectionId": "a90bb456-2f75-93e3-aa98-05ff7c81c714",
+			"data": [
+				{
+					"key": "correu",
+					"value": "cambio",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "pass",
+					"value": "alice",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "image",
+					"value": null,
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "UpdateUser",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1453112066520,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "bbbd5f67-5be8-07ef-dbfb-2a087bf54cd6"
+		},
+		{
+			"id": "a39ffcfd-0fb9-9d18-14a3-9b42c8099494",
+			"headers": "X-Auth-Token: 809D6C1A726411E58EEAE03F49DFD988\n",
+			"url": "http://localhost:8080/kujosa/users/",
+			"pathVariables": {},
+			"preRequestScript": "",
+			"method": "DELETE",
+			"collectionId": "a90bb456-2f75-93e3-aa98-05ff7c81c714",
+			"data": [],
+			"dataMode": "params",
+			"name": "DeleteUser",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1453032795154,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"folder": "bbbd5f67-5be8-07ef-dbfb-2a087bf54cd6"
+		},
+		{
+			"id": "f2991727-df80-0f5e-8be1-a4e8722bfdd8",
+			"headers": "Authorization: Basic bnVsbDpudWxs\n",
+			"url": "http://localhost:8080/kujosa/login",
+			"preRequestScript": "",
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "Alicia",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "123",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1453032588378,
+			"name": "http://localhost:8080/kujosa/login",
+			"description": "",
+			"collectionId": "a90bb456-2f75-93e3-aa98-05ff7c81c714",
+			"responses": [],
+			"folder": "bbbd5f67-5be8-07ef-dbfb-2a087bf54cd6"
+		}
+	]
+}
