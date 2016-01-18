@@ -25,10 +25,10 @@ import java.util.UUID;
  *     |           KUJOSA PROJECT            |
  *     +-------------------------------------+
  *     DONE:
- *     -registerUser
- *     -getUser
- *     -updateUser
- *     -deleteUser
+ *     -registerUser TEST -> OK!
+ *     -getUser TEST -> OK!
+ *     -updateUser TEST -> To REPAIR!
+ *     -deleteUser TEST -> OK!(no answer)
  */
 @Path("users")
 public class UserResource {
@@ -97,11 +97,14 @@ public class UserResource {
         return user;
     }
 
-    @Path("/{id}")
+    @Path("/{username}")
     @PUT
-    @Consumes(KujosaMediaType.KUJOSA_USER)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    //@Consumes(KujosaMediaType.KUJOSA_USER)
     @Produces(KujosaMediaType.KUJOSA_USER)
     public void updateUser(@PathParam("username") String username,@FormParam("correu") String correu, @FormParam("pass") String pass,@FormParam("image") String image) {
+       System.out.println("El user : "+username+" correu : "+correu+" pas :  "+pass+"image : "+image);
+
         if(username == null)
             throw new BadRequestException("entity is null");
         UserDAO userDAO = new UserDAOImpl();
@@ -116,7 +119,7 @@ public class UserResource {
 
     @Path("/{id}")
     @DELETE
-    public void deleteUser(@PathParam("id") String id){
+    public void deleteUser(@PathParam("id") String id, @Context UriInfo uriInfo){
         System.out.println("El usuario :"+id+" se fue a la puta.");
         String userid = securityContext.getUserPrincipal().getName();
         if(!userid.equals(id))
@@ -124,7 +127,7 @@ public class UserResource {
         UserDAO userDAO = new UserDAOImpl();
         try {
             if(!userDAO.deleteUser(id))
-                throw new NotFoundException("User with USername = "+id+" doesn't exist");
+                throw new NotFoundException("User with Username = "+id+" doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }

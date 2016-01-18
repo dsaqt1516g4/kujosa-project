@@ -11,8 +11,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 
-/**
- * Created by kushal on 21/12/15.
+/**    +-------------------------------------+
+ *     |           KUJOSA PROJECT            |
+ *     +-------------------------------------+
+ *
+ * READY FOR TEST
  */
 @Path("news")
 public class NewsResource {

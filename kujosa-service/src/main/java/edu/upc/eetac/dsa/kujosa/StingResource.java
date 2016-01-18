@@ -12,8 +12,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 
-/**
- * Created by sergio on 9/09/15.
+/**    +-------------------------------------+
+ *     |           KUJOSA PROJECT            |
+ *     +-------------------------------------+
+ *
+ * READY FOR TEST
  */
 @Path("stings")
 public class StingResource {

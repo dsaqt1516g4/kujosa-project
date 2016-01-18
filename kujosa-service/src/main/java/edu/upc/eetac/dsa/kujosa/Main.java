@@ -8,7 +8,12 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
-
+/**    +-------------------------------------+
+ *     |           KUJOSA PROJECT            |
+ *     +-------------------------------------+
+ *
+ * READY FOR TEST
+ */
 /**
  * Main class.
  */

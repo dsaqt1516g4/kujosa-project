@@ -3,6 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="d0948e83-7524-4f56-a71e-b1e1180fa213" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/CommentResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/CommentResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/DocumentResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/DocumentResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/EventResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/EventResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/MyResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/MyResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/ThrowableMapper.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/ThrowableMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.java" />
     </list>
     <ignored path="kujosa-project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,11 +37,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserResource.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserResource.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.1905538">
+              <caret line="131" column="53" selection-start-line="131" selection-start-column="53" selection-end-line="131" selection-end-column="53" />
+              <folding>
+                <marker date="1453127938052" expanded="true" signature="5179:5310" placeholder="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KujosaMediaType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="47" column="7" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebApplicationExceptionMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -38,54 +73,71 @@
         <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/LoginResource.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="18" selection-end-column="3" />
               <folding>
                 <marker date="1453118534609" expanded="true" signature="491:494" placeholder="/**...*/" />
+                <marker date="1453118534609" expanded="true" signature="1325:1894" placeholder="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDAOImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="163" column="28" selection-start-line="163" selection-start-column="28" selection-end-line="163" selection-end-column="28" />
+              <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33224756">
-              <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NativeMethodAccessorImpl.class" pinned="false" current-in-tab="false">
-        <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
+      <file leaf-file-name="MyResource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/MyResource.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+              <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDAOQuery.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOQuery.java">
+      <file leaf-file-name="NewsResource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-              <folding>
-                <marker date="1453118534609" expanded="true" signature="39:229" placeholder="/**...*/" />
-              </folding>
+              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StingResource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThrowableMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/ThrowableMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="KujosaRootAPIResource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -103,7 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/News.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAO.java" />
@@ -117,9 +168,21 @@
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Comment.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/DocumentDAOImpl.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Document.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/EventResource.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOQuery.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/CommentResource.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/DocumentResource.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/EventResource.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/MyResource.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/ThrowableMapper.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java" />
       </list>
     </option>
   </component>
@@ -160,9 +223,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="51" />
-    <option name="y" value="24" />
+    <option name="y" value="-4" />
     <option name="width" value="1869" />
-    <option name="height" value="1056" />
+    <option name="height" value="1084" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -189,7 +252,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -272,7 +335,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -603,7 +666,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="51" y="24" width="1869" height="1056" extended-state="6" />
+    <frame x="51" y="-4" width="1869" height="1084" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -611,7 +674,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32846716" sideWeight="0.4842226" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32846716" sideWeight="0.5157774" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3455842" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34942403" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32846716" sideWeight="0.49812734" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -651,8 +714,14 @@
           <properties />
           <option name="timeStamp" value="5" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java</url>
+          <line>105</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -661,80 +730,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/EventDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="46" selection-start-line="24" selection-start-column="46" selection-end-line="24" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/DocumentDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/db/Database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Role.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.0">
-          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/KujosaRootAPI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/EventCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/KujosaError.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Sting.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/CommentDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/CommentDAOQuery.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -781,7 +776,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="19" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -803,7 +797,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="42" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -811,7 +804,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -819,15 +811,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="83" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="83" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/DocumentResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -835,7 +818,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -843,22 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="312" column="35" selection-start-line="312" selection-start-column="35" selection-end-line="312" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -866,22 +832,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="403" selection-start-line="13" selection-start-column="403" selection-end-line="13" selection-end-column="403" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/CommentResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -896,7 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -904,15 +853,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/EventResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.31746033">
-          <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -930,14 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="47" column="7" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/bundles/repackaged/jersey-guava/2.21/jersey-guava-2.21-sources.jar!/jersey/repackaged/com/google/common/collect/Collections2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
@@ -949,41 +881,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334">
           <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.21/jersey-common-2.21-sources.jar!/org/glassfish/jersey/process/internal/RequestScope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3992674">
-          <caret line="547" column="0" selection-start-line="547" selection-start-column="0" selection-end-line="547" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.21/jersey-common-2.21-sources.jar!/org/glassfish/jersey/internal/Errors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5970696">
-          <caret line="274" column="0" selection-start-line="274" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/ServerRuntime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="316" column="0" selection-start-line="316" selection-start-column="0" selection-end-line="316" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/model/ResourceMethodInvoker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="390" column="0" selection-start-line="390" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/model/internal/AbstractJavaResourceMethodDispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19590957">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -999,16 +896,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/LoginResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding>
-            <marker date="1453118534609" expanded="true" signature="491:494" placeholder="/**...*/" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1029,20 +916,220 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java">
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="163" column="28" selection-start-line="163" selection-start-column="28" selection-end-line="163" selection-end-column="28" />
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/ApplicationHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1139" column="0" selection-start-line="1139" selection-start-column="0" selection-end-line="1139" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.21/jersey-container-grizzly2-http-2.21-sources.jar!/org/glassfish/jersey/grizzly2/httpserver/GrizzlyHttpContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33224756">
-          <caret line="33" column="35" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="378" column="0" selection-start-line="378" selection-start-column="0" selection-end-line="378" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/grizzly/grizzly-http-server/2.3.22/grizzly-http-server-2.3.22-sources.jar!/org/glassfish/grizzly/http/server/HttpHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="243" column="0" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/ServerRuntime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5970696">
+          <caret line="324" column="0" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
+          <folding>
+            <element signature="e#12559#13988#0" expanded="true" />
+            <element signature="e#13987#13988#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/model/ResourceMethodInvoker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="390" column="0" selection-start-line="390" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/model/internal/AbstractJavaResourceMethodDispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.21/jersey-common-2.21-sources.jar!/org/glassfish/jersey/process/internal/RequestScope.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43223444">
+          <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.21/jersey-common-2.21-sources.jar!/org/glassfish/jersey/internal/Errors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5970696">
+          <caret line="274" column="0" selection-start-line="274" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
+          <folding>
+            <element signature="e#10165#10324#0" expanded="true" />
+            <element signature="e#10323#10324#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/ws/rs/javax.ws.rs-api/2.0.1/javax.ws.rs-api-2.0.1-sources.jar!/javax/ws/rs/InternalServerErrorException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="69" column="38" selection-start-line="69" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding>
+            <element signature="e#2838#2839#0" expanded="true" />
+            <element signature="e#2907#2908#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/CommentResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="19" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/DocumentResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/EventResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/LoginResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="18" selection-end-column="3" />
+          <folding>
+            <marker date="1453118534609" expanded="true" signature="491:494" placeholder="/**...*/" />
+            <marker date="1453118534609" expanded="true" signature="1325:1894" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/MyResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/ThrowableMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1905538">
+          <caret line="131" column="53" selection-start-line="131" selection-start-column="53" selection-end-line="131" selection-end-column="53" />
+          <folding>
+            <marker date="1453127938052" expanded="true" signature="5179:5310" placeholder="{...}" />
           </folding>
         </state>
       </provider>
