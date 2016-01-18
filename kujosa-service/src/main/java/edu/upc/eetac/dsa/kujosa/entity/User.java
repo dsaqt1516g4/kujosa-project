@@ -3,7 +3,6 @@ package edu.upc.eetac.dsa.kujosa.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import edu.upc.eetac.dsa.kujosa.KujosaRootAPIResource;
 import edu.upc.eetac.dsa.kujosa.LoginResource;
-import edu.upc.eetac.dsa.kujosa.StingResource;
 import edu.upc.eetac.dsa.kujosa.UserResource;
 import org.glassfish.jersey.linking.Binding;
 import org.glassfish.jersey.linking.InjectLink;
@@ -31,9 +30,7 @@ import java.util.List;
 public class User {
     @InjectLinks({
             @InjectLink(resource = KujosaRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Beeter Root API"),
-            @InjectLink(resource = StingResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-stings", title = "Current stings"),
             @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
-            @InjectLink(resource = StingResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-sting", title = "Create sting", type=MediaType.APPLICATION_FORM_URLENCODED),
             @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "self user-profile", title = "User profile", bindings = @Binding(name = "id", value = "${instance.id}"))
     })
     private List<Link> links;
@@ -41,7 +38,8 @@ public class User {
     private String loginid;
     private String email;
     private String fullname;
-    private String image;
+    private String imageURL;
+    private String filename;
 
     public List<Link> getLinks() {
         return links;
@@ -83,11 +81,19 @@ public class User {
         this.fullname = name;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }

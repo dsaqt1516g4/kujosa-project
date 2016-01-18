@@ -8,10 +8,12 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.SecurityContext;
 
-    /**   +---------------------+
-        * |    KUJOSA PROJECT   |
-        * +---------------------+
-        */
+/**    +-------------------------------------+
+ *     |           KUJOSA PROJECT            |
+ *     +-------------------------------------+
+ *
+ * READY FOR TEST
+ */
 
 @Path("/")
 public class KujosaRootAPIResource {

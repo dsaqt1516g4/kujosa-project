@@ -1,9 +1,10 @@
 package edu.upc.eetac.dsa.kujosa;
 
-/**       +---------------------+
-        * |     KUJOSA PROJECT  |
-        * +---------------------+
-        * */
+/**    +-------------------------------------+
+ *     |           KUJOSA PROJECT            |
+ *     +-------------------------------------+
+ *
+ */
 public interface KujosaMediaType {
     String KUJOSA_AUTH_TOKEN = "application/vnd.dsa.kujosa.auth-token+json";
     String KUJOSA_USER = "application/vnd.dsa.kujosa.user+json";
