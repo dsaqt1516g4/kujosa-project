@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Kujosa - Documents</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -42,33 +42,39 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Kujosa Webpage</a>
+                <a class="navbar-brand" href="kujosa.html">Kujosa</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <!--<li>
+                        <a href="index.html">Identificar-se</a>
+                    </li> -->
                     <li>
-                        <a href="about.html">Identificar-se</a>
+                    <a href="perfil.html">Perfil</a></li>
+                    <li>
+                    <li>
+                        <a href="news.html">Notícies</a>
                     </li>
+                    <!-- <li>
+                        <a href="documents.html" >Documents</a>
+                    </li> -->
                     <li>
-                        <a href="articles.html">Articles</a>
-                    </li>
-                    <li>
-                        <a href="documents.html">Documents</a>
+                        <a href="event.html">Esdeveniments</a>
                     </li>
                     <li>
                         <a href="contact.html">Contacte</a>
                     </li>
-                    <li class="dropdown">
-                        <a href="Esdeveniments" class="dropdown-toggle" data-toggle="dropdown">Esdeveniments <b class="caret"></b></a>
+                    <!-- <li class="dropdown">
+                        <a href="event.html" class="dropdown-toggle" data-toggle="dropdown">Esdeveniments<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="portfolio-1-col.html">1 Column Portfolio</a>
+                                <a href="#" data-toggle="modal" data-target="#Crea" id="button_register_modal">Crea esdeveniment</a>
                             </li>
                             <li>
-                                <a href="portfolio-2-col.html">2 Column Portfolio</a>
+                                <a href="#" data-toggle="modal" data-target="#Edita" id="button_register_modal">Edita esdeveniment</a>
                             </li>
-                            <li>
+                             <li>
                                 <a href="portfolio-3-col.html">3 Column Portfolio</a>
                             </li>
                             <li>
@@ -76,9 +82,13 @@
                             </li>
                             <li>
                                 <a href="portfolio-item.html">Single Portfolio Item</a>
-                            </li>
+                            </li> -->
+                    <li>
+                        <a onclick="logout()" href="index.html">Tanca sessió</a>
+                    </li>
                         </ul>
                     </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -91,13 +101,13 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Articles
-                    <small>Subheading</small>
+                <h1 class="page-header">Documents
+                    <small>AESTEC</small>
                 </h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">KUJOSA</a>
+                    <li><a href="index.html">Kujosa</a>
                     </li>
-                    <li class="active">articles</li>
+                    <li class="active">Documents</li>
                 </ol>
             </div>
         </div>
@@ -112,53 +122,6 @@
         <!-- /.row -->
 
         <!-- Service Panels -->
-      
-
-        <!-- Service Tabs -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h2 class="page-header">Articles</h2>
-            </div>
-            <div class="col-lg-12">
-
-                <ul id="myTab" class="nav nav-tabs nav-justified">
-                    <li class="active"><a href="#service-one" data-toggle="tab"><i class="fa fa-tree"></i> Tema 1</a>
-                    </li>
-                    <li class=""><a href="#service-two" data-toggle="tab"><i class="fa fa-car"></i> Tema 2</a>
-                    </li>
-                    <li class=""><a href="#service-three" data-toggle="tab"><i class="fa fa-support"></i> Tema 3</a>
-                    </li>
-                    <li class=""><a href="#service-four" data-toggle="tab"><i class="fa fa-database"></i> Tema 4</a>
-                    </li>
-                </ul>
-
-                <div id="myTabContent" class="tab-content">
-                    <div class="tab-pane fade active in" id="service-one">
-                        <h4>Tema 1</h4>
-                        <p>Explicació del tema 1.</p>
-                        <p></p>
-                    </div>
-                    <div class="tab-pane fade" id="service-two">
-                        <h4>Tema 2</h4>
-                        <p>Explicació del tema 2.</p>
-                        <p></p>
-                    </div>
-                    <div class="tab-pane fade" id="service-three">
-                        <h4>Tema 3</h4>
-                       <p>Explicació del tema 3.</p>
-                        <p></p>
-                        
-                    </div>
-                    <div class="tab-pane fade" id="service-four">
-                        <h4>Tema 4</h4>
-                       <p>Explicació del tema 4.</p>
-                        <p></p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
         <!-- Service List -->
         <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
         <div class="row">
@@ -279,16 +242,69 @@
                     </div>
                 </div>
             </div>
+            <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#Post">Nou document</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Edit">Canviar atributs del document</button>
+            <button type="button" class="btn btn-danger" id="button_delete_docs">Esborrar document</button>
         </div>
         <!-- /.row -->
-
+<!-- MODALS -->
+        <div class="modal fade" id="Post" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">Nou</h4>
+											</div>
+											<div class="modal-body">
+												<div class="input-group input-group-sm">
+													<label for="username">Nom</label>
+                                                    <input type="text" class="form-control input-sm" id="name" placeholder="name">
+												</div>
+												<div class="input-group">
+													<label for="text">Descripció</label>
+                                                    <textarea type="text" rows="5" class="form-control" id="description" placeholder="description"></textarea>
+												</div>												
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel·lar</button>
+												<button type="button" class="btn btn-primary" id="button_post_doc">Publicar</button>
+											</div>
+										</div>
+									</div>
+								</div>
+    <!-- Editar notícia -->
+<div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">Edita</h4>
+											</div>
+											<div class="modal-body">
+												<div class="input-group input-group-sm">
+													<label for="username">Nom</label>
+													<input type="text" class="form-control input-sm" id="name" placeholder="name">
+												</div>
+												<div class="input-group">
+													<label for="text">Descripció</label>
+                                                    <textarea type="text" rows="5" class="form-control" id="description" placeholder="description"></textarea>
+												</div>												
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel·lar</button>
+												<button type="button" class="btn btn-primary" id="button_put_doc">Confirma</button>
+											</div>
+										</div>
+									</div>
+								</div>
+<!-- REST OF PAGE -->
         <hr>
 
         <!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; KUJOSA 2015</p>
+                    <p>Copyright &copy; KUJOSA 2016</p>
                 </div>
             </div>
         </footer>
