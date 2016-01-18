@@ -3,6 +3,12 @@ package edu.upc.eetac.dsa.kujosa.dao;
 import edu.upc.eetac.dsa.kujosa.entity.User;
 import edu.upc.eetac.dsa.kujosa.db.Database;
 
+import javax.imageio.ImageIO;
+import javax.ws.rs.InternalServerErrorException;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -10,6 +16,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
+import java.util.UUID;
 
 /**    +-------------------------------------+
  *     |           KUJOSA PROJECT            |
@@ -35,10 +44,11 @@ public class UserDAOImpl implements UserDAO {
      * @throws UserAlreadyExistsException
      */
     @Override
-    public User createUser(String loginid, String fullname, String email, String password, String image)
+    public User createUser(String loginid, String fullname, String email, String password, InputStream image)
             throws SQLException, UserAlreadyExistsException {
         Connection connection = null;
         PreparedStatement stmt = null;
+        UUID uuid =writeAndConvertImage(image);
         String id = null;
         try {
             User user = getUserByLoginid(loginid);
@@ -63,7 +73,7 @@ public class UserDAOImpl implements UserDAO {
             stmt.setString(3, password);
             stmt.setString(4, fullname);
             stmt.setString(5, email);
-            stmt.setString(6, "default_profile.png");
+            stmt.setString(6, uuid.toString());
             stmt.executeUpdate();
 
             stmt.close();
@@ -84,6 +94,28 @@ public class UserDAOImpl implements UserDAO {
         return getUserById(id);
     }
 
+
+    private UUID writeAndConvertImage(InputStream file) {
+        BufferedImage image = null;
+        try {
+            image = ImageIO.read(file);
+
+        } catch (IOException e) {
+            throw new InternalServerErrorException(
+                    "Something has been wrong when reading the file.");
+        }
+        UUID uuid = UUID.randomUUID();
+        String filename = uuid.toString() + ".png";
+
+        try {
+            PropertyResourceBundle prb = (PropertyResourceBundle) ResourceBundle.getBundle("kujosa");
+            ImageIO.write(image, "png", new File(prb.getString("uploadFolder") + filename));
+        } catch (IOException e) {
+            throw new InternalServerErrorException("Something has been wrong when converting the file.");
+        }
+
+        return uuid;
+    }
     /**
      *
      * @param loginid nom d'usuari s'usara per a fer les cerques
@@ -124,7 +156,7 @@ public class UserDAOImpl implements UserDAO {
                 stmt.setString(3, image);
             }
             else{
-                stmt.setString(3, user.getImage());
+                stmt.setString(3, user.getImageURL());
 
             }
             stmt.setString(4, user.getLoginid());
@@ -191,6 +223,7 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public User getUserByLoginid(String loginid) throws SQLException {
         User user = null;
+        PropertyResourceBundle prop = (PropertyResourceBundle) ResourceBundle.getBundle("kujosa");
 
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -208,8 +241,8 @@ public class UserDAOImpl implements UserDAO {
                 user.setLoginid(rs.getString("loginid"));
                 user.setEmail(rs.getString("email"));
                 user.setFullname(rs.getString("fullname"));
-                user.setImage(rs.getString("image"));
-            }
+                user.setFilename(rs.getString("image")+ ".png");
+                user.setImageURL(prop.getString("imgBaseURL")+ user.getFilename());            }
         } catch (SQLException e) {
             throw e;
         } finally {

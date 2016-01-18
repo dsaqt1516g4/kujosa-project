@@ -21,17 +21,18 @@ import java.sql.SQLException;
 public class NewsResource {
         @Context
         private SecurityContext securityContext;
+//TO REPAIR
 
         @POST
         @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
         @Produces(KujosaMediaType.KUJOSA_NEWS)
-        public Response createNews(@FormParam("headline") String headline, @FormParam("body") String body, @Context UriInfo uriInfo) throws URISyntaxException {
+        public Response createNews(@FormParam("userid") String username,@FormParam("headline") String headline, @FormParam("body") String body, @Context UriInfo uriInfo) throws URISyntaxException {
             if ((headline==null)   ||(body==null))
                 throw new BadRequestException("all parameters are mandatory");
             NewsDAO newsDAO = new NewsDAOImpl();
             News news = null;
             try {
-                news = newsDAO.createNews(securityContext.getUserPrincipal().getName(), headline, body);
+                news = newsDAO.createNews(username, headline, body);
             } catch (SQLException e) {
                 throw new InternalServerErrorException();
             }

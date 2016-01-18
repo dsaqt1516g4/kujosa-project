@@ -1,15 +1,37 @@
 package edu.upc.eetac.dsa.kujosa;
 
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
+
 import edu.upc.eetac.dsa.kujosa.dao.AuthTokenDAOImpl;
+import edu.upc.eetac.dsa.kujosa.dao.UserDAO;
 import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.entity.User;
 import edu.upc.eetac.dsa.kujosa.dao.UserAlreadyExistsException;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAOImpl;
-import edu.upc.eetac.dsa.kujosa.dao.UserDAO;
+
+
+
 
 import javax.imageio.ImageIO;
-import javax.ws.rs.*;
+import javax.jws.soap.SOAPBinding;
+import javax.ws.rs.FormParam;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.core.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.InternalServerErrorException;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.ForbiddenException;
+import javax.ws.rs.GET;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.PUT;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +42,8 @@ import java.sql.SQLException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 import java.util.UUID;
+
+import static javax.ws.rs.core.MediaType.MULTIPART_FORM_DATA;
 
 /**    +-------------------------------------+
  *     |           KUJOSA PROJECT            |
@@ -36,12 +60,11 @@ public class UserResource {
     private SecurityContext securityContext;
 
     @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes (MULTIPART_FORM_DATA)
     @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
-    public Response registerUser(@FormParam("username") String username,  @FormParam("email") String email,
-                                 @FormParam("password") String password, @FormParam("nombre") String fullname,
-                                 @FormParam("image") String image,
-                                 @Context UriInfo uriInfo) throws URISyntaxException {
+    public Response registerUser(@FormDataParam("username") String username,  @FormDataParam("email") String email,
+                                 @FormDataParam("password") String password, @FormDataParam("nombre") String fullname,
+                                 @FormDataParam("imagen") InputStream imagen, @FormDataParam("imagen") FormDataContentDisposition fileDetail, @Context UriInfo uriInfo) throws URISyntaxException {
       System.out.println("username :"+username+" email :"+email+" password : "+password+" name :"+fullname);
 
        if(username == null || password == null || email == null || fullname == null)
@@ -50,12 +73,14 @@ public class UserResource {
         User user = null;
         AuthToken authToken = null;
         try{
-            user = userDAO.createUser(username, fullname, email, password, image);
+            user = userDAO.createUser(username, fullname, email, password, imagen);
             authToken = (new AuthTokenDAOImpl()).createAuthToken(user.getId());
         }catch (UserAlreadyExistsException e){
             throw new WebApplicationException("Username already exists", Response.Status.CONFLICT);
         }catch(SQLException e){
             throw new InternalServerErrorException();
+        }catch(NullPointerException e) {
+            System.out.println(e.toString());
         }
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + user.getId());
         return Response.created(uri).type(KujosaMediaType.KUJOSA_AUTH_TOKEN).entity(authToken).build();
@@ -66,8 +91,7 @@ public class UserResource {
              image = ImageIO.read(file);
 
          } catch (IOException e) {
-             throw new InternalServerErrorException(
-                     "Something has been wrong when reading the file.");
+             throw new InternalServerErrorException("Something has been wrong when reading the file.");
          }
          UUID uuid = UUID.randomUUID();
          String filename = uuid.toString() + ".png";
@@ -81,6 +105,9 @@ public class UserResource {
 
          return uuid;
      }
+
+
+
 
     @Path("/{id}")
     @GET

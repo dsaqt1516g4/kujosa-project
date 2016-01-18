@@ -1,21 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d0948e83-7524-4f56-a71e-b1e1180fa213" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/CommentResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/CommentResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/DocumentResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/DocumentResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/EventResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/EventResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/MyResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/MyResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/ThrowableMapper.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/ThrowableMapper.java" />
+    <list default="true" id="61ed10d7-cc62-4b3a-994f-3666dca49196" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/www/Documents.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_12.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_javax_inject_2_4_0_b31.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_jaxrs_jackson_jaxrs_json_provider_2_5_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/StingDAOQuery.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_osgi_resource_locator_1_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_server_2_21.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_json_jackson_2_21.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/StingDAO.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/StingCollection.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_grizzly_grizzly_http_2_3_22.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_jaxrs_jackson_jaxrs_base_2_5_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_bundles_repackaged_jersey_guava_2_21.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_containers_jersey_container_grizzly2_http_2_21.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_external_aopalliance_repackaged_2_4_0_b31.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/StingDAOImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_ext_jersey_declarative_linking_2_21.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_18_2_GA.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_api_2_4_0_b31.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_5_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_locator_2_4_0_b31.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_grizzly_grizzly_framework_2_3_22.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/entity/Sting.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/entity/StingCollection.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_5_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_ext_jersey_entity_filtering_2_21.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Sting.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_hk2_hk2_utils_2_4_0_b31.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_client_2_21.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_5_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_web_javax_el_2_2_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_ws_rs_javax_ws_rs_api_2_0_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/StingDAOQuery.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_12.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/StingDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_java6_2_3_9.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_jaxb_2_21.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/StingResource.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_common_2_21.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/StingDAOImpl.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_36.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_el_javax_el_api_2_2_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_grizzly_grizzly_http_server_2_3_22.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_jaxb_annotations_2_5_4.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/MyResource.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/MyResource.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/KujosaRootAPI.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/KujosaRootAPI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOImpl.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/entity/KujosaRootAPI.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/entity/KujosaRootAPI.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/UserDAO.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/UserDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/pom.xml" afterPath="$PROJECT_DIR$/kujosa-service/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/AuthToken.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/AuthToken.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOQuery.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOQuery.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/kujosa-service.iml" afterPath="$PROJECT_DIR$/kujosa-service/kujosa-service.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/UserResource.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/UserResource.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/NewsDAOImpl.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/NewsDAOImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/documents.html" afterPath="$PROJECT_DIR$/www/documents.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/NewsResource.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/NewsResource.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/kujosadb-schema.sql" afterPath="$PROJECT_DIR$/sql/kujosadb-schema.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/entity/AuthToken.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/entity/AuthToken.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAO.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/NewsDAOQuery.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/dao/NewsDAOQuery.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/DocumentResource.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/DocumentResource.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java" afterPath="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/EventResource.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/EventResource.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/www/index.html" afterPath="$PROJECT_DIR$/www/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/CommentResource.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/CommentResource.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/entity/User.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/entity/User.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/ThrowableMapper.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/ThrowableMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/Main.class" afterPath="$PROJECT_DIR$/kujosa-service/target/classes/edu/upc/eetac/dsa/kujosa/Main.class" />
     </list>
     <ignored path="kujosa-project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,106 +116,103 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserResource.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1905538">
-              <caret line="131" column="53" selection-start-line="131" selection-start-column="53" selection-end-line="131" selection-end-column="53" />
-              <folding>
-                <marker date="1453127938052" expanded="true" signature="5179:5310" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KujosaMediaType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="WebApplicationExceptionMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginResource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/LoginResource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="18" selection-end-column="3" />
-              <folding>
-                <marker date="1453118534609" expanded="true" signature="491:494" placeholder="/**...*/" />
-                <marker date="1453118534609" expanded="true" signature="1325:1894" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyResource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/MyResource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="NewsResource.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StingResource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java">
+      <file leaf-file-name="UserDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+              <caret line="17" column="95" selection-start-line="17" selection-start-column="95" selection-end-line="17" selection-end-column="95" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ThrowableMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/ThrowableMapper.java">
+      <file leaf-file-name="UserDAOImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+              <caret line="237" column="28" selection-start-line="237" selection-start-column="28" selection-end-line="237" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KujosaRootAPIResource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java">
+      <file leaf-file-name="UserDAOQuery.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOQuery.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
+              <caret line="17" column="99" selection-start-line="17" selection-start-column="99" selection-end-line="17" selection-end-column="99" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginResource.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/LoginResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.70280373">
+              <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractJavaResourceMethodDispatcher.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/model/internal/AbstractJavaResourceMethodDispatcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="139" column="12" selection-start-line="139" selection-start-column="12" selection-end-line="139" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="kujosa.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/target/classes/kujosa.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserResource.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.2903225">
+              <caret line="69" column="9" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/kujosa-service/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.5517242">
+              <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -155,34 +231,17 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAO.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOImpl.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOQuery.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/News.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAO.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/EventDAO.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Event.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/EventDAOQuery.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/DocumentDAOQuery.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/DocumentDAO.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/EventDAOImpl.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/StingCollection.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Comment.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/DocumentDAOImpl.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Document.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOQuery.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/CommentResource.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/DocumentResource.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/EventResource.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/MyResource.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/ThrowableMapper.java" />
-        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/pom.xml" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.java" />
         <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java" />
+        <option value="$PROJECT_DIR$/kujosa-service/target/classes/kujosa.properties" />
+        <option value="$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java" />
       </list>
     </option>
   </component>
@@ -191,6 +250,11 @@
       <MavenGeneralSettings>
         <option name="mavenHome" value="Bundled (Maven 3)" />
       </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
     </option>
   </component>
   <component name="MavenProjectNavigator">
@@ -253,6 +317,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -268,6 +333,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="kujosa-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kujosa-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kujosa-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kujosa-project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kujosa-service" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -300,10 +397,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -335,12 +428,11 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -644,15 +736,12 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d0948e83-7524-4f56-a71e-b1e1180fa213" name="Default" comment="" />
-      <created>1451871765284</created>
+      <changelist id="61ed10d7-cc62-4b3a-994f-3666dca49196" name="Default" comment="" />
+      <created>1453129069758</created>
       <option name="number" value="Default" />
-      <updated>1451871765284</updated>
+      <updated>1453129069758</updated>
     </task>
     <servers />
   </component>
@@ -667,24 +756,24 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="-4" width="1869" height="1084" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32846716" sideWeight="0.4842226" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.48930335" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32846716" sideWeight="0.48483178" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32846716" sideWeight="0.5157774" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34942403" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32846716" sideWeight="0.49812734" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41084462" sideWeight="0.5348327" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29246345" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.4958859" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31803963" sideWeight="0.45255074" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295099" sideWeight="0.49149755" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16346681" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2473944" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24971879" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937434" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41084462" sideWeight="0.4651673" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -694,14 +783,6 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
-  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -709,19 +790,19 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/LoginResource.java</url>
-          <line>29</line>
+          <url>file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java</url>
+          <line>67</line>
           <properties />
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java</url>
-          <line>105</line>
+          <url>file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/LoginResource.java</url>
+          <line>28</line>
           <properties />
-          <option name="timeStamp" value="6" />
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -730,388 +811,52 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/CommentDAOQuery.java">
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/News.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/StingDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/StingDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/StingDAOQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="19" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/CommentDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/EventDAOQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/DocumentDAOQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/DocumentDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="83" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/EventDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="312" column="35" selection-start-line="312" selection-start-column="35" selection-end-line="312" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/StingCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="403" selection-start-line="13" selection-start-column="403" selection-end-line="13" selection-end-column="403" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/EventDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/DocumentDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/Document.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27125943">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/CommentCollection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/bundles/repackaged/jersey-guava/2.21/jersey-guava-2.21-sources.jar!/jersey/repackaged/com/google/common/collect/Collections2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="319" column="0" selection-start-line="319" selection-start-column="0" selection-end-line="319" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/bundles/repackaged/jersey-guava/2.21/jersey-guava-2.21-sources.jar!/jersey/repackaged/com/google/common/collect/Sets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/zaxxer/HikariCP-java6/2.3.9/HikariCP-java6-2.3.9-sources.jar!/com/zaxxer/hikari/proxy/ConnectionProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="267" column="0" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+          <caret line="17" column="95" selection-start-line="17" selection-start-column="95" selection-end-line="17" selection-end-column="95" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/zaxxer/HikariCP-java6/2.3.9/HikariCP-java6-2.3.9-sources.jar!/com/zaxxer/hikari/proxy/PreparedStatementProxy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3992674">
-          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOQuery.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding>
-            <marker date="1453118534609" expanded="true" signature="39:229" placeholder="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/ApplicationHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1139" column="0" selection-start-line="1139" selection-start-column="0" selection-end-line="1139" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.21/jersey-container-grizzly2-http-2.21-sources.jar!/org/glassfish/jersey/grizzly2/httpserver/GrizzlyHttpContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="378" column="0" selection-start-line="378" selection-start-column="0" selection-end-line="378" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/grizzly/grizzly-http-server/2.3.22/grizzly-http-server-2.3.22-sources.jar!/org/glassfish/grizzly/http/server/HttpHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="243" column="0" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/ServerRuntime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5970696">
-          <caret line="324" column="0" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
-          <folding>
-            <element signature="e#12559#13988#0" expanded="true" />
-            <element signature="e#13987#13988#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/model/ResourceMethodInvoker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="390" column="0" selection-start-line="390" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/model/internal/AbstractJavaResourceMethodDispatcher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.21/jersey-common-2.21-sources.jar!/org/glassfish/jersey/process/internal/RequestScope.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43223444">
-          <caret line="321" column="0" selection-start-line="321" selection-start-column="0" selection-end-line="321" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-common/2.21/jersey-common-2.21-sources.jar!/org/glassfish/jersey/internal/Errors.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5970696">
-          <caret line="274" column="0" selection-start-line="274" selection-start-column="0" selection-end-line="274" selection-end-column="0" />
-          <folding>
-            <element signature="e#10165#10324#0" expanded="true" />
-            <element signature="e#10323#10324#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="138" column="0" selection-start-line="138" selection-start-column="0" selection-end-line="138" selection-end-column="0" />
+          <caret line="225" column="54" selection-start-line="225" selection-start-column="54" selection-end-line="225" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/ws/rs/javax.ws.rs-api/2.0.1/javax.ws.rs-api-2.0.1-sources.jar!/javax/ws/rs/InternalServerErrorException.java">
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="38" selection-start-line="69" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding>
-            <element signature="e#2838#2839#0" expanded="true" />
-            <element signature="e#2907#2908#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/CommentResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="19" selection-end-column="3" />
+          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/DocumentResource.java">
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/EventResource.java">
+    <entry file="file://$PROJECT_DIR$/kujosa-service/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaRootAPIResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="3" selection-start-line="15" selection-start-column="3" selection-end-line="15" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/LoginResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="18" selection-end-column="3" />
-          <folding>
-            <marker date="1453118534609" expanded="true" signature="491:494" placeholder="/**...*/" />
-            <marker date="1453118534609" expanded="true" signature="1325:1894" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="32" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/MyResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/StingResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="3" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/ThrowableMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/WebApplicationExceptionMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="2" selection-start-line="13" selection-start-column="2" selection-end-line="13" selection-end-column="2" />
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1119,20 +864,348 @@
     <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="75" selection-start-line="8" selection-start-column="75" selection-end-line="8" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="98" column="90" selection-start-line="98" selection-start-column="90" selection-end-line="98" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/model/internal/AbstractJavaResourceMethodDispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="95" selection-start-line="17" selection-start-column="95" selection-end-line="17" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="75" column="3" selection-start-line="75" selection-start-column="3" selection-end-line="95" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="75" selection-start-line="8" selection-start-column="75" selection-end-line="8" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/containers/jersey-container-grizzly2-http/2.21/jersey-container-grizzly2-http-2.21-sources.jar!/org/glassfish/jersey/grizzly2/httpserver/GrizzlyHttpServerFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37362638">
+          <caret line="298" column="0" selection-start-line="298" selection-start-column="0" selection-end-line="298" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/model/ResourceMethodInvoker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="390" column="0" selection-start-line="390" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/ServerRuntime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43364486">
+          <caret line="318" column="0" selection-start-line="318" selection-start-column="0" selection-end-line="318" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/internal/process/SecurityContextInjectee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21097955">
+          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/ws/rs/javax.ws.rs-api/2.0.1/javax.ws.rs-api-2.0.1-sources.jar!/javax/ws/rs/core/SecurityContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2990654">
+          <caret line="81" column="7" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="87" selection-start-line="43" selection-start-column="87" selection-end-line="43" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="68" column="0" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/NewsDAOQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="75" selection-start-line="8" selection-start-column="75" selection-end-line="8" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaMediaType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/KujosaResourceConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5517242">
+          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="95" selection-start-line="17" selection-start-column="95" selection-end-line="17" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/NewsResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/UserResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1905538">
-          <caret line="131" column="53" selection-start-line="131" selection-start-column="53" selection-end-line="131" selection-end-column="53" />
+        <state vertical-scroll-proportion="3.2903225">
+          <caret line="69" column="9" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="9" />
           <folding>
-            <marker date="1453127938052" expanded="true" signature="5179:5310" placeholder="{...}" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/target/classes/kujosa.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/jersey/core/jersey-server/2.21/jersey-server-2.21-sources.jar!/org/glassfish/jersey/server/model/internal/AbstractJavaResourceMethodDispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="139" column="12" selection-start-line="139" selection-start-column="12" selection-end-line="139" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="99" selection-start-line="17" selection-start-column="99" selection-end-line="17" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/dao/UserDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="237" column="28" selection-start-line="237" selection-start-column="28" selection-end-line="237" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kujosa-service/src/main/java/edu/upc/eetac/dsa/kujosa/LoginResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.70280373">
+          <caret line="39" column="55" selection-start-line="39" selection-start-column="55" selection-end-line="39" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>kujosa-project</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.4</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>

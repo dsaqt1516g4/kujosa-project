@@ -27,8 +27,9 @@ public class NewsDAOImpl implements NewsDAO{
 
             stmt = connection.prepareStatement(NewsDAOQuery.CREATE_NEWS);
             stmt.setString(1, id);
-            stmt.setString(2, headline);
-            stmt.setString(3, body);
+            stmt.setString(2,userid);
+            stmt.setString(3, headline);
+            stmt.setString(4, body);
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;
