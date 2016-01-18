@@ -1,3 +1,82 @@
+$(function(){
+   getCurrentUserProfile(function(user){
+      $("#aProfile").text(user.fullname + ' ');
+      $("#aProfile").append('<span class="caret"></span>');
+   });
+
+   var authToken = JSON.parse(sessionStorage["auth-token"]);
+   var currentNewsUri = authToken["links"]["current-news"].uri;
+   loadNews(currentNewsUri, function(news){
+      $("#news-list").empty();
+      processNewCollection(news);
+   });
+});
+
+function previousNews(){
+  loadNews($('#formPrevious').attr('action'), function(news){
+    processNewCollection(news);
+  });
+}
+
+function processNewCollection(news){
+  var lastIndex = news["news"].length - 1;
+  $.each(news["news"], function(i,new){
+      new.links=linksToMap(new.links);
+      var edit = new.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
+      $("#news-list").append(listItemHTML(new.links["self"].uri, new.headline, new.body, edit));
+      if(i==0)
+        $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
+      if(i==lastIndex){
+        $('#formPrevious').attr('action', new["links"].previous.uri);
+      }
+  });
+
+   $("#formPrevious").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      previousNews();
+      $("#buttonPrevious").blur();
+    });
+
+  $("a.list-group-item").click(function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var uri = $(this).attr("href");
+    getNew(uri, function(new){
+      // In this example we only log the new
+      console.log(new);
+    });
+  });
+  $(".glyphicon-pencil").click(function(e){
+    e.preventDefault();
+    alert("This should open a new editor. But this is only an example.");});
+}
+
+$("#aCloseSession").click(function(e){
+  e.preventDefault();
+  logout(function(){
+    window.location.replace('login.html');
+  });
+});
+
+
+
+
+
+function listItemHTML(uri, subject, creator, edit){
+  var a = '<a class="list-group-item" href="'+ uri +'">';
+  var p = '<p class="list-group-item-text unclickable">' + subject + '</p>';
+  var h = (edit) ? '<h6 class="list-group-item-heading unclickable" align="right">'+creator+' <span class="glyphicon glyphicon-pencil clickable"></span></h6>' : '<h6 class="list-group-item-heading unclickable" align="right">'+creator+'</h6>';;
+  return a + p +  h + '</a>';
+}
+
+
+
+
+
+
+/* NEWS OLD */
+
 var API_BASE_URL = "http://147.83.7.155:8080/kujosa";
 
 //var id = $.cookie('id');
@@ -24,14 +103,24 @@ $("#logout").click(function(e) {
    logout();
 });
 
-function logout() {
-	$("#logout").hide();
-    $("#perfil").hide();
-    $("#addnews").hide();
-		 $.removeCookie('email');
-		 $.removeCookie('password');
-         $.cookie('loggedin', "nologuejat");
-        window.location = "http://147.83.7.155/kujosa/index.html";
+function loadNews(uri, complete){
+	// var authToken = JSON.parse(sessionStorage["auth-token"]);
+	// var uri = authToken["links"]["current-news"].uri;
+	$.get(uri)
+		.done(function(news){
+			news.links = linksToMap(news.links);
+			complete(news);
+		})
+		.fail(function(){});
+}
+
+function getNew(uri, complete){
+	$.get(uri)
+		.done(function(new){
+			complete(new);
+		})
+		.fail(function(data){
+		});
 }
 
 
