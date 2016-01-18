@@ -3,7 +3,6 @@ package edu.upc.eetac.dsa.kujosa.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import edu.upc.eetac.dsa.kujosa.KujosaRootAPIResource;
 import edu.upc.eetac.dsa.kujosa.LoginResource;
-import edu.upc.eetac.dsa.kujosa.StingResource;
 import edu.upc.eetac.dsa.kujosa.UserResource;
 import org.glassfish.jersey.linking.Binding;
 import org.glassfish.jersey.linking.InjectLink;
