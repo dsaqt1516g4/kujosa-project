@@ -1,5 +1,10 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_form"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
@@ -8,7 +13,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.eetc.aestec.aestec.LoginActivity">
+    tools:context="com.eetc.aestec.aestec.LoginActivity"
+    android:weightSum="1">
 
     <!-- Login progress -->
     <ProgressBar
@@ -18,12 +24,19 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:visibility="gone"/>
-
+    <ImageView
+        android:layout_width="143dp"
+        android:layout_height="186dp"
+        android:id="@+id/logo"
+        android:src="@drawable/ant"
+        android:layout_gravity="center_horizontal" />
     <LinearLayout
         android:id="@+id/email_login_form"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_width="325dp"
+        android:layout_height="154dp"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -31,12 +44,9 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
 
-        </android.support.design.widget.TextInputLayout>
+
 
         <AutoCompleteTextView
             android:id="@+id/email"
@@ -59,22 +69,20 @@
             android:maxLines="1"
             android:singleLine="true"/>
 
-        <Button
-            android:id="@+id/email_sign_in_button"
-            style="?android:textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
-            android:text="@string/action_sign_in"
-            android:textStyle="bold"/>
-
 
     </LinearLayout>
 
-    <ScrollView
-        android:id="@+id/login_form"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </ScrollView>
+
+
+
+    <Button
+        android:id="@+id/email_sign_in_button"
+        style="?android:textAppearanceSmall"
+        android:layout_width="199dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/action_sign_in_short"
+        android:textStyle="bold"/>
 </LinearLayout>
+</ScrollView>
