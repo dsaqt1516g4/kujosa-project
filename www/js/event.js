@@ -111,10 +111,10 @@ function addMarker(myLatlng) {
 		  markers = [];
 		}
 
-google.maps.event.addDomListener(window, 'load', initialize);
-function(user){
-      $("#username").text(user.fullname + ' ');
-}
+//google.maps.event.addDomListener(window, 'load', initialize);
+//function(user){
+//      $("#username").text(user.fullname + ' ');
+//}
 
 function createEvent2(){
 	var event = new Object();
@@ -132,7 +132,7 @@ function createEvent2(){
 
 /* EDICIÓ d'ESDEVENIMENTS */
 
-var API_URL= "http://147.83.7.159:8080/kujosa-api/";
+//var API_URL= "http://147.83.7.159:8080/kujosa-api/";
 
 var eventURL;
 var eventID;
@@ -198,7 +198,7 @@ function loadEvent(url){
 }
 
 
-function initialize() {
+/* function initialize() {
 	  var mapOptions = {
 	    zoom: 15
 	  };
@@ -285,4 +285,4 @@ function initialize() {
 
 	google.maps.event.addDomListener(window, 'load', initialize);
 
-
+*/

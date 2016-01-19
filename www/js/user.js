@@ -95,12 +95,6 @@ $("#save_btn").click(function(e) {
 
 var userURL;
 
-$(document).ready(function() {
-	loadRootAPI(function(rootAPI) {
-		userURL = rootAPI.getLink('create-user');
-	});
-});
-
 /* $("#register_btn").click(function(e) {
 		e.preventDefault();
 		
@@ -332,17 +326,9 @@ function Login(username, password){
 
 $(document).ready(function(){
 
-	if($.cookie('username')==undefined){
-		window.location.replace("index.html");
-	}
-	loadRootAPI(function(rootAPI){
-		eventsURL = rootAPI.getLink('events').href;
-	});
-	;
-	var followedEventsURL=$.cookie('link-user')+'/events/followed';
-	var myEventsURL=$.cookie('link-user')+'/events';
-	var myCommentsURL=$.cookie('link-user') +'/comments';
-	var myURL =$.cookie('link-user');
+	var myEventsURL=null;
+	var myCommentsURL=null;
+	var myURL =null;
 	loadMyEvents(myEventsURL);
 	loadMyProfile(myURL);
 	loadMyComments(myCommentsURL);
