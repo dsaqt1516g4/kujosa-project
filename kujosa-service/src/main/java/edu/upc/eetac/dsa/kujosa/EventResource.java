@@ -18,6 +18,7 @@ import java.sql.SQLException;
  *
  * READY FOR TEST
  */
+@Path("events")
 public class EventResource {
     @Context
     private SecurityContext securityContext;
@@ -25,18 +26,18 @@ public class EventResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_EVENT)
-    public Response createSting(@FormParam("titol") String titol, @FormParam("text") String text,
-                                @FormParam("latitud") long lat, @FormParam("longitud") long lon,
+    public Response createEvents(@FormParam("titol") String titol, @FormParam("text") String text,
+                                 @FormParam("latitud") long lat, @FormParam("longitud") long lon,
                                 @FormParam("ratio") int ratio, @FormParam("startdate") long startdate,
-                                @FormParam("enddate") long enddate,
+                                @FormParam("enddate") long enddate,@FormParam("userid") String username,
                                 @Context UriInfo uriInfo) throws URISyntaxException {
         if (titol == null || text == null)
-            throw new BadRequestException("all parameters are mandatory");
+            throw new BadRequestException("Title and text are mandatories");
         EventDAO eventDAO = new EventDAOImpl();
         Event event = null;
         AuthToken authToken = null;
         try {
-            event = eventDAO.createEvent(securityContext.getUserPrincipal().getName(), titol, text, lat, lon, startdate, enddate);
+            event = eventDAO.createEvent(username, titol, text, lat, lon, startdate, enddate);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
