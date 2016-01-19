@@ -1,9 +1,5 @@
 /* NOSTRA API */
 
-var cookies = document.cookie;
-var username = getCookie("username");
-var password = getCookie("password");
-
 var eventURL;
 var eventID;
 var commentsURL;
@@ -40,28 +36,6 @@ $('#delete_event_btn').click(function(e){
 $("#edit_event_btn").click(function(e){
 	e.preventDefault();
 	window.location.replace("/edit_event.html");
-});
-
-$(document).ready(function(){
-
-	if($.cookie('username')==undefined){
-		window.location.replace("index.html");
-	}
-	eventURL=$.cookie('link-event');
-	commentsURL=$.cookie('link-comment');
-	$('<a id="username_loged">'+ $.cookie('username') +'</a>').appendTo($('#user_loged'));
-	$('<h1>'+ $.cookie('username') +'</h1>').appendTo($('#username'));
-	loadRootAPI(function(rootAPI){
-		eventsURL = rootAPI.getLink('events').href;
-		loadEvent(eventURL);
-	});
-	
-
-	var followedEventsURL=$.cookie('link-user')+'/events/followed';
-	var myEventsURL=$.cookie('link-user')+'/events';
-	var myURL =$.cookie('link-user');
-	loadFollowers(eventURL+"/users");
-	
 });
 
 function loadEvent(url){
@@ -110,7 +84,7 @@ function initialize() {
 	});
 }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+//google.maps.event.addDomListener(window, 'load', initialize);
 
 function loadComments(url){
 	var comments = getComments(url, function(commentCollection){

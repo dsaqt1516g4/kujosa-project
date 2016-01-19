@@ -9,9 +9,9 @@ import java.sql.SQLException;
  * Created by juan on 09/12/15.
  */
 public interface CommentDAO {
-    Comment createComment(String userid, String eventid, String content, String image) throws SQLException;
+    public Comment createComment(String user, String eventid, String content) throws SQLException ;
     Comment getCommentById(String id) throws SQLException;
     CommentCollection getComments(int length, String eventid, long before, long after) throws SQLException; //en aquest tinc dubtes
-    Comment updateComment(String id, String content, String image, int ratio) throws SQLException;
+    public Comment updateComment(String id, String content) throws SQLException;
     boolean deleteComment(String id) throws SQLException;
 }

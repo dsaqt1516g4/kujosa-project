@@ -26,4 +26,6 @@ public interface UserDAO {
     boolean deleteUser(String id) throws SQLException;
 
     boolean checkPassword(String id, String password) throws SQLException;
+
+    boolean isAdmin(String id) throws SQLException;
 }

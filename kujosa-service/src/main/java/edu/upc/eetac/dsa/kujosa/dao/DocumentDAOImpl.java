@@ -3,6 +3,7 @@ package edu.upc.eetac.dsa.kujosa.dao;
 import edu.upc.eetac.dsa.kujosa.db.Database;
 import edu.upc.eetac.dsa.kujosa.entity.Document;
 import edu.upc.eetac.dsa.kujosa.entity.DocumentCollection;
+import edu.upc.eetac.dsa.kujosa.entity.User;
 
 import java.sql.*;
 
@@ -17,7 +18,8 @@ public class DocumentDAOImpl implements DocumentDAO {
         PreparedStatement stmt = null;
         String id = null;
         try {
-
+            UserDAO usD= new UserDAOImpl();
+            User capdou = usD.getUserByLoginid(userid);
             connection = Database.getConnection();
 
             stmt = connection.prepareStatement(UserDAOQuery.UUID);
@@ -27,16 +29,14 @@ public class DocumentDAOImpl implements DocumentDAO {
             else
                 throw new SQLException();
 
-            connection.setAutoCommit(false);
-
-            stmt.close();
             stmt = connection.prepareStatement(DocumentDAOQuery.CREATE_DOCUMENT);
             stmt.setString(1, id);
-            stmt.setString(2, userid);
+            stmt.setString(2, capdou.getId());
             stmt.setString(3, name);
             stmt.setString(4, description);
             stmt.setString(5, path);
-            connection.commit();
+            stmt.executeUpdate();
+
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -59,6 +59,7 @@ public class DocumentDAOImpl implements DocumentDAO {
         try {
             // Obtiene la conexión del DataSource
             connection = Database.getConnection();
+
 
             // Prepara la consulta
             stmt = connection.prepareStatement(DocumentDAOQuery.GET_DOCUMENT_BY_ID);
@@ -138,12 +139,15 @@ public class DocumentDAOImpl implements DocumentDAO {
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
+            UserDAO usd= new UserDAOImpl();
+            User us=  usd.getUserByLoginid(name);
             connection = Database.getConnection();
 
+
             stmt = connection.prepareStatement(DocumentDAOQuery.UPDATE_DOCUMENT);
-            stmt.setString(1, name);
-            stmt.setString(2, description);
-            stmt.setString(3, id);
+            //stmt.setString(1, us.getId());
+            stmt.setString(1, description);
+            stmt.setString(2, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)

@@ -16,6 +16,10 @@ import java.sql.SQLException;
  *     +-------------------------------------+
  *
  * READY FOR TEST
+ * Create TEST->OK!
+ * Get TEST->OK!
+ * PUT ->OK!
+ * DELETE ->OK!
  */
 @Path("documents")
 
@@ -26,14 +30,14 @@ public class DocumentResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_DOCUMENT)
-    public Response createDocument(@FormParam("name") String name, @FormParam("description") String description, @FormParam("path") String path, @Context UriInfo uriInfo) throws URISyntaxException {
+    public Response createDocument(@FormParam("name") String name, @FormParam("description") String description, @FormParam("path") String path, @FormParam("userid") String username, @Context UriInfo uriInfo) throws URISyntaxException {
         if (name == null || path == null)
             throw new BadRequestException("all parameters are mandatory");
         DocumentDAO documentDAO = new DocumentDAOImpl();
         Document document = null;
         AuthToken authToken = null;
         try {
-            document = documentDAO.createDocument(securityContext.getUserPrincipal().getName(), name, description, path);
+            document = documentDAO.createDocument(username, name, description, path);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
@@ -80,21 +84,16 @@ public class DocumentResource {
 
     @Path("/{id}")
     @PUT
-    @Consumes(KujosaMediaType.KUJOSA_DOCUMENT)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_DOCUMENT)
-    public Document updateDocument(@PathParam("id") String id, Document document) {
-        if (document == null)
+    public Document updateDocument(@PathParam("id") String id, @FormParam("name") String name,  @FormParam("description") String description) {
+        Document document=null;
+        if (id == null)
             throw new BadRequestException("entity is null");
-        if (!id.equals(document.getId()))
-            throw new BadRequestException("path parameter id and entity parameter id doesn't match");
-
-        String userid = securityContext.getUserPrincipal().getName();
-        if (!userid.equals(document.getUserid()))
-            throw new ForbiddenException("operation not allowed");
 
         DocumentDAO documentDAO = new DocumentDAOImpl();
         try {
-            document = documentDAO.updateDocument(id, document.getName(), document.getPath());
+           document = documentDAO.updateDocument(id,name, description);
             if (document == null)
                 throw new NotFoundException("Document with id = " + id + " doesn't exist");
         } catch (SQLException e) {

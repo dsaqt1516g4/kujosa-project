@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.kujosa.dao;
 
+import edu.upc.eetac.dsa.kujosa.entity.Role;
 import edu.upc.eetac.dsa.kujosa.entity.User;
 import edu.upc.eetac.dsa.kujosa.db.Database;
 
@@ -316,4 +317,41 @@ public class UserDAOImpl implements UserDAO {
             if (connection != null) connection.close();
         }
     }
+
+    @Override
+    public boolean isAdmin(String id) throws SQLException {
+
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        try {
+            connection = Database.getConnection();
+String r=null;
+            stmt = connection.prepareStatement(UserDAOQuery.IS_ADMIN);
+            stmt.setString(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                 r = (rs.getString("role"));
+            }
+            if (Role.admin.equals(r)){
+                    return true;
+                }
+            else {
+                return false;}
+
+        }
+
+        catch ( SQLException e) {
+            throw e;
+        } finally {
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
+    }
 }
+
+
+
+
+
+
+

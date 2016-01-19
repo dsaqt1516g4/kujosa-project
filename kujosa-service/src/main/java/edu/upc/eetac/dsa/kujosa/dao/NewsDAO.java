@@ -14,4 +14,6 @@ public interface NewsDAO {
     public NewsCollection getNews(long timestamp, boolean before) throws SQLException;
     public News updateNews(String id, String headline, String body) throws SQLException;
     public boolean deleteNews(String id) throws SQLException;
-}
+    public News getNewsByUser(String id) throws SQLException ;
+
+    }

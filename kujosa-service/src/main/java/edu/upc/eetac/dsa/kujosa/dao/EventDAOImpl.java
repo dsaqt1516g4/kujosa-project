@@ -23,7 +23,7 @@ import java.sql.*;
  */
 public class EventDAOImpl implements EventDAO {
     @Override
-    public Event createEvent(String userid, String titol, String text, long lat, long lon, long startDate, long endDate) throws SQLException{
+    public Event createEvent(String username, String titol, String text, long lat, long lon, long startDate, long endDate) throws SQLException{
         Connection connection = null;
         PreparedStatement stmt = null;
         String id = null;
@@ -37,9 +37,13 @@ public class EventDAOImpl implements EventDAO {
             else
                 throw new SQLException();
 
+            UserDAO userdao = new UserDAOImpl();
+            User manolo = userdao.getUserByLoginid(username);
+
+
             stmt = connection.prepareStatement(EventDAOQuery.CREATE_EVENT);
             stmt.setString(1, id);
-            stmt.setString(2,userid);
+            stmt.setString(2,manolo.getId());
             stmt.setString(3, titol);
             stmt.setString(4, text);
             stmt.setLong(5,lat);
@@ -100,7 +104,7 @@ public class EventDAOImpl implements EventDAO {
         try {
             connection = Database.getConnection();
             stmt = connection.prepareStatement(EventDAOQuery.GET_EVENT_BY_ID_QUERY);
-            stmt.setInt(1, Integer.valueOf(eventid));
+            stmt.setString(1, eventid);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 event.setId(rs.getString("id"));

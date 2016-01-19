@@ -34,8 +34,6 @@ public class Comment {
     private String userid;
     private String eventid;
     private String content;
-    private int ratio;
-    private String image;
     private long lastModified;
     private long creationTimestamp;
 
@@ -69,22 +67,6 @@ public class Comment {
 
     public void setEventid(String eventid) {
         this.eventid = eventid;
-    }
-
-    public int getRatio() {
-        return ratio;
-    }
-
-    public void setRatio(int ratio) {
-        this.ratio = ratio;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public long getLastModified() {
