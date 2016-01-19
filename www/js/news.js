@@ -21,7 +21,7 @@ function previousNews(){
   });
 }
 
-function processNewCollection(news){
+/* function processNewCollection(news){
   var lastIndex = news["news"].length - 1;
   $.each(news["news"], function(i,new){
       new.links=linksToMap(new.links);
@@ -53,14 +53,15 @@ function processNewCollection(news){
   $(".glyphicon-pencil").click(function(e){
     e.preventDefault();
     alert("This should open a new editor. But this is only an example.");});
-}
+} */
 
-function listItemHTML(uri, subject, creator, edit){
+/*function listItemHTML(uri, subject, creator, edit){
   var a = '<a class="list-group-item" href="'+ uri +'">';
   var p = '<p class="list-group-item-text unclickable">' + subject + '</p>';
   var h = (edit) ? '<h6 class="list-group-item-heading unclickable" align="right">'+creator+' <span class="glyphicon glyphicon-pencil clickable"></span></h6>' : '<h6 class="list-group-item-heading unclickable" align="right">'+creator+'</h6>';;
   return a + p +  h + '</a>';
 }
+*/
 
 
 
@@ -70,12 +71,6 @@ function listItemHTML(uri, subject, creator, edit){
 /* NEWS OLD */
 
 var API_BASE_URL = "http://10.83.63.80:8080/kujosa";
-
-//var id = $.cookie('id');
-//var password = $.cookie('password')
-//var email = $.cookie('email')
-var newsid =id;
-
 
 
 $("#button_delete").click(function(e) {
@@ -87,14 +82,14 @@ $("#button_delete").click(function(e) {
 $("#button_post_news").click(function(e){
     e.preventDefault();
     post_news(formdata);
-
-$("#logout").click(function(e) {
+});
+/*$("#logout").click(function(e) {
     e.preventDefault();
     console.log("dsag");
    logout();
-});
+}); */
 
-function post_news (formdata){
+/* function post_news (formdata){
     var authToken = JSON.parse(sessionStorage["auth-token"]);
     var uri=api.news.uri;
     $.ajax({
@@ -110,10 +105,10 @@ function post_news (formdata){
     }).fail(function(){
         console.log('Error');
     });
-}
+} */
     
 
-function loadNews(uri, complete){
+/* function loadNews(uri, complete){
 	// var authToken = JSON.parse(sessionStorage["auth-token"]);
 	// var uri = authToken["links"]["current-news"].uri;
 	$.get(uri)
@@ -123,23 +118,23 @@ function loadNews(uri, complete){
 		})
 		.fail(function(){});
 }
-
-function getNew(uri, complete){
+*/
+/* function getNew(uri, complete){
 	$.get(uri)
 		.done(function(new){
 			complete(new);
 		})
 		.fail(function(data){
 		});
-}
+} */
 
 
-$(document).ready(function() {
+/* $(document).ready(function() {
 	getnews();
 	
-});
+}); */
 
-function delete_news() {
+/* function delete_news() {
 	
         var authToken = JSON.parse(sessionStorage["auth-token"]);
         var uri = authToken["links"]["delete-news"].uri;
@@ -160,10 +155,10 @@ function delete_news() {
 	}).fail(function(jqXHR, textStatus) {
 		console.log(textStatus);
 	});
-}
+} */
 
 
-function getnews() {
+/* function getnews() {
 
 	console.log(id);
         var authToken = JSON.parse(sessionStorage["auth-token"]);
@@ -188,7 +183,5 @@ function getnews() {
 	}).fail(function() {
 		$("#news_result").text("No hi ha notícies");
 	});
-
-
-}
+} */
 
