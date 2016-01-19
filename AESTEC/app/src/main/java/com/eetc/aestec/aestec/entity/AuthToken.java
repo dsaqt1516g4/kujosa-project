@@ -1,4 +1,4 @@
-package com.eetc.aestec.aestec.client.entity;
+package com.eetc.aestec.aestec.entity;
 
 import java.util.List;
 
