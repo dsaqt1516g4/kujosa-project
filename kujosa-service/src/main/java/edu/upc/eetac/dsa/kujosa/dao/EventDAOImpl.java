@@ -29,7 +29,13 @@ public class EventDAOImpl implements EventDAO {
         String id = null;
         try {
             connection = Database.getConnection();
-
+            if (startDate==0)
+            {
+                throw new NotFoundException("Check dates!");
+            }
+            if(endDate==0){
+                throw new NotFoundException("Check dates!");
+            }
             stmt = connection.prepareStatement(UserDAOQuery.UUID);
             ResultSet rs = stmt.executeQuery();
             if (rs.next())
@@ -51,6 +57,7 @@ public class EventDAOImpl implements EventDAO {
             stmt.setLong(7,startDate);
             stmt.setLong(8,endDate);
             stmt.setInt(9,0);
+            stmt.setInt(10,0);
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -110,8 +117,11 @@ public class EventDAOImpl implements EventDAO {
                 event.setId(rs.getString("id"));
                 event.setUserid(rs.getString("userid"));
                 event.setTitol(rs.getString("titol"));
-                event.setStartDate(rs.getTimestamp("startdate").getTime());
-                event.setEndDate(rs.getTimestamp("enddate").getTime());
+                event.setText(rs.getString("text"));
+                event.setLat(rs.getLong("lat"));
+                event.setLon(rs.getLong("lon"));
+                //event.setStartDate(rs.getTimestamp("start_date").getTime());
+                //event.setEndDate(rs.getTimestamp("end_date").getTime());
                 event.setLastModified(rs.getTimestamp("last_modified").getTime());
 
             } else {
