@@ -131,7 +131,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>edu.eetac.dsa.flatmates.Main</mainClass>
+                    <mainClass>edu.eetac.dsa.kujosa.Main</mainClass>
                 </configuration>
             </plugin>
 
@@ -153,7 +153,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>edu.eetac.dsa.flatmates.Main</mainClass>
+                            <mainClass>edu.eetac.dsa.kujosa.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
