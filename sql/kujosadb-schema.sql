@@ -59,6 +59,7 @@ create table events (
     end_date	 	datetime not null,
     last_modified	timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
     ratio		int not null,
+    numVots		int,
     FOREIGN KEY (userid) REFERENCES users(id) on delete cascade,
     PRIMARY KEY (id)
 );
