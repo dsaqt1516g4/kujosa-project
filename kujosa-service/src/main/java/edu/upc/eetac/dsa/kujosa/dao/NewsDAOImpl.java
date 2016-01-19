@@ -40,7 +40,7 @@ public class NewsDAOImpl implements NewsDAO{
                 connection.close();
             }
         }
-        return getNewsById(userid);
+        return getNewsById(id);
     }
 
     @Override

@@ -16,6 +16,7 @@ import java.sql.SQLException;
  *     +-------------------------------------+
  *
  * READY FOR TEST
+ * Create TEST->OK!
  */
 @Path("documents")
 
@@ -26,14 +27,14 @@ public class DocumentResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_DOCUMENT)
-    public Response createDocument(@FormParam("name") String name, @FormParam("description") String description, @FormParam("path") String path, @Context UriInfo uriInfo) throws URISyntaxException {
+    public Response createDocument(@FormParam("name") String name, @FormParam("description") String description, @FormParam("path") String path, @FormParam("userid") String username, @Context UriInfo uriInfo) throws URISyntaxException {
         if (name == null || path == null)
             throw new BadRequestException("all parameters are mandatory");
         DocumentDAO documentDAO = new DocumentDAOImpl();
         Document document = null;
         AuthToken authToken = null;
         try {
-            document = documentDAO.createDocument(securityContext.getUserPrincipal().getName(), name, description, path);
+            document = documentDAO.createDocument(username, name, description, path);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
