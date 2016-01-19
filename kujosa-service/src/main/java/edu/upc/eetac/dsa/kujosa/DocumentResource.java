@@ -11,8 +11,11 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 
-/**
- * Created by juan on 16/12/15.
+/**    +-------------------------------------+
+ *     |           KUJOSA PROJECT            |
+ *     +-------------------------------------+
+ *
+ * READY FOR TEST
  */
 @Path("documents")
 

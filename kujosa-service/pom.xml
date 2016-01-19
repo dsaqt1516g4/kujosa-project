@@ -3,10 +3,10 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>edu.upc.eetac.dsa.kujosa</groupId>
+    <groupId>edu.eetac.dsa.kujosa</groupId>
     <artifactId>kujosa-service</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version>
     <name>kujosa-service</name>
 
     <dependencyManagement>
@@ -22,9 +22,49 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.glassfish.grizzly</groupId>
+            <artifactId>grizzly-http</artifactId>
+            <version>2.3.22</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.grizzly</groupId>
+            <artifactId>grizzly-http-server-multipart</artifactId>
+            <version>2.3.22</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-multipart</artifactId>
+            <version>2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.glassfish.jersey.containers</groupId>
             <artifactId>jersey-container-grizzly2-http</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jersey.ext</groupId>
+            <artifactId>jersey-declarative-linking</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>javax.el-api</artifactId>
+            <version>2.2.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>2.2.4</version>
         </dependency>
         <!-- uncomment this to get JSON support:
          <dependency>
@@ -38,66 +78,35 @@
             <version>4.9</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Declarative hyperlinking -->
-        <dependency>
-            <groupId>org.glassfish.jersey.ext</groupId>
-            <artifactId>jersey-declarative-linking</artifactId>
-        </dependency>
-
-        <!-- Java Expession Language -->
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>2.2.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>2.2.4</version>
-        </dependency>
-
-        <!-- Hikari CP -->
-        <dependency>
+        <dependency> <!-- Dependencia para crear HikariCP -->
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP-java6</artifactId>
             <version>2.3.9</version>
             <scope>compile</scope>
         </dependency>
-
-        <!-- SLF4J -->
-        <dependency>
+        <dependency><!-- Libreria SLF4J -->
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.12</version>
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.12</version>
         </dependency>
 
-        <!-- MySQL JDBC Driver -->
-        <dependency>
+        <dependency> <!-- Dependencia con el driver JDBC de MySQL-->
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.36</version>
         </dependency>
-
-        <!-- Jackson JSON provider -->
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-jackson</artifactId>
         </dependency>
 
-        <!-- Jersey declarative hyperlinking -->
-        <dependency>
-            <groupId>org.glassfish.jersey.ext</groupId>
-            <artifactId>jersey-declarative-linking</artifactId>
-        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -111,19 +120,6 @@
                 </configuration>
             </plugin>
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                        <configuration>
-                            <archive>
-                                <manifest>
-                                    <mainClass>edu.upc.eetac.dsa.kujosa.Main</mainClass>
-                                </manifest>
-                            </archive>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                        </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
@@ -135,7 +131,20 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>edu.upc.eetac.dsa.kujosa.Main</mainClass>
+                    <mainClass>edu.eetac.dsa.flatmates.Main</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>edu.eetac.dsa.flatmates.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
             </plugin>
         </plugins>

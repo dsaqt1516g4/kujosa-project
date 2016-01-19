@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Kujosa - Perfil d'usuari</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -42,24 +42,27 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Kujosa Webpage</a>
+                <a class="navbar-brand" href="index.html">Inici</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
+                    <!--<li>
                         <a href="about.html">Identificar-se</a>
-                    </li>
+                    </li> -->
                     <li>
-                        <a href="articles.html">Articles</a>
+                        <a href="news.html">Notícies</a>
                     </li>
                     <li>
                         <a href="documents.html">Documents</a>
                     </li>
                     <li>
+                        <a href="event.html">Esdeveniments</a>
+                    </li>
+                    <li>
                         <a href="contact.html">Contacte</a>
                     </li>
-                    <li class="dropdown">
+                    <!--<li class="dropdown">
                         <a href="Esdeveniments" class="dropdown-toggle" data-toggle="dropdown">Esdeveniments <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
@@ -78,6 +81,9 @@
                                 <a href="portfolio-item.html">Single Portfolio Item</a>
                             </li>
                         </ul>
+                    </li> -->
+                    <li>
+                        <a onclick="logout()" href="index.html">Tanca sessió</a>
                     </li>
                 </ul>
             </div>
@@ -92,7 +98,7 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Manel Cap d'Ou
+                <h1 class="page-header"><div id="username">Manel Cap d'Ou</div>
 
                 </h1>
                 <ol class="breadcrumb">
@@ -103,80 +109,7 @@
             </div>
         </div>
         <!-- /.row -->
-        <div class="row">
 
-			<div class="box">
-
-				<!--nombre usuario-->
-				<div class="col-sm-10" id="username"></div>
-
-				<!--avatar-->
-				<div class="col-sm-2">
-					<a href="user_profile.html" class="pull-right"><img
-						title="profile image" class="img-circle img-responsive"
-						src="./img/profile.png"></a><br>
-				</div>
-
-				<div class="col-sm-4">
-					<div class="row">
-					<div class="col">
-						<!--left col-->
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h5>Perfil de l'usuari</h5>
-							</div>
-							<div class="panel-body">
-								<ul class="list-group" id="result_profile"></ul>
-									<div id="edit_profile" >
-										<button class="btn btn-success pull-right" type="button" data-toggle="modal" data-target="#Edit_Profile">Edita perfil</button>
-									</div>
-							</div>
-							
-						</div>
-					</div>
-					</div>
-					<div class="row">
-					<div class="col">
-						<!--left col-->
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h5>Els meus amics</h5>
-							</div>
-							<div class="panel-body">
-								<ul class="list-group" id="result_friends"></ul>
-							</div>
-						</div>
-					</div>
-					</div>
-				</div>
-
-				<div class="col">
-					<div class="col-sm-4">
-						<!--left col-->
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h5>Els meus esdeveniments</h5>
-							</div>
-							<div class="panel-body">
-								<ul class="list-group" id="result_events"></ul>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-4">
-						<!--left col-->
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h5>Els meus comentaris</h5>
-							</div>
-							<div class="panel-body">
-								<ul class="list-group" id="result_comments"></ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-        </div>
         <!-- Editar perfil -->
         <div class="modal fade" id="Edit_Profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 									<div class="modal-dialog">
@@ -219,7 +152,12 @@
                                                                 type="password" class="form-control" name="verify" id="verify"
                                                                 placeholder="password" title="Contrasenya">
                                                         </div>
-                                                    </div>												
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="inputFile">Canvia la foto de perfil</label>
+                                                        <div class="input-group">
+                                                        <input name="image" type="file" id="inputFile" required="required">
+                                                    </div>
 											</div>
 											<div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel·lar</button>
@@ -233,15 +171,58 @@
         <!-- Intro Content -->
         <div class="row">
             <div class="col-md-6">
-                <img class="img-responsive" src="http://placehold.it/750x450" alt="">
+                <a href="perfil.html" class="pull-right"><img
+						title="profile image" class="img-circle img-responsive" align="center"
+						src="./img/default.png"></a>
             </div>
             <div class="col-md-6">
-                <h2>Breu descripció</h2>
-                <p>Aquest usuari podrà penjar una petita descripció seva ...</p>
+								<h2>Perfil de l'usuari</h2>
+                <p><ul class="list-group" id="result_profile"></ul></p>
+									<div id="edit_profile" >
+										<button class="btn btn-success pull-right" type="button" data-toggle="modal" data-target="#Edit_Profile">Edita perfil</button></div>
             </div>
         </div>
         <!-- /.row -->
+        <div class="row">
 
+			<div class="box">
+				<div class="col-sm-6">
+					<div class="row">
+					<div class="col">
+						<!--left col-->
+						
+					</div>
+					</div>
+					<div class="row">
+					<div class="col">
+						<!--left col-->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h5>Els meus amics</h5>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group" id="result_friends"></ul>
+							</div>
+						</div>
+					</div>
+					</div>
+				</div>
+
+				<div class="col">
+					<div class="col-sm-6">
+						<!--left col-->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h5>Els meus comentaris</h5>
+							</div>
+							<div class="panel-body">
+								<ul class="list-group" id="result_comments"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
         <!-- Team Members -->
         <div class="row">
             <div class="col-lg-12">
@@ -249,23 +230,24 @@
             </div>
             <div class="col-md-4 text-center">
                 <div class="thumbnail">
-                    <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                    <div class="caption">
-                        <h3>Sortida 1<br>
-                            <small>sortida a xxxxxx</small>
-                        </h3>
-                        <p>Descripció de la sortida ..</p>
-                    </div>
+                    <img class="img-responsive" src="./img/duana2.png" alt="">
+                    
                 </div>
+                
             </div>
-            
+            <div class="col-md-8">
+            <div class="panel-body">
+								<ul class="list-group" id="result_events"></ul>
+					</div>
+            </div>
+        </div>
         <!-- /.row -->
 
          <!-- Footer -->
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; KUJOSA 2015</p>
+                    <p>Copyright &copy; KUJOSA 2016</p>
                 </div>
             </div>
         </footer>

@@ -7,8 +7,11 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-/**
- * Created by sergio on 8/09/15.
+/**    +-------------------------------------+
+ *     |           KUJOSA PROJECT            |
+ *     +-------------------------------------+
+ *
+ * READY FOR TEST
  */
 @Provider
 public class ThrowableMapper implements ExceptionMapper<Throwable> {

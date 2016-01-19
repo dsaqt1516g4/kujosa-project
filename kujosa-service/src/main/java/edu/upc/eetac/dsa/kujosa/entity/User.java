@@ -38,7 +38,8 @@ public class User {
     private String loginid;
     private String email;
     private String fullname;
-    private String image;
+    private String imageURL;
+    private String filename;
 
     public List<Link> getLinks() {
         return links;
@@ -80,11 +81,19 @@ public class User {
         this.fullname = name;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }

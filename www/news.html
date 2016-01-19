@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modern Business - Start Bootstrap Template</title>
+    <title>Kujosa - News</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
 
 </head>
 
-<body>
+<body onLoad="getListPosts()">
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -42,25 +42,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Kujosa Webpage</a>
+                <a class="navbar-brand" href="index.html">Inici</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <!--<li>
-                        <a href="about.html">Identificar-se</a>
-                    </li> -->
                     <li>
-                        <a href="news.html">Articles</a>
+                        <a href="#" data-toggle="modal" data-target="#Login">Inicia sessió</a>
                     </li>
                     <li>
                         <a href="documents.html">Documents</a>
                     </li>
                     <li>
+                        <a href="event.html">Esdeveniments</a>
+                    </li>
+                    <li>
                         <a href="contact.html">Contacte</a>
                     </li>
-                    <li class="dropdown">
-                        <a href="Esdeveniments" class="dropdown-toggle" data-toggle="dropdown">Esdeveniments <b class="caret"></b></a>
+                    <!-- <li class="dropdown">
+                        <a href="Esdeveniments" class="dropdown-toggle" data-toggle="dropdown">Esdeveniments<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="portfolio-1-col.html">1 Column Portfolio</a>
@@ -78,6 +78,9 @@
                                 <a href="portfolio-item.html">Single Portfolio Item</a>
                             </li>
                         </ul>
+                    </li> -->
+                    <li>
+                        <a onclick="logout()" href="index.html">Tanca sessió</a>
                     </li>
                 </ul>
             </div>
@@ -87,17 +90,42 @@
     </nav>
     <!-- Page Content -->
     <div class="container">
-
+        <!-- Login modal-->
+        <div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">Identificar-se</h4>
+											</div>
+											<div class="modal-body">
+												<div class="input-group input-group-sm">
+													<label for="username">Nom d'usuari</label>
+													<input type="text" class="form-control input-sm" id="username" placeholder="Username">
+												</div>
+												<div class="input-group input-group-sm">
+													<label for="password">Clau</label>
+													<input type="password" class="form-control input-sm" id="password" placeholder="Password">
+												</div>												
+											</div>
+											(*)Tots els camps son obligatoris
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+												<button type="button" class="btn btn-primary" id="login_btn">Iniciar sessió</button>
+											</div>
+										</div>
+									</div>
+								</div>
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Articles
+                <h1 class="page-header">Notícies
                     <small>AESTEC</small>
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">KUJOSA</a>
                     </li>
-                    <li class="active">articles</li>
+                    <li class="active">Notícies</li>
                 </ol>
             </div>
         </div>
@@ -112,11 +140,64 @@
         <!-- /.row -->
 
         <!-- Service Panels -->
-        <div id="news_result"></div>
-        <button id="editar_news">Editar noticia</button>
-        <button id="create_news">Crea noticia</button>
+        <div id="res_get_list_posts"></div>
+        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#Post">Nova notícia</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#Edit">Editar notícia</button>
+        <button type="button" class="btn btn-danger" id="button_delete_news">Esborrar notícia</button>
+
+    <!-- MODALS -->
+<div class="modal fade" id="Post" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">Nou</h4>
+											</div>
+											<div class="modal-body">
+												<div class="input-group input-group-sm">
+													<label for="username">Titular</label>
+                                                    <input type="text" class="form-control input-sm" id="headline" placeholder="headline">
+												</div>
+												<div class="input-group">
+													<label for="text">Cos</label>
+                                                    <textarea type="text" rows="5" class="form-control" id="body" placeholder="body"></textarea>
+												</div>												
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel·lar</button>
+												<button type="button" class="btn btn-primary" id="button_post_news">Publicar</button>
+											</div>
+										</div>
+									</div>
+								</div>
+    <!-- Editar notícia -->
+<div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+												<h4 class="modal-title" id="myModalLabel">Edita</h4>
+											</div>
+											<div class="modal-body">
+												<div class="input-group input-group-sm">
+													<label for="username">Titular</label>
+													<input type="text" class="form-control input-sm" id="headline" placeholder="headline">
+												</div>
+												<div class="input-group">
+													<label for="text">Cos</label>
+                                                    <textarea type="text" rows="5" class="form-control" id="body" placeholder="body"></textarea>
+												</div>												
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel·lar</button>
+												<button type="button" class="btn btn-primary" id="button_put_news">Confirma</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
         <!-- Service Tabs -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header">Articles</h2>
             </div>
@@ -158,7 +239,7 @@
                 </div>
 
             </div>
-        </div>
+        </div> -->
 
         <!-- Service List -->
         <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->      
@@ -289,7 +370,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; KUJOSA 2015</p>
+                    <p>Copyright &copy; KUJOSA 2016</p>
                 </div>
             </div>
         </footer>

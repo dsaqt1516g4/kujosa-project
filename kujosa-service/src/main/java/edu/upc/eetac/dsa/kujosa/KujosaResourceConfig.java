@@ -2,11 +2,15 @@ package edu.upc.eetac.dsa.kujosa;
 
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.linking.DeclarativeLinkingFeature;
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 
-/**
- * Created by sergio on 7/09/15.
+/**    +-------------------------------------+
+ *     |           KUJOSA PROJECT            |
+ *     +-------------------------------------+
+ *
+ * READY FOR TEST
  */
 public class KujosaResourceConfig extends ResourceConfig {
     public KujosaResourceConfig() {
@@ -16,5 +20,6 @@ public class KujosaResourceConfig extends ResourceConfig {
         register(RolesAllowedDynamicFeature.class);
         register(DeclarativeLinkingFeature.class);
         register(JacksonFeature.class);
+        register(MultiPartFeature.class);
     }
 }

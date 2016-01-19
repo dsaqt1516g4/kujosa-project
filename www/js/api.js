@@ -130,3 +130,149 @@ function progressHandlingFunction(e){
         $('progress').attr({value:e.loaded,max:e.total});
     }
 } 
+
+/* BEETER.js */
+
+$(function(){
+   getCurrentUserProfile(function(user){
+      $("#aProfile").text(user.fullname + ' ');
+      $("#aProfile").append('<span class="caret"></span>');
+   });
+
+   var authToken = JSON.parse(sessionStorage["auth-token"]);
+   var currentStingsUri = authToken["links"]["current-stings"].uri;
+   loadStings(currentStingsUri, function(stings){
+      $("#stings-list").empty();
+      processStingCollection(stings);
+   });
+});
+
+function previousStings(){
+  loadStings($('#formPrevious').attr('action'), function(stings){
+    processStingCollection(stings);
+  });
+}
+
+function processStingCollection(stings){
+  var lastIndex = stings["stings"].length - 1;
+  $.each(stings["stings"], function(i,sting){
+      sting.links=linksToMap(sting.links);
+      var edit = sting.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
+      $("#stings-list").append(listItemHTML(sting.links["self"].uri, sting.subject, sting.creator, edit));
+      if(i==0)
+        $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
+      if(i==lastIndex){
+        $('#formPrevious').attr('action', sting["links"].previous.uri);
+      }
+  });
+
+   $("#formPrevious").submit(function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      previousStings();
+      $("#buttonPrevious").blur();
+    });
+
+  $("a.list-group-item").click(function(e){
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var uri = $(this).attr("href");
+    getSting(uri, function(sting){
+      // In this example we only log the sting
+      console.log(sting);
+    });
+  });
+  $(".glyphicon-pencil").click(function(e){
+    e.preventDefault();
+    alert("This should open a sting editor. But this is only an example.");});
+}
+
+$("#aCloseSession").click(function(e){
+  e.preventDefault();
+  logout(function(){
+    window.location.replace('login.html');
+  });
+});
+
+function getUser(){
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    var uri = authToken["links"]["user-profile"].uri;
+    var userid = authToken.userid;
+    var getuserURI = uri;
+    $.ajax({
+        url: getuserURI,
+        type: 'GET',
+        crossDomain: true,
+        dataType: "json",
+        headers: {"X-Auth-Token" : authToken.token}
+    }).done(function(data, status, jqxhr){
+        data.links=linksToMap(data.links);
+        var filename=data.filename;
+        $("#img_src").text('');
+        $("#img_src").append('<img src="images/'+filename+'" class="img-rounded img-responsive" />');
+    }).fail(function(){
+         console.log("ERROR");
+    });
+}
+
+function getProfile(uri){
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    $.ajax({
+        url: uri,
+        type: 'GET',
+        crossDomain: true,
+        dataType: "json",
+        headers: {"X-Auth-Token" : authToken.token}
+    }).done(function(data, status, jqxhr){
+        data.links=linksToMap(data.links);
+        sessionStorage["profile"]=JSON.stringify(data);
+        window.location.replace("myProfile.html")
+    }).fail(function(){
+         console.log("ERROR");
+    });
+}
+
+function changePassword(newPass, oldPass){
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    var uri = authToken["links"]["user-profile"].uri;
+    var changepassUri = uri+'-password';
+    var userid = authToken.userid;
+      objeto = {
+          "id": userid,
+          "oldPassword": oldPass,
+          "password" : newPass
+      }
+      var data = JSON.stringify(objeto);
+    $.ajax({
+        url: changepassUri,
+        type: 'PUT',
+        crossDomain: true,
+        contentType: "application/vnd.dsa.flatmates.user+json",
+        dataType: "json",
+        data: data, /*{
+            id: userid,
+            oldPassword: oldPass,
+            password: newPass
+        },*/
+        headers: {"X-Auth-Token" : authToken.token
+                  //"Content-Type" : application/vnd.dsa.flatmates.user+json
+                 }
+    }).done(function(data, status, jqxhr){
+        data.links=linksToMap(data.links);
+        $("#culebrilla").text("");   
+        $("#culebrilla").append("<div class='alert alert-block alert-info'><p><span style='color:green'>Password changed</span></p></div>");
+        $("#InputOldPass").val("");
+        $("#InputNewPass").val("");
+        $("#InputNewPass2").val("");
+    }).fail(function(){
+        $("#culebrilla").text("");   
+         $("#culebrilla").append("<div class='alert alert-block alert-info'><p><span style='color:red'>Your actual password is not this</span></p></div>");
+    });
+
+
+function listItemHTML(uri, subject, creator, edit){
+  var a = '<a class="list-group-item" href="'+ uri +'">';
+  var p = '<p class="list-group-item-text unclickable">' + subject + '</p>';
+  var h = (edit) ? '<h6 class="list-group-item-heading unclickable" align="right">'+creator+' <span class="glyphicon glyphicon-pencil clickable"></span></h6>' : '<h6 class="list-group-item-heading unclickable" align="right">'+creator+'</h6>';;
+  return a + p +  h + '</a>';
+}
