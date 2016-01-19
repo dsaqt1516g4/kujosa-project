@@ -127,7 +127,7 @@ function delete_document() {
 }
 
 
-function getDocuments() {
+/* function getDocuments() {
 
 	console.log(id);
         var authToken = JSON.parse(sessionStorage["auth-token"]);
@@ -148,6 +148,4 @@ function getDocuments() {
 	}).fail(function() {
 		console.log('Error');
 	});
-
-
-}
+} */
