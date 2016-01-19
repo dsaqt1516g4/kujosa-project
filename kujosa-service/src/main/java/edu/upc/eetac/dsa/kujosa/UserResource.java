@@ -52,7 +52,7 @@ import static javax.ws.rs.core.MediaType.MULTIPART_FORM_DATA;
  *     -registerUser TEST -> OK!
  *     -getUser TEST -> OK!
  *     -updateUser TEST -> To REPAIR!
- *     -deleteUser TEST -> OK!(no answer)
+ *     delete user TEST--?
  */
 @Path("users")
 public class UserResource {
@@ -147,10 +147,19 @@ public class UserResource {
     @Path("/{id}")
     @DELETE
     public void deleteUser(@PathParam("id") String id, @Context UriInfo uriInfo){
-        System.out.println("El usuario :"+id+" se fue a la puta.");
+        //System.out.println("El usuario :"+id+" se fue a la puta.");
         String userid = securityContext.getUserPrincipal().getName();
-        if(!userid.equals(id))
+
+        User us =getUser(userid);
+        //Falta comprobar
+        boolean ok = us.isAdmin();
+        if(!userid.equals(id) ) {
             throw new ForbiddenException("Operation not allowed");
+        }
+         else if(!ok){
+            throw new ForbiddenException("Operation not allowed");
+        }
+
         UserDAO userDAO = new UserDAOImpl();
         try {
             if(!userDAO.deleteUser(id))

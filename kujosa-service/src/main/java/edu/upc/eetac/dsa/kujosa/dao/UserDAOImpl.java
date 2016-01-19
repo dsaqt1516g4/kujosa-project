@@ -177,6 +177,8 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getUserById(String id) throws SQLException {
+       //getUserById acccepta username
+
         // Modelo a devolver
         User user = null;
 
@@ -325,7 +327,7 @@ public class UserDAOImpl implements UserDAO {
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
-String r=null;
+            String r=null;
             stmt = connection.prepareStatement(UserDAOQuery.IS_ADMIN);
             stmt.setString(1, id);
             ResultSet rs = stmt.executeQuery();

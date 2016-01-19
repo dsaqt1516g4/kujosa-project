@@ -2,9 +2,12 @@ package edu.upc.eetac.dsa.kujosa;
 
 import edu.upc.eetac.dsa.kujosa.dao.EventDAO;
 import edu.upc.eetac.dsa.kujosa.dao.EventDAOImpl;
+import edu.upc.eetac.dsa.kujosa.dao.UserDAO;
+import edu.upc.eetac.dsa.kujosa.dao.UserDAOImpl;
 import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.entity.Event;
 import edu.upc.eetac.dsa.kujosa.entity.EventCollection;
+import edu.upc.eetac.dsa.kujosa.entity.User;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -36,8 +39,18 @@ public class EventResource {
         EventDAO eventDAO = new EventDAOImpl();
         Event event = null;
         AuthToken authToken = null;
+        UserDAO us = new UserDAOImpl();
+        String id_usr= securityContext.getUserPrincipal().getName();
+
+
         try {
-            event = eventDAO.createEvent(username, titol, text, lat, lon, startdate, enddate);
+            if (us.isAdmin(id_usr)) {
+                event = eventDAO.createEvent(username, titol, text, lat, lon, startdate, enddate);
+            }
+            else
+            {
+                throw new ForbiddenException("NOt permitted operation ");
+            }
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
@@ -99,18 +112,25 @@ public class EventResource {
     @Consumes(KujosaMediaType.KUJOSA_EVENT)
     @Produces(KujosaMediaType.KUJOSA_EVENT)
     public Event updateEvent(@PathParam("id") String id, Event event) {
+        UserDAO us = new UserDAOImpl();
+
         if (event == null)
             throw new BadRequestException("entity is null");
         if (!id.equals(event.getId()))
             throw new BadRequestException("path parameter id and entity parameter id doesn't match");
-
-        String userid = securityContext.getUserPrincipal().getName();
-        if (!userid.equals(event.getUserid()))
+        boolean ok;
+        String user_id = securityContext.getUserPrincipal().getName();
+        try {
+            ok = us.isAdmin(user_id);
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+        if (!ok)
             throw new ForbiddenException("operation not allowed");
 
         EventDAO eventDAO = new EventDAOImpl();
         try {
-            event = eventDAO.updateEvent(id, event.getTitol(), event.getText(), event.getStartDate(),event.getEndDate());
+            event = eventDAO.updateEvent(id, event.getTitol(), event.getText(), event.getStartDate(), event.getEndDate());
             if (event == null)
                 throw new NotFoundException("Event with id = " + id + " doesn't exist");
         } catch (SQLException e) {
@@ -124,9 +144,10 @@ public class EventResource {
     public void deleteEvent(@PathParam("id") String id) {
         String userid = securityContext.getUserPrincipal().getName();
         EventDAO eventDAO = new EventDAOImpl();
+        UserDAO us = new UserDAOImpl();
         try {
-            String ownerid = eventDAO.getEvent(id).getUserid();
-            if (!userid.equals(ownerid))
+
+            if (!us.isAdmin(userid))
                 throw new ForbiddenException("operation not allowed");
             if (!eventDAO.deleteEvent(id))
                 throw new NotFoundException("User with id = " + id + " doesn't exist");
