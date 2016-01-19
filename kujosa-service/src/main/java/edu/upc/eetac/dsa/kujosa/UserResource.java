@@ -83,7 +83,7 @@ public class UserResource {
             System.out.println(e.toString());
         }
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + user.getId());
-        return Response.created(uri).type(KujosaMediaType.KUJOSA_AUTH_TOKEN).entity(authToken).build();
+        return Response.created(uri).type(KujosaMediaType.KUJOSA_AUTH_TOKEN+username).entity(authToken).build();
     }
      private UUID writeAndConvertImage(InputStream file) {
          BufferedImage image = null;
