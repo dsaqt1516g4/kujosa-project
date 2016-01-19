@@ -2,7 +2,7 @@ var API_URL = "http://10.83.63.80:8080/kujosa/";
 
 /* EDITAR USUARI v2 */
 
-$(document).ready(function(){
+/* $(document).ready(function(){
     try{
     var authToken = JSON.parse(sessionStorage["auth-token"]);
     var currentGrupoUri = authToken["links"]["create-group"].uri;
@@ -13,7 +13,7 @@ $(document).ready(function(){
     }catch(e){
         window.location.replace('index.html');
     }
-});
+});*/
                   
 var incorrectPassInput;
 $('#InputNewPass2').on('input', function() {
@@ -374,13 +374,6 @@ function loadMyEvents(url){
 	
 }
 
-
-$("#btnlogout").click(function(e){
-    e.preventDefault();
-    logout(function(){
-        window.location.replace('index.html');
-    });
-})
 
 function loadMyProfile(url){
 	getUser(url, function(user){
