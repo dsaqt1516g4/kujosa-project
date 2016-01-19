@@ -194,8 +194,80 @@ $("#aCloseSession").click(function(e){
   });
 });
 
+function getUser(){
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    var uri = authToken["links"]["user-profile"].uri;
+    var userid = authToken.userid;
+    var getuserURI = uri;
+    $.ajax({
+        url: getuserURI,
+        type: 'GET',
+        crossDomain: true,
+        dataType: "json",
+        headers: {"X-Auth-Token" : authToken.token}
+    }).done(function(data, status, jqxhr){
+        data.links=linksToMap(data.links);
+        var filename=data.filename;
+        $("#img_src").text('');
+        $("#img_src").append('<img src="images/'+filename+'" class="img-rounded img-responsive" />');
+    }).fail(function(){
+         console.log("ERROR");
+    });
+}
 
+function getProfile(uri){
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    $.ajax({
+        url: uri,
+        type: 'GET',
+        crossDomain: true,
+        dataType: "json",
+        headers: {"X-Auth-Token" : authToken.token}
+    }).done(function(data, status, jqxhr){
+        data.links=linksToMap(data.links);
+        sessionStorage["profile"]=JSON.stringify(data);
+        window.location.replace("myProfile.html")
+    }).fail(function(){
+         console.log("ERROR");
+    });
+}
 
+function changePassword(newPass, oldPass){
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    var uri = authToken["links"]["user-profile"].uri;
+    var changepassUri = uri+'-password';
+    var userid = authToken.userid;
+      objeto = {
+          "id": userid,
+          "oldPassword": oldPass,
+          "password" : newPass
+      }
+      var data = JSON.stringify(objeto);
+    $.ajax({
+        url: changepassUri,
+        type: 'PUT',
+        crossDomain: true,
+        contentType: "application/vnd.dsa.flatmates.user+json",
+        dataType: "json",
+        data: data, /*{
+            id: userid,
+            oldPassword: oldPass,
+            password: newPass
+        },*/
+        headers: {"X-Auth-Token" : authToken.token
+                  //"Content-Type" : application/vnd.dsa.flatmates.user+json
+                 }
+    }).done(function(data, status, jqxhr){
+        data.links=linksToMap(data.links);
+        $("#culebrilla").text("");   
+        $("#culebrilla").append("<div class='alert alert-block alert-info'><p><span style='color:green'>Password changed</span></p></div>");
+        $("#InputOldPass").val("");
+        $("#InputNewPass").val("");
+        $("#InputNewPass2").val("");
+    }).fail(function(){
+        $("#culebrilla").text("");   
+         $("#culebrilla").append("<div class='alert alert-block alert-info'><p><span style='color:red'>Your actual password is not this</span></p></div>");
+    });
 
 
 function listItemHTML(uri, subject, creator, edit){
