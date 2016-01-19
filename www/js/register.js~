@@ -1,0 +1,190 @@
+var API_BASE_URL = "http://147.83.7.207:8080/eventsBCN";
+
+var token = $.cookie('token');
+
+
+$("#register_btn").on("click", function(e) {
+	e.preventDefault();	
+	console.log("estoy reg"); 
+	createUser();
+});
+
+$("#btnlogout").on("click", function(e) {
+	e.preventDefault();	
+	console.log("estoy reg"); 
+	logout();
+});
+
+
+
+$( "#login_btn" ).click(function(e) {
+	event.preventDefault();
+	login($("#username").val(), $("#password").val(), function(){
+  	console.log("change");
+  	window.location.replace('kujosa.html');	
+  }); 	
+  });
+
+
+
+function logout(){
+	
+	var url = API_BASE_URL + '/login';
+	console.log(token);
+	$.ajax({
+    	type: 'DELETE',
+   		url: url,
+    	headers: {
+        	"X-Auth-Token":token,
+    	}
+    }).done(function(data) { 
+    	console.log("logout ");
+		
+  	}).fail(function(){});
+}
+
+
+
+function login(login, password, complete){
+	
+	loadAPI(function(){
+		var api = JSON.parse(sessionStorage.api);
+		var uri = API_BASE_URL+"login";
+		//$("#nombre").text('');
+		$.post(uri,
+			{
+				username: login,
+				password: password
+			}).done(function(authToken){
+				console.log("estoy  login");
+				authToken.links = linksToMap(authToken.links);
+				sessionStorage["auth-token"] = JSON.stringify(authToken);
+				complete();		
+				
+				$.cookie('token', authToken.token);				
+				$.cookie('role', authToken.role);
+				$.cookie('userid', authToken.userid);
+				
+				$.removeCookie('name');
+				$.cookie('name', login);
+				$.cookie('namelogin', login);
+				
+				//$('#nombre').text('Bienvenido, ' + $.cookie('name'));
+														
+				window.location.replace('kujosa.html');	
+
+				
+			}).fail(function(jqXHR, textStatus, errorThrown){
+				var error = jqXHR.responseJSON;
+				alert(error.reason);
+			}
+		);
+	});
+}
+
+
+/*--------------------------------------------------------------------------------------------------------------*/
+
+function createUser() {
+
+	//$("#nombre").text('');
+	
+	formData.append("username",$('#username_1').val());
+    formData.append("password",$('#password_1').val());
+    formData.append("email",$('#email_1').val());
+        formData.append("nombre",$('#nombre_1').val());
+    formData.append("imagen",$("#inputFile")[0].files[0]);
+
+
+	console.log(formData);
+
+	//$("#result").text('');
+
+	$.ajax({
+		url : API_BASE_URL + '/users',
+		type : 'POST',
+		crossDomain : true,
+		processData: false,
+      //dataType : 'json',
+	    //contentType: 'multipart/form-data',
+	    contentType: false,
+		data : formData,
+	}).done(function(data, status, jqxhr) {
+		console.log(data);
+		$.cookie('token', data.token);
+		$.cookie('userid', data.userid);
+		$.cookie('role', data.role);
+		
+		$.removeCookie('name');
+		$.removeCookie('password');
+		$.removeCookie('email');
+		
+		
+		$.cookie('namelogin', $('#name').val());
+		$('#nombre').text('Bienvenido, ' + $.cookie('namelogin'));
+		$.cookie('password', $('#password').val());
+		$.cookie('email', $('#email').val());
+		$.cookie('name', $('#name').val());
+		
+		
+		window.location.replace('Eventos.html');
+
+		
+		$('<strong> Bienvenido, </strong>' + data.name).appendTo($('#result5'));
+
+	}).fail(function(jqxhr) {
+		if(jqxhr.status == 500){			
+			alert('Debe rellenar todos los campos');
+			}
+		if(jqxhr.status == 409){			
+			alert('Este usuario ya existe');
+			}
+	});
+
+}
+
+
+
+function createnews(){
+
+	objeto = {
+        "headline" : $('#headline').val(),
+        "body" : $('#body').val(),
+        
+       
+    }
+
+
+
+	var data = JSON.stringify(objeto);
+	console.log(data);
+
+
+	console.log($.cookie('token'));
+
+	$.ajax({
+		url : API_BASE_URL + '/news',
+		type : 'POST',
+		crossDomain : true,
+		dataType : 'json',
+		contentType:'application/vnd.dsa.kujosa.news+json',
+		data : data,
+		headers: {
+        'X-Auth-Token':$.cookie('token'),
+		},
+	}).done(function(data, status, jqxhr) {
+		console.log(data);
+		
+		window.location.replace('K.html');
+
+	}).fail(function(jqxhr) {
+		if(jqxhr.status == 500){			
+			alert('Debe rellenar todos los campos');
+			}
+		if(jqxhr.status == 409){			
+			alert('Esta News ya existe');
+			}
+	});
+
+
+}
