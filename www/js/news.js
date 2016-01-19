@@ -72,6 +72,7 @@ function previousNews(){
 
 var API_BASE_URL = "http://147.83.7.205:8080/kujosa";
 
+
 var id = $("#num_noticia").val();
 $("#button_delete").click(function(e) {
 	e.preventDefault();
@@ -80,7 +81,13 @@ $("#button_delete").click(function(e) {
 
 $("#button_post_news").click(function(e){
     e.preventDefault();
-    post_news(formdata);
+    
+  formdata.title = $('#headline').val();
+  formdata.body = $('#event_description').val();
+
+  //devent.owner = user.userid;
+  
+    post_news(formdata.title,formdata.body);
 });
 /*$("#logout").click(function(e) {
     e.preventDefault();

@@ -62,6 +62,23 @@ function logout(complete){
   	}).fail(function(){});
 }
 
+
+function post_news(title,body){
+  news.title = title;
+  news.body = body;
+  var authToken = JSON.parse(sessionStorage["auth-token"]);
+  var uri = BASE_URL+"/news/"
+  $.post(uri,
+      {
+        title: news.title,
+        body: news.body,
+        userid = user;
+      }).done(function(data) { 
+      sessionStorage.removeItem("api");
+      sessionStorage.removeItem("auth-token");
+      complete();
+    }).fail(function(){});
+}
 /* function getCurrentUserProfile(complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	var uri = authToken["links"]["user-profile"].uri;
@@ -72,6 +89,30 @@ function logout(complete){
 		})
 		.fail(function(){});
 } */
+
+function createEvent(title,lat,lon,text,eventDate,ratio){
+console.log(title);
+  var authToken = JSON.parse(sessionStorage["auth-token"]);
+  var uri = BASE_URL +"/events";
+ // console.los(uri+authToken);
+    $.post(uri,
+      {
+        titul: event.title,
+        latitud: event.lat,
+        longitud:event.longitud,
+        text:event.text,
+        data:event.eventDate,
+        ratio:event.ratio,
+        userid = user;
+      })done(function(events) { 
+      sessionStorage.removeItem("api");
+      sessionStorage.removeItem("auth-token");
+      complete();
+
+    }).fail(function(){});
+}
+
+}
 
 function progressHandlingFunction(e){
     if(e.lengthComputable){
