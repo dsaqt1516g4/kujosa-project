@@ -49,7 +49,7 @@ public class EventDAOImpl implements EventDAO {
 
             stmt = connection.prepareStatement(EventDAOQuery.CREATE_EVENT);
             stmt.setString(1, id);
-            stmt.setString(2,manolo.getId());
+            stmt.setString(2, username);
             stmt.setString(3, titol);
             stmt.setString(4, text);
             stmt.setLong(5,lat);

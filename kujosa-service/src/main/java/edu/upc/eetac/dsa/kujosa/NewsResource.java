@@ -31,30 +31,22 @@ public class NewsResource {
     private SecurityContext securityContext;
 //TO REPAIR
 
-    @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    @Produces(KujosaMediaType.KUJOSA_NEWS)
-    public Response createNews(@FormParam("userid") String username, @FormParam("headline") String headline, @FormParam("body") String body, @Context UriInfo uriInfo) throws URISyntaxException {
-        if ((headline == null) || (body == null))
-            throw new BadRequestException("all parameters are mandatory");
-        String userid = securityContext.getUserPrincipal().getName();
-        NewsDAO newsDAO = new NewsDAOImpl();
-        News news = null;
-        UserDAO us = new UserDAOImpl();
-
-        try {
-            if (us.isAdmin(userid)) {
-                news = newsDAO.createNews(username, headline, body);
-            } else {
-                throw new ForbiddenException("operation not allowed");
-
+        @POST
+        @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+        @Produces(KujosaMediaType.KUJOSA_NEWS)
+        public Response createNews(@FormParam("headline") String headline, @FormParam("body") String body, @Context UriInfo uriInfo) throws URISyntaxException {
+            if ((headline==null)   ||(body==null))
+                throw new BadRequestException("all parameters are mandatory");
+            NewsDAO newsDAO = new NewsDAOImpl();
+            News news = null;
+            try {
+                news = newsDAO.createNews(securityContext.getUserPrincipal().getName(), headline, body);
+            } catch (SQLException e) {
+                throw new InternalServerErrorException();
             }
-        } catch (SQLException e) {
-            throw new InternalServerErrorException();
+            URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + news.getId());
+            return Response.created(uri).type(KujosaMediaType.KUJOSA_NEWS).entity(news).build();
         }
-        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + news.getId());
-        return Response.created(uri).type(KujosaMediaType.KUJOSA_NEWS).entity(news).build();
-    }
 
     @GET
     @Produces(KujosaMediaType.KUJOSA_NEWS_COLLECTION)
@@ -152,7 +144,6 @@ public class NewsResource {
 
 
     }
-
 
     @Path("/{id}")
     @DELETE

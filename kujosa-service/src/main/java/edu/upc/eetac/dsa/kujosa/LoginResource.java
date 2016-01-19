@@ -1,11 +1,13 @@
 package edu.upc.eetac.dsa.kujosa;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.upc.eetac.dsa.kujosa.dao.AuthTokenDAOImpl;
 import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.entity.User;
 import edu.upc.eetac.dsa.kujosa.dao.AuthTokenDAO;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAOImpl;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAO;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -46,7 +48,7 @@ public class LoginResource {
         }catch(SQLException e){
             throw new InternalServerErrorException();
         }
-        return authToken;
+        return(authToken);
     }
 
     @DELETE
