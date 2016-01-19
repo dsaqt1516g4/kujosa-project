@@ -24,8 +24,8 @@ public class Database {
             properties.setProperty(key, prb.getString(key));
         }
 
-        //HikariConfig config = new HikariConfig(Database.class.getClassLoader().getResource("hikari.properties").getFile());
-        HikariConfig config = new HikariConfig(properties);
+        HikariConfig config = new HikariConfig(Database.class.getClassLoader().getResource("hikari.properties").getFile());
+       // HikariConfig config = new HikariConfig(properties);
         ds = new HikariDataSource(config);
     }
 

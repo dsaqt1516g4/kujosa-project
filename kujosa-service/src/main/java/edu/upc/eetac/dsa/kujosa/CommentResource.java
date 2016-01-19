@@ -2,6 +2,8 @@ package edu.upc.eetac.dsa.kujosa;
 
 import edu.upc.eetac.dsa.kujosa.dao.CommentDAO;
 import edu.upc.eetac.dsa.kujosa.dao.CommentDAOImpl;
+import edu.upc.eetac.dsa.kujosa.dao.UserDAO;
+import edu.upc.eetac.dsa.kujosa.dao.UserDAOImpl;
 import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.entity.Comment;
 import edu.upc.eetac.dsa.kujosa.entity.CommentCollection;
@@ -103,12 +105,19 @@ public class CommentResource {
     @Produces(KujosaMediaType.KUJOSA_COMMENT)
     public Comment updateSting(@PathParam("id") String id, @FormParam("content") String content) {
         Comment comment=null;
+        String userid = securityContext.getUserPrincipal().getName();
+
         if (content == null)
             throw new BadRequestException("entity is null");
 
         CommentDAO commentDAO = new CommentDAOImpl();
+
         try {
-            comment = commentDAO.updateComment(id, content);
+            String ownerid = commentDAO.getCommentById(id).getUserid();
+            if (ownerid.equals(userid)) {
+                comment = commentDAO.updateComment(id, content);
+            }
+
             if (comment == null)
                 throw new NotFoundException("Comment with id = " + id + " doesn't exist");
         } catch (SQLException e) {
@@ -119,15 +128,23 @@ public class CommentResource {
 
     @Path("/{id}")
     @DELETE
-    public void deleteSting(@PathParam("id") String id) {
+    public void deletecomment(@PathParam("id") String id) {
         String userid = securityContext.getUserPrincipal().getName();
         CommentDAO commentDAO = new CommentDAOImpl();
+        UserDAO us = new UserDAOImpl();
         try {
             String ownerid = commentDAO.getCommentById(id).getUserid();
-            if (!userid.equals(ownerid))
+            if (!userid.equals(ownerid)){
                 throw new ForbiddenException("operation not allowed");
-            if (!commentDAO.deleteComment(id))
+            }
+            else if(us.isAdmin(userid)){
+                throw new ForbiddenException("operation not allowed");
+
+            }
+            else  {
+                if (!commentDAO.deleteComment(id))
                 throw new NotFoundException("User with id = " + id + " doesn't exist");
+            }
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
