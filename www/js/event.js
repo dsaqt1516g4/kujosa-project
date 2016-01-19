@@ -4,10 +4,6 @@ var map;
 var eventsURL;
 var markers =[];
 $(document).ready(function(){
-	//if($.cookie('username')==undefined){
-	//	window.location.replace("index.html");
-	//}
-	//$('<a id="username_logged">'+ $.cookie('username') +'</a>').appendTo($('#user_logged'));
 	initialize();
 	loadRootAPI(function(rootAPI){
 		eventsURL = rootAPI.getLink('create-event');
@@ -116,7 +112,9 @@ function addMarker(myLatlng) {
 		}
 
 google.maps.event.addDomListener(window, 'load', initialize);
-
+function(user){
+      $("#username").text(user.fullname + ' ');
+}
 
 function createEvent2(){
 	var event = new Object();
@@ -124,7 +122,7 @@ function createEvent2(){
 	event.lat = $('#event_lat').val();
 	event.lon = $('#event_lon').val();
 	event.text = $('#event_description').val();
-	event.owner = $.cookie('username');
+	event.owner = user.userid;
 	event.eventDate = $('#event_date').val();
 	event.ratio = 0;
 	createEvent(eventsURL.href, eventsURL.type, JSON.stringify(event), function(event){

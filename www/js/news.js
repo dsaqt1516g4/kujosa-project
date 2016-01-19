@@ -1,7 +1,10 @@
+var BASE_URL = "http://10.83.63.80:8080/kujosa";
+
+
 $(function(){
    getCurrentUserProfile(function(user){
-      $("#aProfile").text(user.fullname + ' ');
-      $("#aProfile").append('<span class="caret"></span>');
+      $("#username").text(user.fullname);
+      $("#username").append('<span class="caret"></span>');
    });
 
    var authToken = JSON.parse(sessionStorage["auth-token"]);
@@ -52,17 +55,6 @@ function processNewCollection(news){
     alert("This should open a new editor. But this is only an example.");});
 }
 
-$("#aCloseSession").click(function(e){
-  e.preventDefault();
-  logout(function(){
-    window.location.replace('login.html');
-  });
-});
-
-
-
-
-
 function listItemHTML(uri, subject, creator, edit){
   var a = '<a class="list-group-item" href="'+ uri +'">';
   var p = '<p class="list-group-item-text unclickable">' + subject + '</p>';
@@ -77,7 +69,7 @@ function listItemHTML(uri, subject, creator, edit){
 
 /* NEWS OLD */
 
-var API_BASE_URL = "http://147.83.7.155:8080/kujosa";
+var API_BASE_URL = "http://10.83.63.80:8080/kujosa";
 
 //var id = $.cookie('id');
 //var password = $.cookie('password')
@@ -92,16 +84,34 @@ $("#button_delete").click(function(e) {
 	
 });
 
-$("#button_update").click(function(e) {
-	e.preventDefault();
-	document.location.href = '/kujosa/editar_noticia.html';
-}); 
+$("#button_post_news").click(function(e){
+    e.preventDefault();
+    post_news(formdata);
 
 $("#logout").click(function(e) {
     e.preventDefault();
     console.log("dsag");
    logout();
 });
+
+function post_news (formdata){
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    var uri=api.news.uri;
+    $.ajax({
+        url: uri,
+        type: 'POST',
+        crossDomain: true,
+        dataType: "json",
+        data:formdata,
+        headers: {"X-Auth-Token":authToken.token}
+        }).done(function(data, status, jqxhr){
+        data.links=linksToMap(data.links);
+        window.location.reload();
+    }).fail(function(){
+        console.log('Error');
+    });
+}
+    
 
 function loadNews(uri, complete){
 	// var authToken = JSON.parse(sessionStorage["auth-token"]);
@@ -125,43 +135,27 @@ function getNew(uri, complete){
 
 
 $(document).ready(function() {
-	
-	if ($.cookie('loggedin')=='nologuejat'){
-	  	  $("#logout").hide();
-	      $("#perfil").hide();
-	}
-
-	if ($.cookie('loggedin')=='loguejat'){
-	    $("#singup").hide();
-	    $("#signin").hide();
-	}
-	
-	
-	$(button_delete).hide();
-	$(button_update).hide();
 	getnews();
 	
 });
 
-
 function delete_news() {
 	
-	var url = API_BASE_URL + '/news/' + id;
-
+        var authToken = JSON.parse(sessionStorage["auth-token"]);
+        var uri = authToken["links"]["delete-news"].uri;
+        
+        
 	$.ajax({
-		url : url,
+		url : uri,
 		type : 'DELETE',
 		crossDomain : true,
-		
 		dataType : 'json',
-		beforeSend : function(request) {
-			request.withCredentials = true;
-			request.setRequestHeader("Authorization", "Basic "
-					+ btoa($.cookie('email') + ':' + $.cookie('password')));
-		},
+		headers: {
+        	"X-Auth-Token":authToken.token
+                }
 
 	}).done(function(data, status, jqxhr) {
-		window.location = "http://147.83.7.155/kujosa/index.html"
+		window.location = "index.html"
 
 	}).fail(function(jqXHR, textStatus) {
 		console.log(textStatus);
@@ -172,48 +166,25 @@ function delete_news() {
 function getnews() {
 
 	console.log(id);
-	console.log("geawgd");
-
-	var url = API_BASE_URL + "/newss/"+id;
-
+        var authToken = JSON.parse(sessionStorage["auth-token"]);
+        var uri = authToken["links"]["get-news"].uri;
 	$.ajax(
 			{
 				url : url,
 				type : 'GET',
 				crossDomain : true,
-				dataType : 'json',
-				beforeSend : function(request) {
-					request.withCredentials = true;
-					request.setRequestHeader("Authorization", "Basic "
-							+ btoa($.cookie('email') + ':' + $.cookie('password')));
-					
+                                dataType: "json",
+                                headers: {"X-Auth-Token" : authToken.token}
 				},
 				
 
 			}).done(function(data, status, jqxhr) {
 		var news = JSON.parse(jqxhr.responseText);
 	
-			destinatario=news.email;
-			console.log=("El creador del news es:"+destinatario)
-			foto_news1.src = news.imagenes[0].urlimagen;
+			creator=news.userid;
+			console.log=("El creador del news es:"+creator)
 			$("#title1").text(news.titol);
-			$("#content1").text(news.content);
-			
-			
-			if($.cookie('email') == (destinatario||"adminmail")){
-				$(button_delete).show();
-				$(button_update).show();
-			}
-		
-			if(news.imagenes[1].urlimagen != undefined){
-				foto_news2.src = news.imagenes[1].urlimagen;
-			}
-			
-			else if (news.imagenes[1].urlimagen != undefined){
-				foto_news3.src = news.imagenes[2].urlimagen;
-			}
-			
-
+			$("#content1").text(news.text);
 	}).fail(function() {
 		$("#news_result").text("No hi ha notícies");
 	});
