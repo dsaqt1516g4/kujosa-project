@@ -11,5 +11,15 @@
   {
     "path": "login",
     "methods": ["POST"]
+  },
+
+  {
+    "path": "news",
+    "methods": ["GET"]
+  },
+
+  {
+    "path": "events",
+    "methods": ["GET"]
   }
 ]
