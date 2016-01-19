@@ -40,6 +40,15 @@ public class User {
     private String fullname;
     private String imageURL;
     private String filename;
+    private boolean isAdmin;
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 
     public List<Link> getLinks() {
         return links;

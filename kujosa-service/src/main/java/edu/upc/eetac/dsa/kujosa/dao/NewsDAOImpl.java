@@ -52,6 +52,37 @@ public class NewsDAOImpl implements NewsDAO{
         try {
             connection = Database.getConnection();
 
+            stmt = connection.prepareStatement(NewsDAOQuery.GET_NEWS_BY_ID);
+            stmt.setString(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                news = new News();
+                news.setId(rs.getString("id"));
+                news.setUserid(rs.getString("userid"));
+                news.setHeadline(rs.getString("headline"));
+                news.setBody(rs.getString("body"));
+                news.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
+                news.setLastModified(rs.getTimestamp("last_modified").getTime());
+            }
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
+        return news;
+    }
+
+    @Override
+    public News getNewsByUser(String id) throws SQLException {
+        News news = null;
+
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        try {
+            connection = Database.getConnection();
+
             stmt = connection.prepareStatement(NewsDAOQuery.GET_NEWS_BY_USER);
             stmt.setString(1, id);
 
@@ -125,9 +156,9 @@ public class NewsDAOImpl implements NewsDAO{
             connection = Database.getConnection();
 
             stmt = connection.prepareStatement(NewsDAOQuery.UPDATE_NEWS);
-            stmt.setString(1, id);
-            stmt.setString(2, headline);
-            stmt.setString(3, body);
+            stmt.setString(1, headline);
+            stmt.setString(2, body);
+            stmt.setString(3, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)

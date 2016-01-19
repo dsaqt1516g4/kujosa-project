@@ -17,7 +17,7 @@ public class EventDAOQuery {
     public final static String UPDATE_STATE_QUERY = "update state set state = ifnull(?, state) where userid = unhex(?) and eventid = unhex(?)";
     public final static String GET_EVENTS_STATE_QUERY = "select eventid from state where userid = unhex(?) and state = ?";
     public final static String VALIDATE_USER = "select * from users where userid = unhex(?)";
-    public final static String CREATE_EVENT = "insert into events (id, userid, titol, text, lat, lon, startdate, enddate, ratio) values (unhex(?),unhex(?),?,?,?,?,?,?,?)";
+    public final static String CREATE_EVENT = "insert into events (id, userid, titol, text, lat, lon, start_date, end_date, ratio) values (unhex(?),unhex(?),?,?,?,?,?,?,?)";
     public final static String GET_USERS_OF_EVENT = "select userid from events e where e.id = unhex(?)";
     public final static String GET_EVENT_FROM_LAST="SELECT * FROM events WHERE creation_date > ? ORDER BY creation_date DESC";
     public final static String GET_EVENT_FROM_FIRST="SELECT * FROM events WHERE creation_date < ifnull(?, now()) ORDER BY creation_date DESC LIMIT ?";

@@ -1,9 +1,11 @@
 package edu.upc.eetac.dsa.kujosa;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
 import edu.upc.eetac.dsa.kujosa.dao.NewsDAO;
 import edu.upc.eetac.dsa.kujosa.dao.NewsDAOImpl;
 import edu.upc.eetac.dsa.kujosa.entity.News;
 import edu.upc.eetac.dsa.kujosa.entity.NewsCollection;
+import edu.upc.eetac.dsa.kujosa.entity.User;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -16,6 +18,10 @@ import java.sql.SQLException;
  *     +-------------------------------------+
  *
  * READY FOR TEST
+ * Crete TEST ->OK!
+ * getNews->OK!
+ * NewsCollection->NOK¡
+ *
  */
 @Path("news")
 public class NewsResource {
@@ -42,7 +48,7 @@ public class NewsResource {
 
         @GET
         @Produces(KujosaMediaType.KUJOSA_NEWS_COLLECTION)
-        public NewsCollection getNews(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
+        public NewsCollection getNews( @QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
             NewsCollection newsCollection = null;
             NewsDAO newsDAO = new NewsDAOImpl();
             try {
@@ -88,32 +94,56 @@ public class NewsResource {
                 throw new InternalServerErrorException();
             }
         }
+
         @Path("/{id}")
         @PUT
-        @Consumes(KujosaMediaType.KUJOSA_NEWS)
+        @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
         @Produces(KujosaMediaType.KUJOSA_NEWS)
-        public News updateNews(@PathParam("id") String id, News news) {
-            if (news == null)
-                throw new BadRequestException("news is null");
-            if (!id.equals(news.getId()))
-                throw new BadRequestException("path parameter id and entity parameter id doesn't match");
+        public News updateNews(@PathParam("id") String id,@FormParam("title") String header, @FormParam("body") String cuerpaso) {
+            NewsDAO newsDAO = new NewsDAOImpl();
+            News news = null;
+            try {
+                news = newsDAO.getNewsById(id);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            if(id==null)
+            {
+                throw new BadRequestException("News ID is null");
+
+            }
+
+            if ( header== null) {
+                header = news.getHeadline();
+            }if (cuerpaso==null)
+            {
+                cuerpaso=news.getBody();
+            }
+
 
             String userid = securityContext.getUserPrincipal().getName();
-            if (!userid.equals(news.getUserid()))
+            User usu = new User();
+
+            //if (usu.isAdmin()){
+            if(true){
+                            try {
+                                news = newsDAO.updateNews(id, header, cuerpaso);
+                                if (news == null)
+                                    throw new NotFoundException("News with id = " + id + " doesn't exist");
+                            } catch (SQLException e) {
+                                throw new InternalServerErrorException();
+                            }
+                            return news;
+        }  else
+            {
                 throw new ForbiddenException("operation not allowed");
 
-            NewsDAO newsDAO = new NewsDAOImpl();
-            try {
-                news = newsDAO.updateNews(id, news.getHeadline(), news.getBody());
-                if (news == null)
-                    throw new NotFoundException("News with id = " + id + " doesn't exist");
-            } catch (SQLException e) {
-                throw new InternalServerErrorException();
             }
-            return news;
         }
 
-        @Path("/{id}")
+
+
+    @Path("/{id}")
         @DELETE
         public void deleteSting(@PathParam("id") String id) {
             String userid = securityContext.getUserPrincipal().getName();

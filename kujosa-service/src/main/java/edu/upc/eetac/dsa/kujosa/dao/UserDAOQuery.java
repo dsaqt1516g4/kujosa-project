@@ -18,4 +18,6 @@ public interface UserDAOQuery {
     String GET_USER_BY_USERNAME = "select hex(u.id) as id, u.loginid, u.email, u.fullname, u.image from users u where u.loginid=?";
     String DELETE_USER = "delete from users where id= UNHEX(?)";
     String GET_PASSWORD =  "select hex(password) as password from users where id=unhex(?)";
+    String IS_ADMIN = "select role from users_role where id= UNHEX(?)";
+
 }
