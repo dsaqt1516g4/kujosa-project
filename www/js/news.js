@@ -70,7 +70,6 @@ function previousNews(){
 
 /* NEWS OLD */
 
-var API_BASE_URL = "http://10.83.63.80:8080/kujosa";
 
 
 $("#button_delete").click(function(e) {
@@ -81,7 +80,13 @@ $("#button_delete").click(function(e) {
 
 $("#button_post_news").click(function(e){
     e.preventDefault();
-    post_news(formdata);
+    
+  formdata.title = $('#headline').val();
+  formdata.body = $('#event_description').val();
+
+  //devent.owner = user.userid;
+  
+    post_news(formdata.title,formdata.body);
 });
 /*$("#logout").click(function(e) {
     e.preventDefault();
