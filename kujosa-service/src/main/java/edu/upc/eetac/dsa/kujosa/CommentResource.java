@@ -17,11 +17,12 @@ import java.sql.*;
  *     +-------------------------------------+
  *
  * READY FOR TEST
+ *
+ *
+ *
+ *
  */
 
-/* ACABADO              *
-    TODO: revisar bugs
-                        */
 @Path("comments")
 public class CommentResource {
     @Context
@@ -30,15 +31,15 @@ public class CommentResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_COMMENT)
-    public Response createComment(@FormParam("id") String eventid, @FormParam("content") String content,
-                                  @FormParam("image") String image, @FormParam("ratio") int ratio, @Context UriInfo uriInfo) throws URISyntaxException {
-        if (content == null)
+    public Response createComment(@FormParam("username") String username, @FormParam("content") String content,
+                                  @FormParam("eventid") String eventid, @Context UriInfo uriInfo) throws URISyntaxException {
+        if (content == null||eventid ==null||username ==null)
             throw new BadRequestException("all parameters are mandatory");
         CommentDAO commentDAO = new CommentDAOImpl();
         Comment comment = null;
         AuthToken authToken = null;
         try {
-            comment = commentDAO.createComment(securityContext.getUserPrincipal().getName(), eventid, content, image);
+            comment = commentDAO.createComment(username, eventid, content);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
@@ -98,21 +99,16 @@ public class CommentResource {
 
     @Path("/{id}")
     @PUT
-    @Consumes(KujosaMediaType.KUJOSA_COMMENT)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_COMMENT)
-    public Comment updateSting(@PathParam("id") String id, Comment comment) {
-        if (comment == null)
+    public Comment updateSting(@PathParam("id") String id, @FormParam("content") String content) {
+        Comment comment=null;
+        if (content == null)
             throw new BadRequestException("entity is null");
-        if (!id.equals(comment.getId()))
-            throw new BadRequestException("path parameter id and entity parameter id doesn't match");
-
-        String userid = securityContext.getUserPrincipal().getName();
-        if (!userid.equals(comment.getUserid()))
-            throw new ForbiddenException("operation not allowed");
 
         CommentDAO commentDAO = new CommentDAOImpl();
         try {
-            comment = commentDAO.updateComment(id, comment.getContent(), comment.getImage(), comment.getRatio());
+            comment = commentDAO.updateComment(id, content);
             if (comment == null)
                 throw new NotFoundException("Comment with id = " + id + " doesn't exist");
         } catch (SQLException e) {

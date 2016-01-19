@@ -8,7 +8,7 @@ public class EventDAOQuery {
     public final static String GET_EVENTS_USER_QUERY_FROM_LAST = "select * from events where startdate < ifnull(?, now()) and userid = unhex(?) order by startdate asc limit ?";
     public final static String GET_EVENTS_USER_BY_NAME = "select * from events where startdate > ifnull(?, now()) and userid = unhex(?) order by startdate asc limit ?";
     public final static String GET_EVENTS_USER_BY_NAME_FROM_LAST = "select * from events where name LIKE ? and startdate < ifnull(?, now()) and userid = unhex(?) order by startdate asc limit ?";
-    public final static String GET_EVENT_BY_ID_QUERY = "select * from events where id = unhex(?)";
+    public final static String GET_EVENT_BY_ID_QUERY = "select * from events where id = hex(?)";
     public final static String GET_EVENTS_NOW_USER_QUERY = "select * from events where startdate < now() and now() < enddate and userid = unhex(?) order by startdate asc";
     public final static String INSERT_EVENT_USER_QUERY = "insert into events (userid, titol, startdate, enddate) values (unhex(?),?,?,?)";
     public final static String UPDATE_EVENT_QUERY = "update events set titol = ifnull(?, titol), startdate = ifnull(?, startdate), enddate = ifnull(?, enddate) where id = unhex(?)";

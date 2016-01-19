@@ -3,6 +3,7 @@ package edu.upc.eetac.dsa.kujosa.dao;
 import edu.upc.eetac.dsa.kujosa.db.Database;
 import edu.upc.eetac.dsa.kujosa.entity.Comment;
 import edu.upc.eetac.dsa.kujosa.entity.CommentCollection;
+import edu.upc.eetac.dsa.kujosa.entity.User;
 
 import java.sql.*;
 
@@ -10,21 +11,18 @@ import java.sql.*;
  * Created by juan on 14/12/15.
  */
 
-/*                      *
-*    ACABADO            *
-*                       *
-* TODO: revisar bugs    *
-*                       */
+
 public class CommentDAOImpl implements CommentDAO{
 
     @Override
-    public Comment createComment(String userid, String eventid, String content, String image) throws SQLException {
+    public Comment createComment(String user, String eventid, String content) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
         String id = null;
         try {
             connection = Database.getConnection();
-
+            UserDAO usd= new UserDAOImpl();
+            User us=  usd.getUserByLoginid(user);
             stmt = connection.prepareStatement(UserDAOQuery.UUID);
             ResultSet rs = stmt.executeQuery();
             if (rs.next())
@@ -34,12 +32,9 @@ public class CommentDAOImpl implements CommentDAO{
 
             stmt = connection.prepareStatement(CommentDAOQuery.INSERT_COMMENT_QUERY);
             stmt.setString(1, id);
-            stmt.setString(2, userid);
+            stmt.setString(2, us.getId());
             stmt.setString(3, eventid);
             stmt.setString(4, content);
-            stmt.setString(5, image);
-            /*stmt.setInt(6, ratio);
-             */
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -72,8 +67,6 @@ public class CommentDAOImpl implements CommentDAO{
                 comment.setUserid(rs.getString("userid"));
                 comment.setEventid(rs.getString("eventid"));
                 comment.setContent(rs.getString("content"));
-                comment.setRatio(rs.getInt("ratio"));
-                comment.setImage(rs.getString("image"));
                 comment.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
                 comment.setLastModified(rs.getTimestamp("last_modified").getTime());
             }
@@ -113,7 +106,6 @@ public class CommentDAOImpl implements CommentDAO{
                 comment.setId(rs.getString("id"));
                 comment.setUserid(rs.getString("userid"));
                 comment.setContent(rs.getString("content"));
-                comment.setRatio(rs.getInt("ratio"));
                 comment.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
                 comment.setLastModified(rs.getTimestamp("last_modified").getTime());
                 if (first) {
@@ -134,7 +126,7 @@ public class CommentDAOImpl implements CommentDAO{
     }
 
     @Override
-    public Comment updateComment(String id, String content, String image, int ratio) throws SQLException {
+    public Comment updateComment(String id, String content) throws SQLException {
         Comment comment = null;
 
         Connection connection = null;
@@ -144,9 +136,7 @@ public class CommentDAOImpl implements CommentDAO{
 
             stmt = connection.prepareStatement(CommentDAOQuery.UPDATE_COMMENT_QUERY);
             stmt.setString(1, content);
-            stmt.setString(2, image);
-            stmt.setInt(3, ratio);
-            stmt.setString(4, id);
+            stmt.setString(2, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)

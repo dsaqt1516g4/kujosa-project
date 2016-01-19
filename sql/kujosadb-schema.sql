@@ -71,8 +71,6 @@ create table commentsevent (
 	content		 	varchar(200) not null,
 	last_modified		timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
 	creation_timestamp	datetime not null default current_timestamp,
-	image                   varchar(20) not null,
-	ratio                   int not null,
         foreign key (userid)    references users (id) on delete cascade,
 	foreign key (eventid) 	references events (id) on delete cascade,
 	PRIMARY KEY (id)

@@ -139,12 +139,15 @@ public class DocumentDAOImpl implements DocumentDAO {
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
+            UserDAO usd= new UserDAOImpl();
+            User us=  usd.getUserByLoginid(name);
             connection = Database.getConnection();
 
+
             stmt = connection.prepareStatement(DocumentDAOQuery.UPDATE_DOCUMENT);
-            stmt.setString(1, name);
-            stmt.setString(2, description);
-            stmt.setString(3, id);
+            //stmt.setString(1, us.getId());
+            stmt.setString(1, description);
+            stmt.setString(2, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)
