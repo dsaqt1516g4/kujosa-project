@@ -83,6 +83,7 @@
         android:layout_height="58dp"
         android:layout_marginTop="1dp"
         android:text="@string/action_sign_in_short"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:onClick="signIn"/>
 </LinearLayout>
 </ScrollView>

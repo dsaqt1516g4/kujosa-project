@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.provider.Settings;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -76,9 +77,11 @@ public class AestecClient {
         rootAPI =new RootAPI();
         HttpURLConnection urlConnection = null;
         try {
+
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.setDoInput(true);
+            System.out.println("No //////////////////////////////////////\\\\se connecta o que");
             urlConnection.connect();
         } catch (IOException e) {
             throw new AppException(
