@@ -110,8 +110,10 @@ public class LoginActivity extends Activity {
                     Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             editor.clear();
+
             editor.putString("username", username);
             editor.putString("password", password);
+            System.out.println("USer"  + username +"    pass      "+password);
             boolean done = editor.commit();
             if (done)
                 Log.d(TAG, "preferences set");

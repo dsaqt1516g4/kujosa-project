@@ -1,4 +1,4 @@
-var BASE_URL = "http://10.83.63.80:8080/kujosa";
+var BASE_URL = "http://147.83.7.205:8080/kujosa";
 
 
 $(function(){
@@ -70,12 +70,13 @@ function previousNews(){
 
 /* NEWS OLD */
 
+var API_BASE_URL = "http://147.83.7.205:8080/kujosa";
 
 
+var id = $("#num_noticia").val();
 $("#button_delete").click(function(e) {
 	e.preventDefault();
-	delete_news();
-	
+	delete_news(id);
 });
 
 $("#button_post_news").click(function(e){
@@ -139,10 +140,10 @@ $("#button_post_news").click(function(e){
 	
 }); */
 
-/* function delete_news() {
-	
+function delete_news(id) {
+	loadAPI(function(){
         var authToken = JSON.parse(sessionStorage["auth-token"]);
-        var uri = authToken["links"]["delete-news"].uri;
+        var uri = BASE_URL+'/news/'+'noticia'+id;
         
         
 	$.ajax({
@@ -155,12 +156,13 @@ $("#button_post_news").click(function(e){
                 }
 
 	}).done(function(data, status, jqxhr) {
-		window.location = "index.html"
+		window.location = "news.html"
 
 	}).fail(function(jqXHR, textStatus) {
 		console.log(textStatus);
 	});
-} */
+});
+}
 
 
 /* function getnews() {
@@ -189,4 +191,3 @@ $("#button_post_news").click(function(e){
 		$("#news_result").text("No hi ha notícies");
 	});
 } */
-

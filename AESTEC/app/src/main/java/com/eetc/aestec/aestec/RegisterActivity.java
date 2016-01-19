@@ -85,12 +85,11 @@ public  class RegisterActivity extends AppCompatActivity  {
 
     protected User reg(String u, String p, String e) throws AppException
     {
-        System.out.println("user    "+ "  p"+p+u);
 
 
         User u1;
         AestecClient client = AestecClient.getInstance(RegisterActivity.this);
-        System.out.println("user    "+ "  p"+"em");
+        System.out.println("user    llega aqui"+ "  p"+"em");
 
         u1 =client.register(u, p, e);
         return u1;
