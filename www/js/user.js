@@ -1,4 +1,4 @@
-var API_URL = "http://10.83.63.80:8080/kujosa/";
+var API_URL = "http://147.83.7.205:8080/kujosa/";
 
 /* EDITAR USUARI v2 */
 
@@ -14,37 +14,6 @@ var API_URL = "http://10.83.63.80:8080/kujosa/";
         window.location.replace('index.html');
     }
 });*/
-                  
-var incorrectPassInput;
-$('#InputNewPass2').on('input', function() {
-        if($('#InputNewPass2').val() == $('#InputNewPass').val()){
-            $("#InputNewPass2").css({ background: "#FFFFFF"});
-            $("#InputNewPass").css({ background: "#FFFFFF"});
-            incorrectPassInput=false;
-        }else{
-            $("#InputNewPass2").css({ background: "#FFD700"});
-            $("#InputNewPass").css({ background: "#FFD700"});
-            incorrectPassInput=true;
-        }
-    });
-$("#form-pass").submit(function(event){
-    event.preventDefault();
-    if($('#InputNewPass2').val() != $('#InputNewPass').val()){
-        $("#culebrilla").text("");   
-         $("#culebrilla").append("<div class='alert alert-block alert-info'><p><span style='color:red'>The new password do not match</span></p></div>");}
-    else{
-        changePassword($('#InputNewPass').val(),$('#InputOldPass').val(), function(){
-        window.location.reload();
-    });}    
-});
-
-$('#form-datails').submit(function(event){
-    event.preventDefault();
-    changeDetails($('#InputInfo').val(),$('#InputFullname').val(),$('#InputEmail').val(), function(){
-        window.location.reload();
-    });
-});
-
 
 
 $("#btnlogout").click(function(e){
@@ -139,11 +108,28 @@ var userURL;
 				});
 		}
 });*/
+/* $("#register_btn").click(function(event){
+    event.preventDefault();
+register($("#username").val(),
+$("#password").val(), 
+$("#fullname").val(), 
+$("#email").val(), 
+$("#name").val(), 
+$("#image").val(), 
+function()
+{  	console.log("register");
+	var formData = new FormData();
+	formData.append('
+}
+
+}); */
+
+
 
 $("#register_btn").click(function(e){
-    var username= $("#nombre_1").val();
+    var username= $("#username_1").val();
     var password=$("#password_1").val();
-    var fullname=$("#nombre_1").val();
+    var nombre=$("#nombre_1").val();
     var email=$("#email_1").val();
     e.preventDefault();
     $('progress').toggle();
@@ -151,8 +137,8 @@ $("#register_btn").click(function(e){
     formData.append('username', username);
     formData.append('password', password);
     formData.append('email', email);
-    formData.append('fullname', fullname);
-    formData.append('image', $('#inputFile')[0].files[0]);    
+    formData.append('nombre', nombre);
+    formData.append('imagen', $('#inputFile')[0].files[0]);    
     console.log(formData);
     registerUser(formData);
     console.log('Usuari creat');
@@ -161,7 +147,7 @@ $("#register_btn").click(function(e){
 function registerUser(formdata){
     loadAPI(function(){
         var api = JSON.parse(sessionStorage.api);
-        var uri=api.user.uri;
+        var uri = API_URL+'users';
         $.ajax({
             url: uri,
 		    type: 'POST',
@@ -179,7 +165,7 @@ function registerUser(formdata){
             processData: false
         }).done(function(data, status,jqxhr){
             var response = $.parseJSON(jqxhr.responseText);
-            var lastfilename = response.filname;
+            var lastfilename = response.filename;
             $('progress').toggle();
             window.location.replace('index.html');
         }).fail(function(jqXHR, textStatus) {
@@ -294,7 +280,7 @@ function Login(username, password){
 
 		}
 		else if (response=="successusuario"){
-		url = "http://147.83.7.159:8080/kujosa-api/" + 'users/'+ username;
+		url = "http://147.83.7.205:8080/kujosa-api/" + 'users/'+ username;
 		getUser(url, function(user){
 			var userlog= new User(user);
 				$.cookie('username', username);

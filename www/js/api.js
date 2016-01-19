@@ -1,4 +1,4 @@
-var BASE_URL = "http://10.83.63.80:8080/kujosa";
+var BASE_URL = "http://147.83.7.205:8080/kujosa";
 
 /* API de BEETER */
 
