@@ -32,13 +32,13 @@ public class NewsResource {
         @POST
         @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
         @Produces(KujosaMediaType.KUJOSA_NEWS)
-        public Response createNews(@FormParam("userid") String username,@FormParam("headline") String headline, @FormParam("body") String body, @Context UriInfo uriInfo) throws URISyntaxException {
+        public Response createNews(@FormParam("headline") String headline, @FormParam("body") String body, @Context UriInfo uriInfo) throws URISyntaxException {
             if ((headline==null)   ||(body==null))
                 throw new BadRequestException("all parameters are mandatory");
             NewsDAO newsDAO = new NewsDAOImpl();
             News news = null;
             try {
-                news = newsDAO.createNews(username, headline, body);
+                news = newsDAO.createNews(securityContext.getUserPrincipal().getName(), headline, body);
             } catch (SQLException e) {
                 throw new InternalServerErrorException();
             }
@@ -48,11 +48,11 @@ public class NewsResource {
 
         @GET
         @Produces(KujosaMediaType.KUJOSA_NEWS_COLLECTION)
-        public NewsCollection getNews( @QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
+        public NewsCollection getNews(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
             NewsCollection newsCollection = null;
             NewsDAO newsDAO = new NewsDAOImpl();
             try {
-                if (before && timestamp == 0) timestamp = System.currentTimeMillis();
+                if (before && timestamp == 0){ timestamp = System.currentTimeMillis();}
                 newsCollection = newsDAO.getNews(timestamp, before);
             } catch (SQLException e) {
                 throw new InternalServerErrorException();
@@ -63,7 +63,7 @@ public class NewsResource {
         @Path("/{id}")
         @GET
         @Produces(KujosaMediaType.KUJOSA_NEWS)
-        public Response getNews(@PathParam("id") String id, @Context Request request) {
+        public Response getNew(@PathParam("id") String id, @Context Request request) {
             // Create cache-control
             CacheControl cacheControl = new CacheControl();
             News news = null;
@@ -143,16 +143,16 @@ public class NewsResource {
 
 
 
-    @Path("/{id}")
+        @Path("/{id}")
         @DELETE
-        public void deleteSting(@PathParam("id") String id) {
+        public void deleteNews(@PathParam("id") String id) {
             String userid = securityContext.getUserPrincipal().getName();
-            NewsDAO news = new NewsDAOImpl();
+            NewsDAO newsDAO = new NewsDAOImpl();
             try {
-                String ownerid = news.getNewsById(id).getUserid();
+                String ownerid = newsDAO.getNewsById(id).getUserid();
                 if (!userid.equals(ownerid))
                     throw new ForbiddenException("operation not allowed");
-                if (!news.deleteNews(id))
+                if (!newsDAO.deleteNews(id))
                     throw new NotFoundException("User with id = " + id + " doesn't exist");
             } catch (SQLException e) {
                 throw new InternalServerErrorException();
