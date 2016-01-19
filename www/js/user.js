@@ -56,7 +56,7 @@ $("#btnlogout").click(function(e){
 
 /* EDITAR USUARI */
 
-var userURL;
+/* var userURL;
 $(document).ready(function() {
 
 	if($.cookie('username')==undefined){
@@ -70,7 +70,7 @@ $(document).ready(function() {
 		$('#verify').val(user.password);
 		$('#email').val(user.email);
 	});
-});
+}); */
 
 $("#save_btn").click(function(e) {
 		e.preventDefault();
@@ -86,7 +86,7 @@ $("#save_btn").click(function(e) {
 				user.nom = $('#name').val();
 				user.email = $('#email').val();
 				updateUser(userURL, 'application/vnd.kujosa.api.user+json', JSON	.stringify(user), function(user) {
-							window.location.replace("user_profile.html");
+							window.location.replace("perfil.html");
 				});
 		}
 }); 
@@ -101,7 +101,7 @@ $(document).ready(function() {
 	});
 });
 
-$("#register_btn").click(function(e) {
+/* $("#register_btn").click(function(e) {
 		e.preventDefault();
 		
 		if($('#username_1').val().length > 50 || $('#nombre_1').val().length > 50 || $('#email_1').val().length > 50 || $('#password_1').val().length > 32){
@@ -111,12 +111,17 @@ $("#register_btn").click(function(e) {
 		}else if ($('#password_1').val() != $('#verify').val()) {
 				$('<div class="alert alert-danger">La contrasenya no coincideix</div>').appendTo($("#result_register_process"));
 		}else {
-						var api = JSON.parse(sessionStorage.api);
+						
+                    
+                    
+                    
+                    
+                                                var api = JSON.parse(sessionStorage.api);
 						var uri = API_URL+"users";
 						console.log("uri : "+uri);
 						$.post(uri,
 						{
-							username: $('#nombre_1').val(),
+							username: $('#username_1').val(),
 							password: $('#password_1').val(),
 							email: $('#email_1').val(),
 							nombre: $('#nombre_1').val(),
@@ -130,16 +135,66 @@ $("#register_btn").click(function(e) {
 							alert(error.reason);
 						}
 					);
-				/*var user = new Object();
+				var user = new Object();
 				user.name = $('#nombre_1').val();
 				user.username = $('#username_1').val();
 				user.userpass = $('#password_1').val();
 				user.email = $('#email_1').val();
-			//s	createUser(userURL.href, userURL.type, JSON.stringify(user), function(user) {
+				createUser(userURL.href, userURL.type, JSON.stringify(user), function(user) {
 				window.location.replace("/index.html");
-				});*/
+				});
 		}
+});*/
+
+$("#register_btn").click(function(e){
+    var username= $("#nombre_1").val();
+    var password=$("#password_1").val();
+    var fullname=$("#nombre_1").val();
+    var email=$("#email_1").val();
+    e.preventDefault();
+    $('progress').toggle();
+    var formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
+    formData.append('email', email);
+    formData.append('fullname', fullname);
+    formData.append('image', $('#inputFile')[0].files[0]);    
+    console.log(formData);
+    registerUser(formData);
+    console.log('Usuari creat');
 });
+
+function registerUser(formdata){
+    loadAPI(function(){
+        var api = JSON.parse(sessionStorage.api);
+        var uri=api.user.uri;
+        $.ajax({
+            url: uri,
+		    type: 'POST',
+            xhr: function(){
+                var myXhr=$.ajaxSettings.xhr();
+                if(myXhr.upload){
+                    myXhr.upload.addEventListener('progress',progressHandlingFunction,false);
+                }
+                return myXhr;
+            },
+            crossDomain: true,
+            data: formdata,
+            cache: false,
+            contentType: false,
+            processData: false
+        }).done(function(data, status,jqxhr){
+            var response = $.parseJSON(jqxhr.responseText);
+            var lastfilename = response.filname;
+            $('progress').toggle();
+            window.location.replace('index.html');
+        }).fail(function(jqXHR, textStatus) {
+           var error = JSON.parse(jqXHR.responseText);
+           console.log(error.reason);
+        });
+       
+    });
+}
 
 /* ENTRADA d'USUARIS */
 
@@ -148,8 +203,10 @@ $("#register_btn").click(function(e) {
 $("#login_btn").click(function(e){
 	console.log("Function")
 	e.preventDefault();
-	login($("#username").val(), $("#password").val() );
-	
+	login($("#username").val(), $("#password").val(),function(){
+            console.log("TODO CORRECTO");
+            window.location.replace('kujosa.html');
+            });
 });
 
 function linksToMap(links){
@@ -266,76 +323,12 @@ function Login(username, password){
 		});
 } */
 
-/* MOSTRAR ALTRES USUARIS */
-
-var eventsURL;
-var markers = [];
-var iterator = 0;
-
-var usersURL = API_URL + 'users';
-$("#search_btn").click(function(e){
-	e.preventDefault();
-	loadUsersBy(usersURL, $('#search_user').val());
-});
-
-
-$('#logout_btn').click(function(e){
-	deleteCookie('username');
-});
-
-$(document).ready(function(){
-
-	if($.cookie('username')==undefined){
-		window.location.replace("index.html");
-	}
-	$('<a id="username_logged">'+ $.cookie('username') +'</a>').appendTo($('#user_logged'));
-	$('<h1>'+ $.cookie('username') +'</h1>').appendTo($('#username'));
-	loadUsersBy(usersURL, "");
-	
-});
-
-function loadUsersBy(url, username){
-	$('#result_users').text('');
-	if(username == ""){
-		var urlSearch=url;
-	}else{
-		var urlSearch=url+'/search?username='+username;
-	}
-	var users = getUsers(urlSearch, function(userCollection){
-		$.each(userCollection.users, function(index,item){
-			var user = new User(item);
-
-			//var link = $('<div class="well well-sm"><div class="media" ><a class="thumbnail pull-left"> <img class="media-object" src="./img/profile.png" height="70" width="70"></a><div class="media-body"><h4 class="media-heading">'+user.username+'</h4><p><a class="btn btn-xs btn-default" id="profile"><span class="glyphicon glyphicon-user"></span>Veure perfil/a></p></div></div></div>');
-			//link.click(function(e){
-			//	 $.cookie('link-friend',  user.getLink('self').href);
-			//	 window.location.replace("/friend_profile.html");
-			//});
-			
-			var div = $('<div></div>');
-			div.append(link);
-			$('#result_users').append(div);
-		});
-	});	
-
-}
-
 /* MOSTRAR ESDEVENIMENTS */
 
-$(document).ready(function() {
-	$('<a id="username_loged">'+ $.cookie('username') +'</a>').appendTo($('#user_loged'));
-});
-
-
-
-$('#edit_btn').click(function(e){
-	e.preventDefault();
-	window.location.replace("edit_profile.html");
-});
-
-
-$('#logout_btn').click(function(e){
-	deleteCookie('username');
-});
+//$(document).ready(function(user){
+//      $("#username").text(user.fullname);
+//      $("#username").append('<span class="caret"></span>');
+//}
 
 $(document).ready(function(){
 
@@ -374,24 +367,20 @@ function loadMyEvents(url){
 	
 }
 
+/* $(document).ready(function(){
+    try{
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    console.log("hola");
+    var profile = JSON.parse(sessionStorage["profile"]);
+    console.log(profile);
+    var filename = profile.image;
+    $("result_profile").append('<p>Nom complet: '+ profile.fullname +'<br>Login ID: ' + profile.loginid + '<br>Correu: ' + profile.email + '</p>' + '<br>Imatge de perfil: <img src="img/' + filename + '" class="img-rounded img-responsive" />');
+    }catch(e){
+        window.location.replace('index.html');
 
-function loadMyProfile(url){
-	getUser(url, function(user){
-		var date = new Date(user.registerDate);
-		var day = date.getDate();
-		var month = date.getMonth() + 1;
-		var year = date.getFullYear();
-		var register_date = day+'/'+month+'/'+year;
-		$('<h1>'+ user.username +'</h1>').appendTo($('#username'));
-		$('<li class="list-group-item text-right"><span class="pull-left"><strong>Data de registre</strong></span>' + register_date + '</li>').appendTo($('#result_profile'));
-		$('<li class="list-group-item text-right"><span class="pull-left"><strong>Nom</strong></span>' + user.name + '</li>').appendTo($('#result_profile'));
-		$('<li class="list-group-item text-right"><span class="pull-left"><strong>Correu electrònic</strong></span>' + user.email + '</li>').appendTo($('#result_profile'));
-	});
-	
+} */
 
-}
-
-function loadMyComments(url){
+/* function loadMyComments(url){
 	var comments = getComments(url, function(commentCollection){
 		$.each(commentCollection.comments, function(index, item){
 			var comment = new Comment(item);
@@ -407,4 +396,4 @@ function loadMyComments(url){
 		});
 	});
 	
-}
+} */

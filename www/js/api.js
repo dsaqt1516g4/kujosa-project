@@ -1,4 +1,4 @@
-var BASE_URL = "http://147.83.7.156:8080/kujosa";
+var BASE_URL = "http://10.83.63.80:8080/kujosa";
 
 /* API de BEETER */
 
@@ -35,6 +35,7 @@ function login(loginid, password, complete){
 			}).done(function(authToken){
 				authToken.links = linksToMap(authToken.links);
 				sessionStorage["auth-token"] = JSON.stringify(authToken);
+                                window.location.replace("kujosa.html");
 				complete();
 			}).fail(function(jqXHR, textStatus, errorThrown){
 				var error = jqXHR.responseJSON;
@@ -61,7 +62,7 @@ function logout(complete){
   	}).fail(function(){});
 }
 
-function getCurrentUserProfile(complete){
+/* function getCurrentUserProfile(complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	var uri = authToken["links"]["user-profile"].uri;
 	$.get(uri)
@@ -70,60 +71,7 @@ function getCurrentUserProfile(complete){
 			complete(user);
 		})
 		.fail(function(){});
-}
-
-function loadStings(uri, complete){
-	// var authToken = JSON.parse(sessionStorage["auth-token"]);
-	// var uri = authToken["links"]["current-stings"].uri;
-	$.get(uri)
-		.done(function(stings){
-			stings.links = linksToMap(stings.links);
-			complete(stings);
-		})
-		.fail(function(){});
-}
-
-function getSting(uri, complete){
-	$.get(uri)
-		.done(function(sting){
-			complete(sting);
-		})
-		.fail(function(data){
-		});
-}
-
-function register (formdata){
-    loadAPI(function(){
-        var api = JSON.parse(sessionStorage.api);
-        var uri=api.user.uri;
-        $.ajax({
-            url: uri,
-		    type: 'POST',
-            xhr: function(){
-                var myXhr=$.ajaxSettings.xhr();
-                if(myXhr.upload){
-                    myXhr.upload.addEventListener('progress',progressHandlingFunction,false);
-                }
-                return myXhr;
-            },
-            crossDomain: true,
-            data: formdata,
-            cache: false,
-		    contentType: false,
-            processData: false
-        }).done(function(data, status,jqxhr){
-            var response = $.parseJSON(jqxhr.responseText);
-            var lastfilename = response.filname;
-            $('progress').toggle();
-            window.location.replace('index.html');
-        }).fail(function(jqXHR, textStatus) {
-           var error = JSON.parse(jqXHR.responseText);
-            $("#response").text("");
-            $("#response").append('<div class="alert alert-block alert-info"><p><span style="color:red">'+error.reason+'</span></p></div>'); 
-        });
-        
-    });
-}
+} */
 
 function progressHandlingFunction(e){
     if(e.lengthComputable){
@@ -133,66 +81,12 @@ function progressHandlingFunction(e){
 
 /* BEETER.js */
 
-$(function(){
+/* $(function(){
    getCurrentUserProfile(function(user){
       $("#aProfile").text(user.fullname + ' ');
       $("#aProfile").append('<span class="caret"></span>');
    });
-
-   var authToken = JSON.parse(sessionStorage["auth-token"]);
-   var currentStingsUri = authToken["links"]["current-stings"].uri;
-   loadStings(currentStingsUri, function(stings){
-      $("#stings-list").empty();
-      processStingCollection(stings);
-   });
-});
-
-function previousStings(){
-  loadStings($('#formPrevious').attr('action'), function(stings){
-    processStingCollection(stings);
-  });
-}
-
-function processStingCollection(stings){
-  var lastIndex = stings["stings"].length - 1;
-  $.each(stings["stings"], function(i,sting){
-      sting.links=linksToMap(sting.links);
-      var edit = sting.userid ==JSON.parse(sessionStorage["auth-token"]).userid;
-      $("#stings-list").append(listItemHTML(sting.links["self"].uri, sting.subject, sting.creator, edit));
-      if(i==0)
-        $("#buttonUpdate").click(function(){alert("I don't do anything, implement me!")});
-      if(i==lastIndex){
-        $('#formPrevious').attr('action', sting["links"].previous.uri);
-      }
-  });
-
-   $("#formPrevious").submit(function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      previousStings();
-      $("#buttonPrevious").blur();
-    });
-
-  $("a.list-group-item").click(function(e){
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    var uri = $(this).attr("href");
-    getSting(uri, function(sting){
-      // In this example we only log the sting
-      console.log(sting);
-    });
-  });
-  $(".glyphicon-pencil").click(function(e){
-    e.preventDefault();
-    alert("This should open a sting editor. But this is only an example.");});
-}
-
-$("#aCloseSession").click(function(e){
-  e.preventDefault();
-  logout(function(){
-    window.location.replace('login.html');
-  });
-});
+}); */
 
 function getUser(){
     var authToken = JSON.parse(sessionStorage["auth-token"]);
@@ -232,7 +126,7 @@ function getProfile(uri){
     });
 }
 
-function changePassword(newPass, oldPass){
+/* function changePassword(newPass, oldPass){
     var authToken = JSON.parse(sessionStorage["auth-token"]);
     var uri = authToken["links"]["user-profile"].uri;
     var changepassUri = uri+'-password';
@@ -253,7 +147,7 @@ function changePassword(newPass, oldPass){
             id: userid,
             oldPassword: oldPass,
             password: newPass
-        },*/
+        },
         headers: {"X-Auth-Token" : authToken.token
                   //"Content-Type" : application/vnd.dsa.flatmates.user+json
                  }
@@ -268,6 +162,7 @@ function changePassword(newPass, oldPass){
         $("#culebrilla").text("");   
          $("#culebrilla").append("<div class='alert alert-block alert-info'><p><span style='color:red'>Your actual password is not this</span></p></div>");
     });
+}*/
 
 
 function listItemHTML(uri, subject, creator, edit){
