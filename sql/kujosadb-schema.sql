@@ -5,12 +5,12 @@ use kujosadb;
  
 create table users (
 
-    id BINARY(16) NOT NULL,
-    loginid VARCHAR(15) NOT NULL UNIQUE,
-    password BINARY(16) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    fullname VARCHAR(255) NOT NULL,
-    image varchar(40),
+    id          BINARY(16) NOT NULL,
+    loginid     VARCHAR(15) NOT NULL UNIQUE,
+    password    BINARY(16) NOT NULL,
+    email       VARCHAR(255) NOT NULL,
+    fullname    VARCHAR(255) NOT NULL,
+    image       varchar(40),
     PRIMARY KEY (id)
 
 );
@@ -18,7 +18,7 @@ create table users (
 create table user_roles (
 
     userid BINARY(16) NOT NULL,
-    role ENUM ('registered'),
+    role ENUM ('registered','admin'),
     FOREIGN KEY (userid) REFERENCES users(id) on delete cascade,
     PRIMARY KEY (userid, role)
     
@@ -59,7 +59,6 @@ create table events (
     end_date	 	datetime not null,
     last_modified	timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
     ratio		int not null,
-    numVots		int,
     FOREIGN KEY (userid) REFERENCES users(id) on delete cascade,
     PRIMARY KEY (id)
 );
@@ -104,7 +103,7 @@ create table document (
         userid              BINARY(16) NOT NULL,
         name                varchar(50) not null,
         description         varchar(200) not null,
-        path                varchar(500) not null,
+        path                varchar(50) not null,
         last_modified       timestamp default current_timestamp ON UPDATE CURRENT_TIMESTAMP,
 	creation_timestamp  datetime not null default current_timestamp,
 	foreign key (userid) references users(id) on delete cascade,

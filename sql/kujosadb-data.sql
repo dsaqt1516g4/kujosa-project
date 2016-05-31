@@ -5,7 +5,7 @@ insert into users values(UNHEX('1'),'alicia', UNHEX(MD5('alicia')), 'alicia@acme
 insert into user_roles values (UNHEX('1'), 'registered');
 
 insert into users values(UNHEX('2'),'blas', UNHEX(MD5('blas')), 'blas@acme.com','Blas te nas',null);
-insert into user_roles values (UNHEX('2'), 'registered');
+insert into user_roles values (UNHEX('2'), 'admin');
 
 insert into events (id, userid, titol,text, lat, lon, start_date, end_date, ratio) values (UNHEX('1'), UNHEX('1'),'TITOL1', 'Fundació de lAESTEC', '0', '0', '2015-12-5 09:00:00', '2015-12-5 11:00:00', 5);
 
