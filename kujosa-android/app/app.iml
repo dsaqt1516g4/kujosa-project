@@ -89,8 +89,8 @@
     <orderEntry type="library" exported="" name="jersey-guava-2.22.1" level="project" />
     <orderEntry type="library" exported="" name="osgi-resource-locator-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="javax.annotation-api-1.2" level="project" />
-    <orderEntry type="library" exported="" name="hk2-api-2.4.0-b31" level="project" />
     <orderEntry type="library" exported="" name="jersey-common-2.22.1" level="project" />
+    <orderEntry type="library" exported="" name="hk2-api-2.4.0-b31" level="project" />
     <orderEntry type="library" exported="" name="javax.ws.rs-api-2.0.1" level="project" />
     <orderEntry type="library" exported="" name="design-23.1.0" level="project" />
     <orderEntry type="library" exported="" name="hk2-locator-2.4.0-b31" level="project" />
