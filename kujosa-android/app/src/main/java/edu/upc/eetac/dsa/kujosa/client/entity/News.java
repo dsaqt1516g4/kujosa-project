@@ -2,18 +2,16 @@ package edu.upc.eetac.dsa.kujosa.client.entity;
 
 import java.util.List;
 
-import edu.upc.eetac.dsa.kujosa.client.Link;
-
 /**
  * Created by root on 11/11/15.
  */
-public class Sting {
+public class News {
     private List<Link> links;
     private String id;
     private String userid;
     private String creator;
-    private String subject;
-    private String content;
+    private String headline;
+    private String body;
     private long creationTimestamp;
     private long lastModified;
 
@@ -49,20 +47,20 @@ public class Sting {
         this.creator = creator;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getHeadline() {
+        return headline;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setHeadline(String headline) {
+        this.headline = headline;
     }
 
-    public String getContent() {
-        return content;
+    public String getBody() {
+        return body;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public long getCreationTimestamp() {

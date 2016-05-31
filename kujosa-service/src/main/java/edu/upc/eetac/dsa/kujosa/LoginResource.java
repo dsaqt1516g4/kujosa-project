@@ -1,13 +1,11 @@
 package edu.upc.eetac.dsa.kujosa;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.upc.eetac.dsa.kujosa.dao.AuthTokenDAOImpl;
 import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.entity.User;
 import edu.upc.eetac.dsa.kujosa.dao.AuthTokenDAO;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAOImpl;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAO;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -27,7 +25,7 @@ public class LoginResource {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
-    public AuthToken login(@FormParam("username") String loginid, @FormParam("password") String password) {
+    public AuthToken login(@FormParam("loginid") String loginid, @FormParam("password") String password) {
         if(loginid == null || password == null)
             throw new BadRequestException("all parameters are mandatory");
 
@@ -36,7 +34,7 @@ public class LoginResource {
         try{
             System.out.println("Login attempt:"+loginid+" com el pass:"+password);
             UserDAO userDAO = new UserDAOImpl();
-            user = userDAO.getUserByLoginid(loginid);
+            user = userDAO.getUserByLoginId(loginid);
             if(user == null)
                 throw new BadRequestException("loginid " + loginid + " not found.");
             if(!userDAO.checkPassword(user.getId(), password))
@@ -48,7 +46,7 @@ public class LoginResource {
         }catch(SQLException e){
             throw new InternalServerErrorException();
         }
-        return(authToken);
+        return authToken;
     }
 
     @DELETE
@@ -57,6 +55,7 @@ public class LoginResource {
         AuthTokenDAO authTokenDAO = new AuthTokenDAOImpl();
         try {
             authTokenDAO.deleteToken(userid);
+            System.out.println("Sessió tancada");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }

@@ -17,12 +17,6 @@ import java.sql.*;
 /**    +-------------------------------------+
  *     |           KUJOSA PROJECT            |
  *     +-------------------------------------+
- *
- * READY FOR TEST
- *
- *
- *
- *
  */
 
 @Path("comments")
@@ -30,24 +24,28 @@ public class CommentResource {
     @Context
     private SecurityContext securityContext;
 
+    /*** OK ***/
+
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(KujosaMediaType.KUJOSA_COMMENT)
-    public Response createComment(@FormParam("username") String username, @FormParam("content") String content,
+    public Response createComment(@FormParam("content") String content,
                                   @FormParam("eventid") String eventid, @Context UriInfo uriInfo) throws URISyntaxException {
-        if (content == null||eventid ==null||username ==null)
+        if (content == null || eventid == null)
             throw new BadRequestException("all parameters are mandatory");
         CommentDAO commentDAO = new CommentDAOImpl();
         Comment comment = null;
         AuthToken authToken = null;
         try {
-            comment = commentDAO.createComment(username, eventid, content);
+            comment = commentDAO.createComment(securityContext.getUserPrincipal().getName(), eventid, content);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + comment.getId());
         return Response.created(uri).type(KujosaMediaType.KUJOSA_COMMENT).entity(comment).build();
     }
+
+    /***500***/
 
     @GET
     @Produces(KujosaMediaType.KUJOSA_COMMENT_COLLECTION)
@@ -63,6 +61,8 @@ public class CommentResource {
         }
         return commentCollection;
     }
+
+    /*** OK ***/
 
     @Path("/{id}")
     @GET
@@ -99,50 +99,48 @@ public class CommentResource {
         }
     }
 
+    /*** OK ***/
+
     @Path("/{id}")
     @PUT
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes(KujosaMediaType.KUJOSA_COMMENT)
     @Produces(KujosaMediaType.KUJOSA_COMMENT)
-    public Comment updateSting(@PathParam("id") String id, @FormParam("content") String content) {
-        Comment comment=null;
-        String userid = securityContext.getUserPrincipal().getName();
-
-        if (content == null)
+    public Comment updateSting(@PathParam("id") String id, Comment comment) {
+        if (comment == null)
             throw new BadRequestException("entity is null");
+        if (!id.equals(comment.getId()))
+            throw new BadRequestException("path parameter id and entity parameter id doesn't match");
+
+        String userid = securityContext.getUserPrincipal().getName();
+        if (!userid.equals(comment.getUserid()))
+            throw new ForbiddenException("operation not allowed");
 
         CommentDAO commentDAO = new CommentDAOImpl();
 
         try {
-            String ownerid = commentDAO.getCommentById(id).getUserid();
-            if (ownerid.equals(userid)) {
-                comment = commentDAO.updateComment(id, content);
-            }
-
+            comment = commentDAO.updateComment(id, comment.getContent());
             if (comment == null)
-                throw new NotFoundException("Comment with id = " + id + " doesn't exist");
+                throw new NotFoundException("Sting with id = " + id + " doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
         return comment;
     }
 
+    /*** OK ***/
+
     @Path("/{id}")
     @DELETE
     public void deletecomment(@PathParam("id") String id) {
         String userid = securityContext.getUserPrincipal().getName();
         CommentDAO commentDAO = new CommentDAOImpl();
-        UserDAO us = new UserDAOImpl();
+        //UserDAO us = new UserDAOImpl();
         try {
             String ownerid = commentDAO.getCommentById(id).getUserid();
             if (!userid.equals(ownerid)){
                 throw new ForbiddenException("operation not allowed");
             }
-            else if(us.isAdmin(userid)){
-                throw new ForbiddenException("operation not allowed");
-
-            }
-            else  {
-                if (!commentDAO.deleteComment(id))
+            if (!commentDAO.deleteComment(id)){
                 throw new NotFoundException("User with id = " + id + " doesn't exist");
             }
         } catch (SQLException e) {

@@ -9,11 +9,10 @@ import java.sql.SQLException;
  * Created by kushal on 16/12/15.
  */
 public interface NewsDAO {
-    public News createNews(String userid, String headline, String body) throws SQLException;
+    News createNews(String userid, String headline, String body) throws SQLException;
     News getNewsById(String id) throws SQLException;
-    public NewsCollection getNews(long timestamp, boolean before) throws SQLException;
-    public News updateNews(String id, String headline, String body) throws SQLException;
-    public boolean deleteNews(String id) throws SQLException;
-    public News getNewsByUser(String id) throws SQLException ;
-
+    NewsCollection getNews(long timestamp, boolean before) throws SQLException;
+    News updateNews(String id, String headline, String body) throws SQLException;
+    boolean deleteNews(String id) throws SQLException;
+    //public News getNewsByUser(String id) throws SQLException;
     }

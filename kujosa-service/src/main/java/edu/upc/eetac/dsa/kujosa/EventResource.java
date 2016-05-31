@@ -4,10 +4,8 @@ import edu.upc.eetac.dsa.kujosa.dao.EventDAO;
 import edu.upc.eetac.dsa.kujosa.dao.EventDAOImpl;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAO;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAOImpl;
-import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.entity.Event;
 import edu.upc.eetac.dsa.kujosa.entity.EventCollection;
-import edu.upc.eetac.dsa.kujosa.entity.User;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -18,13 +16,13 @@ import java.sql.SQLException;
 /**    +-------------------------------------+
  *     |           KUJOSA PROJECT            |
  *     +-------------------------------------+
- *
- * READY FOR TEST
  */
 @Path("events")
 public class EventResource {
     @Context
     private SecurityContext securityContext;
+
+    /*** OK ***/
 
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -32,24 +30,22 @@ public class EventResource {
     public Response createEvents(@FormParam("titol") String titol, @FormParam("text") String text,
                                  @FormParam("latitud") long lat, @FormParam("longitud") long lon,
                                 @FormParam("ratio") int ratio, @FormParam("startdate") long startdate,
-                                @FormParam("enddate") long enddate,@FormParam("userid") String username,
+                                @FormParam("enddate") long enddate,
                                 @Context UriInfo uriInfo) throws URISyntaxException {
         if (titol == null || text == null)
             throw new BadRequestException("Title and text are mandatories");
         EventDAO eventDAO = new EventDAOImpl();
-        Event event = null;
-        AuthToken authToken = null;
+        Event event;
         UserDAO us = new UserDAOImpl();
-        String id_usr= securityContext.getUserPrincipal().getName();
-
+        String userid= securityContext.getUserPrincipal().getName();
 
         try {
-            if (us.isAdmin(id_usr)) {
-                event = eventDAO.createEvent(username, titol, text, lat, lon, startdate, enddate);
+            if (us.isAdmin(userid)) {
+                event = eventDAO.createEvent(userid, titol, text, lat, lon, startdate, enddate);
             }
             else
             {
-                throw new ForbiddenException("NOt permitted operation ");
+                throw new ForbiddenException("Not permitted operation ");
             }
         } catch (SQLException e) {
             throw new InternalServerErrorException();
@@ -58,6 +54,8 @@ public class EventResource {
         return Response.created(uri).type(KujosaMediaType.KUJOSA_EVENT).entity(event).build();
     }
 
+    /*** OK: pero sólo 3 eventos ***/
+
     @GET
     @Produces(KujosaMediaType.KUJOSA_EVENT_COLLECTION)
     public EventCollection getEvents(@QueryParam("length") int length,
@@ -65,12 +63,14 @@ public class EventResource {
         EventCollection eventCollection = null;
         EventDAO eventDAO = new EventDAOImpl();
         try {
-            eventCollection = eventDAO.getEvents(length, before,after);
+            eventCollection = eventDAO.getEvents(length, before, after);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
         return eventCollection;
     }
+
+    /*** OK ***/
 
     @Path("/{id}")
     @GET
@@ -107,21 +107,22 @@ public class EventResource {
         }
     }
 
+    /*** OK ***/
+
     @Path("/{id}")
     @PUT
     @Consumes(KujosaMediaType.KUJOSA_EVENT)
     @Produces(KujosaMediaType.KUJOSA_EVENT)
     public Event updateEvent(@PathParam("id") String id, Event event) {
-        UserDAO us = new UserDAOImpl();
-
         if (event == null)
             throw new BadRequestException("entity is null");
-        if (!id.equals(event.getId()))
+        if (!id.equals(event.getUserid()))
             throw new BadRequestException("path parameter id and entity parameter id doesn't match");
         boolean ok;
-        String user_id = securityContext.getUserPrincipal().getName();
+        String userid = securityContext.getUserPrincipal().getName();
+        UserDAO us = new UserDAOImpl();
         try {
-            ok = us.isAdmin(user_id);
+            ok = us.isAdmin(userid);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
@@ -138,6 +139,8 @@ public class EventResource {
         }
         return event;
     }
+
+    /*** OK ***/
 
     @Path("/{id}")
     @DELETE

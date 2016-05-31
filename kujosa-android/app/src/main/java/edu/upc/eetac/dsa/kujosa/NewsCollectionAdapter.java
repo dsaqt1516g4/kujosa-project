@@ -6,28 +6,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import edu.upc.eetac.dsa.kujosa.client.entity.StingCollection;
+import edu.upc.eetac.dsa.kujosa.client.entity.NewsCollection;
 
 /**
  * Created by root on 11/11/15.
  */
-public class StingCollectionAdapter extends BaseAdapter {
-    private StingCollection stingCollection;
+public class NewsCollectionAdapter extends BaseAdapter {
+    private NewsCollection newsCollection;
     private LayoutInflater layoutInflater;
 
-    public StingCollectionAdapter(Context context, StingCollection stingCollection){
+    public NewsCollectionAdapter(Context context, NewsCollection newsCollection){
         layoutInflater = LayoutInflater.from(context);
-        this.stingCollection = stingCollection;
+        this.newsCollection = newsCollection;
     }
 
     @Override
     public int getCount() {
-        return stingCollection.getStings().size();
+        return newsCollection.getNews().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return stingCollection.getStings().get(position);
+        return newsCollection.getNews().get(position);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.kujosa.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import edu.upc.eetac.dsa.kujosa.CommentResource;
 import edu.upc.eetac.dsa.kujosa.KujosaMediaType;
 import org.glassfish.jersey.linking.Binding;
@@ -14,13 +15,22 @@ import java.util.List;
 /**
  * Created by Juan on 02/12/15.
  */
-public class Comment {
-    @InjectLinks({
-            @InjectLink(resource = CommentResource.class, style = Style.ABSOLUTE, rel = "self", title = "Comment", type = KujosaMediaType.KUJOSA_COMMENT, method = "getComment" ,bindings = @Binding(name = "id", value = "${instance.id}")),
-            @InjectLink(value = "/comments/{eventid}", style = Style.ABSOLUTE, rel = "comments", title = "Latest comments", type = KujosaMediaType.KUJOSA_COMMENT_COLLECTION, bindings = @Binding(name = "eventid", value = "${instance.eventid}")),
 
-            })
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Comment {
+    //@InjectLinks({
+    //        @InjectLink(resource = CommentResource.class, style = Style.ABSOLUTE, rel = "self", title = "Comment", type = KujosaMediaType.KUJOSA_COMMENT, method = "getComment" ,bindings = @Binding(name = "id", value = "${instance.id}")),
+    //        @InjectLink(value = "/comments/{eventid}", style = Style.ABSOLUTE, rel = "comments", title = "Latest comments", type = KujosaMediaType.KUJOSA_COMMENT_COLLECTION, bindings = @Binding(name = "eventid", value = "${instance.eventid}")),
+    //        })
     private List<Link> links;
+    private String id;
+    private String userid;
+    private String eventid;
+    private String content;
+    private long lastModified;
+    private long creationTimestamp;
+
+
     public List<Link> getLinks() {
         return links;
     }
@@ -28,14 +38,6 @@ public class Comment {
     public void setLinks(List<Link> links) {
         this.links = links;
     }
-
-
-    private String id;
-    private String userid;
-    private String eventid;
-    private String content;
-    private long lastModified;
-    private long creationTimestamp;
 
     public String getContent() {
         return content;

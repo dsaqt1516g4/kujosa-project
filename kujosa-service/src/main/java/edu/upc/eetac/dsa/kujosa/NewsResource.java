@@ -1,13 +1,12 @@
 package edu.upc.eetac.dsa.kujosa;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import edu.upc.eetac.dsa.kujosa.dao.NewsDAO;
 import edu.upc.eetac.dsa.kujosa.dao.NewsDAOImpl;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAO;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAOImpl;
+import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.entity.News;
 import edu.upc.eetac.dsa.kujosa.entity.NewsCollection;
-import edu.upc.eetac.dsa.kujosa.entity.User;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
@@ -19,34 +18,33 @@ import java.sql.SQLException;
  * +-------------------------------------+
  * |           KUJOSA PROJECT            |
  * +-------------------------------------+
- * <p/>
- * READY FOR TEST
- * Crete TEST ->OK!
- * getNews->OK!
- * NewsCollection->NOK¡
  */
 @Path("news")
 public class NewsResource {
     @Context
     private SecurityContext securityContext;
-//TO REPAIR
 
-        @POST
-        @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-        @Produces(KujosaMediaType.KUJOSA_NEWS)
-        public Response createNews(@FormParam("headline") String headline, @FormParam("body") String body, @Context UriInfo uriInfo) throws URISyntaxException {
-            if ((headline==null)   ||(body==null))
-                throw new BadRequestException("all parameters are mandatory");
-            NewsDAO newsDAO = new NewsDAOImpl();
-            News news = null;
-            try {
-                news = newsDAO.createNews(securityContext.getUserPrincipal().getName(), headline, body);
-            } catch (SQLException e) {
-                throw new InternalServerErrorException();
-            }
-            URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + news.getId());
-            return Response.created(uri).type(KujosaMediaType.KUJOSA_NEWS).entity(news).build();
+    /*** OK ***/
+
+    @POST
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(KujosaMediaType.KUJOSA_NEWS)
+    public Response createNews(@FormParam("headline") String headline, @FormParam("body") String body, @Context UriInfo uriInfo) throws URISyntaxException {
+        if ((headline==null)   ||(body==null))
+            throw new BadRequestException("all parameters are mandatory");
+        NewsDAO newsDAO = new NewsDAOImpl();
+        News news = null;
+        AuthToken authToken = null;
+        try {
+            news = newsDAO.createNews(securityContext.getUserPrincipal().getName(), headline, body);
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
         }
+        URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + news.getId());
+        return Response.created(uri).type(KujosaMediaType.KUJOSA_NEWS).entity(news).build();
+        }
+
+    /*** OK ***/
 
     @GET
     @Produces(KujosaMediaType.KUJOSA_NEWS_COLLECTION)
@@ -61,6 +59,8 @@ public class NewsResource {
         }
         return newsCollection;
     }
+
+    /*** OK ***/
 
     @Path("/{id}")
     @GET
@@ -97,63 +97,47 @@ public class NewsResource {
         }
     }
 
+    /*** OK ***/
+
     @Path("/{id}")
     @PUT
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes({KujosaMediaType.KUJOSA_NEWS})
     @Produces(KujosaMediaType.KUJOSA_NEWS)
-    public News updateNews(@PathParam("id") String id, @FormParam("title") String header, @FormParam("body") String cuerpaso) {
-        String usrID = securityContext.getUserPrincipal().getName();
-        NewsDAO newsDAO = new NewsDAOImpl();
-        UserDAO us = new UserDAOImpl();
-        News news = null;
-        try {
-            if (us.isAdmin(usrID)) {
-                news = newsDAO.getNewsById(id);
-            } else
-                throw new ForbiddenException("Not permitted");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        if (id == null) {
-            throw new BadRequestException("News ID is null");
+    public News updateNews(@PathParam("id") String id, News news) {
+        if (news == null)
+            throw new BadRequestException("entity is null");
+        if (!id.equals(news.getId()))
+            throw new BadRequestException("path parameter id and entity parameter id doesn't match");
 
-        }
-
-        if (header == null) {
-            header = news.getHeadline();
-        }
-        if (cuerpaso == null) {
-            cuerpaso = news.getBody();
-        }
         String userid = securityContext.getUserPrincipal().getName();
 
+        NewsDAO newsDAO = new NewsDAOImpl();
+        UserDAO userDAO = new UserDAOImpl();
         try {
-            if (us.isAdmin(userid)) {
-                news = newsDAO.updateNews(id, header, cuerpaso);
-                if (news == null)
-                    throw new NotFoundException("News with id = " + id + " doesn't exist");
-
-                return news;
-            } else {
-                throw new ForbiddenException("operation not allowed");
-
+            if (userDAO.isAdmin(userid)) {
+                news = newsDAO.updateNews(id, news.getHeadline(), news.getBody());
             }
+            else  {
+                throw new ForbiddenException("No està permès");
+            }
+            if (news == null)
+                throw new NotFoundException("News with id = " + id + " doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
-
-
+        return news;
     }
 
+    /*** OK ***/
     @Path("/{id}")
     @DELETE
     public void deleteNews(@PathParam("id") String id) {
         String userid = securityContext.getUserPrincipal().getName();
-        UserDAO us = new UserDAOImpl();
+        UserDAO userDAO = new UserDAOImpl();
         NewsDAO news = new NewsDAOImpl();
         try {
             String ownerid = news.getNewsById(id).getUserid();
-            if (!us.isAdmin(userid))
+            if (!userDAO.isAdmin(userid) || !userid.equals(ownerid))
                 throw new ForbiddenException("operation not allowed");
             if (!news.deleteNews(id))
                 throw new NotFoundException("User with id = " + id + " doesn't exist");

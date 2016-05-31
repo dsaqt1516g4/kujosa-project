@@ -15,17 +15,23 @@ import java.util.List;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class News {
-    @InjectLinks({
-            @InjectLink(resource = KujosaRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Beeter Root API"),
-            @InjectLink(resource = NewsResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-news", title = "Current news"),
-            @InjectLink(resource = NewsResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-news", title = "Create news", type= MediaType.APPLICATION_FORM_URLENCODED),
-            @InjectLink(resource = NewsResource.class, method = "getNew", style = InjectLink.Style.ABSOLUTE, rel = "self news", title = "News", bindings = @Binding(name = "id", value = "${instance.id}")),
-            @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
-            @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", bindings = @Binding(name = "id", value = "${instance.userid}")),
-            @InjectLink(resource = NewsResource.class, method = "getNews", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer news", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "false")}),
-            @InjectLink(resource = NewsResource.class, method = "getNews", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older news", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "true")}),
-    })
+    //@InjectLinks({
+    //        @InjectLink(resource = KujosaRootAPIResource.class, style = InjectLink.Style.ABSOLUTE, rel = "home", title = "Beeter Root API"),
+    //        @InjectLink(resource = NewsResource.class, style = InjectLink.Style.ABSOLUTE, rel = "current-news", title = "Current news"),
+    //        @InjectLink(resource = NewsResource.class, style = InjectLink.Style.ABSOLUTE, rel = "create-news", title = "Create news", type= MediaType.APPLICATION_FORM_URLENCODED),
+    //        @InjectLink(resource = NewsResource.class, method = "getArticle", style = InjectLink.Style.ABSOLUTE, rel = "self news", title = "News", bindings = @Binding(name = "id", value = "${instance.id}")),
+    //        @InjectLink(resource = LoginResource.class, style = InjectLink.Style.ABSOLUTE, rel = "logout", title = "Logout"),
+    //        @InjectLink(resource = UserResource.class, method = "getUser", style = InjectLink.Style.ABSOLUTE, rel = "user-profile", title = "User profile", bindings = @Binding(name = "id", value = "${instance.userid}")),
+    //        @InjectLink(resource = NewsResource.class, method = "getNews", style = InjectLink.Style.ABSOLUTE, rel = "next", title = "Newer news", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "false")}),
+    //        @InjectLink(resource = NewsResource.class, method = "getNews", style = InjectLink.Style.ABSOLUTE, rel = "previous", title = "Older news", bindings = {@Binding(name = "timestamp", value = "${instance.creationTimestamp}"), @Binding(name = "before", value = "true")}),
+    //})
     private String id;
+    private List<Link> links;
+    private String userid;
+    private String headline;
+    private String body;
+    private long lastModified;
+    private long creationTimestamp;
 
     public String getId() {
         return id;
@@ -34,13 +40,6 @@ public class News {
     public void setId(String id) {
         this.id = id;
     }
-
-    private List<Link> links;
-    private String userid;
-    private String headline;
-    private String body;
-    private long lastModified;
-    private long creationTimestamp;
 
     public String getUserid() {
         return userid;

@@ -3,16 +3,14 @@ package edu.upc.eetac.dsa.kujosa.client.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.upc.eetac.dsa.kujosa.client.Link;
-
 /**
  * Created by root on 11/11/15.
  */
-public class StingCollection {
+public class NewsCollection {
     private List<Link> links;
     private long newestTimestamp;
     private long oldestTimestamp;
-    private List<Sting> stings = new ArrayList<>();
+    private List<News> news = new ArrayList<>();
 
     public List<Link> getLinks() {
         return links;
@@ -38,11 +36,11 @@ public class StingCollection {
         this.oldestTimestamp = oldestTimestamp;
     }
 
-    public List<Sting> getStings() {
-        return stings;
+    public List<News> getNews() {
+        return news;
     }
 
-    public void setStings(List<Sting> stings) {
-        this.stings = stings;
+    public void setNews(List<News> news) {
+        this.news = news;
     }
 }

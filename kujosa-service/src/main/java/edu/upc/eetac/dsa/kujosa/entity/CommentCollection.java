@@ -16,15 +16,24 @@ import java.util.List;
  * Created by juan on 02/12/15.
  */
 public class CommentCollection {
-    @InjectLinks({
-            @InjectLink(resource = CommentResource.class, style = Style.ABSOLUTE, rel = "create-comment", title = "Create comment", type = KujosaMediaType.KUJOSA_COMMENT),
-            @InjectLink(value = "/comments/{eventid}", style = Style.ABSOLUTE, rel = "comments", title = "Latest comments", type = KujosaMediaType.KUJOSA_COMMENT_COLLECTION, bindings = @Binding(name = "eventid", value = "${instance.comments.get(0).getId()}"))
-    })
+    //@InjectLinks({
+    //        @InjectLink(resource = CommentResource.class, style = Style.ABSOLUTE, rel = "create-comment", title = "Create comment", type = KujosaMediaType.KUJOSA_COMMENT),
+    //        @InjectLink(value = "/comments/{eventid}", style = Style.ABSOLUTE, rel = "comments", title = "Latest comments", type = KujosaMediaType.KUJOSA_COMMENT_COLLECTION, bindings = @Binding(name = "eventid", value = "${instance.comments.get(0).getId()}"))
+    //})
 
     private List<Link> links;
     private long newestTimestamp;
     private long oldestTimestamp;
-    private List<Comment> comments;
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    private List<Comment> comments = new ArrayList<>();
 
     public void addComment(Comment comment) {
         comments.add(comment);
@@ -53,18 +62,4 @@ public class CommentCollection {
     public void setOldestTimestamp(long oldestTimestamp) {
         this.oldestTimestamp = oldestTimestamp;
     }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-    public CommentCollection() {
-        super();
-        comments = new ArrayList<>();
-    }
-
-
 }

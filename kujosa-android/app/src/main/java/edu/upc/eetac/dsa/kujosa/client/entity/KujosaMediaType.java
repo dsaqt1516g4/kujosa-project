@@ -1,11 +1,9 @@
-package edu.upc.eetac.dsa.kujosa;
+package edu.upc.eetac.dsa.kujosa.client.entity;
 
-/**    +-------------------------------------+
- *     |           KUJOSA PROJECT            |
- *     +-------------------------------------+
- *
+/**
+ * Created by root on 08/02/16.
  */
-public interface KujosaMediaType {
+public class KujosaMediaType {
     String KUJOSA_AUTH_TOKEN = "application/vnd.dsa.kujosa.auth-token+json";
     String KUJOSA_USER = "application/vnd.dsa.kujosa.user+json";
     String KUJOSA_DOCUMENT = "application/vnd.dsa.kujosa.document+json";

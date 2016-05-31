@@ -1,16 +1,17 @@
 package edu.upc.eetac.dsa.kujosa.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+import javax.ws.rs.core.Link;
+import java.util.List;
+
 /**
  * Created by kenshin on 23/11/15.
  */
-public class Event {
-    public String getUserid() {
-        return userid;
-    }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Event {
+    private List<Link> links;
     private String id;
     private String userid;
     private String titol;
@@ -19,11 +20,24 @@ public class Event {
     private long lon;
     private long startDate;
     private long endDate;
-    private int Ratio;
+    private int ratio;
     private long lastModified;
-    private int numVots;
-    /* private String [] assistents; */
 
+    public List<Link> getLinks() {
+        return links;
+    }
+
+    public void setLinks(List<Link> links) {
+        this.links = links;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
 
     public String getId() {
         return id;
@@ -74,11 +88,11 @@ public class Event {
     }
 
     public int getRatio() {
-        return Ratio;
+        return ratio;
     }
 
     public void setRatio(int ratio) {
-        Ratio = ratio;
+        this.ratio = ratio;
     }
 
     public long getLastModified() {
@@ -95,14 +109,6 @@ public class Event {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public int getNumVots() {
-        return numVots;
-    }
-
-    public void setNumVots(int numVots) {
-        this.numVots = numVots;
     }
 
     /* public String[] getAssistents() {

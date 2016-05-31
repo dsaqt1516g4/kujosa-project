@@ -5,7 +5,18 @@ import edu.upc.eetac.dsa.kujosa.entity.Document;
 import edu.upc.eetac.dsa.kujosa.entity.DocumentCollection;
 import edu.upc.eetac.dsa.kujosa.entity.User;
 
+import javax.ws.rs.InternalServerErrorException;
+
+import org.apache.commons.io.IOUtils;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.sql.*;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
+import java.util.UUID;
 
 /**
  * Created by juan on 16/12/15.
@@ -13,13 +24,12 @@ import java.sql.*;
 public class DocumentDAOImpl implements DocumentDAO {
 
     @Override
-    public Document createDocument(String userid, String name, String description, String path) throws SQLException {
+    public Document createDocument(String userid, String name, String description, InputStream file) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
+        String filepath = uploadFile(file);
         String id = null;
         try {
-            UserDAO usD= new UserDAOImpl();
-            User capdou = usD.getUserByLoginid(userid);
             connection = Database.getConnection();
 
             stmt = connection.prepareStatement(UserDAOQuery.UUID);
@@ -31,10 +41,10 @@ public class DocumentDAOImpl implements DocumentDAO {
 
             stmt = connection.prepareStatement(DocumentDAOQuery.CREATE_DOCUMENT);
             stmt.setString(1, id);
-            stmt.setString(2, capdou.getId());
+            stmt.setString(2, userid);
             stmt.setString(3, name);
             stmt.setString(4, description);
-            stmt.setString(5, path);
+            stmt.setString(5, filepath);
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -49,6 +59,23 @@ public class DocumentDAOImpl implements DocumentDAO {
         return getDocumentById(id);
     }
 
+    private String uploadFile(InputStream file) {
+
+        UUID uuid = UUID.randomUUID();
+        String filename = uuid.toString() + ".pdf";
+        PropertyResourceBundle prb = (PropertyResourceBundle) ResourceBundle.getBundle("kujosa");
+
+        try {
+            OutputStream o = new FileOutputStream(prb.getString("uploadFolder") + filename);
+            int bytes=IOUtils.copy(file, o);
+            System.out.println("File Written with "+bytes+" bytes");
+            IOUtils.closeQuietly(o);
+        } catch (IOException e) {
+            throw new InternalServerErrorException("Something has been wrong when uploading the file");
+        }
+
+        return filename;
+    }
     @Override
     public Document getDocumentById(String id) throws SQLException {
         // Modelo a devolver
@@ -76,6 +103,8 @@ public class DocumentDAOImpl implements DocumentDAO {
                 doc.setName(rs.getString("name"));
                 doc.setDescription(rs.getString("description"));
                 doc.setPath(rs.getString("path"));
+                doc.setCreationTimestamp(rs.getTimestamp("creation_timestamp").getTime());
+                doc.setLastModified(rs.getTimestamp("last_modified").getTime());
             }
         } catch (SQLException e) {
             // Relanza la excepción
@@ -139,15 +168,15 @@ public class DocumentDAOImpl implements DocumentDAO {
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
-            UserDAO usd= new UserDAOImpl();
-            User us=  usd.getUserByLoginid(name);
+            //UserDAO usd= new UserDAOImpl();
+            //User us =  usd.getUserByLoginId(name);
             connection = Database.getConnection();
 
 
             stmt = connection.prepareStatement(DocumentDAOQuery.UPDATE_DOCUMENT);
-            //stmt.setString(1, us.getId());
-            stmt.setString(1, description);
-            stmt.setString(2, id);
+            stmt.setString(1, name);
+            stmt.setString(2, description);
+            stmt.setString(3, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)

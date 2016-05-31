@@ -31,6 +31,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.upc.eetac.dsa.kujosa.client.KujosaClient;
+
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -48,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * TODO: remove after connecting to a real authentication system.
      */
     private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
+            "alicia:alicia", "blas:blas"
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -56,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private UserLoginTask mAuthTask = null;
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
+    private AutoCompleteTextView mLoginidView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
@@ -67,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
         Intent intent = getIntent();
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.username);
+        mLoginidView = (AutoCompleteTextView) findViewById(R.id.username);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -110,7 +112,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             return true;
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
-            Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
+            Snackbar.make(mLoginidView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok, new OnClickListener() {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
@@ -149,11 +151,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         // Reset errors.
-        mEmailView.setError(null);
+        mLoginidView.setError(null);
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
+        String email = mLoginidView.getText().toString();
         String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -168,12 +170,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
-            mEmailView.setError(getString(R.string.error_field_required));
-            focusView = mEmailView;
+            mLoginidView.setError(getString(R.string.error_field_required));
+            focusView = mLoginidView;
             cancel = true;
         } else if (!isEmailValid(email)) {
-            mEmailView.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView;
+            mLoginidView.setError(getString(R.string.error_invalid_email));
+            focusView = mLoginidView;
             cancel = true;
         }
 
@@ -191,7 +193,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        //return email.contains("@");
+        return true;
     }
 
     private boolean isPasswordValid(String password) {
@@ -234,6 +237,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
     }
+
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
@@ -286,7 +290,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 new ArrayAdapter<>(LoginActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
-        mEmailView.setAdapter(adapter);
+        mLoginidView.setAdapter(adapter);
     }
 
     /**
@@ -295,11 +299,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mEmail;
+        private final String mLoginid;
         private final String mPassword;
 
-        UserLoginTask(String email, String password) {
-            mEmail = email;
+        UserLoginTask(String loginid, String password) {
+            mLoginid = loginid;
             mPassword = password;
         }
 
@@ -314,16 +318,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
+            String[] pieces = new String[0];
             for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
+                pieces = credential.split(":");
+                if (pieces[0].equals(mLoginid)) {
                     // Account exists, return true if the password matches.
                     return pieces[1].equals(mPassword);
                 }
             }
+            KujosaClient client = KujosaClient.getInstance();
+            boolean result = client.login(pieces[0], pieces[1]);
 
             // TODO: register the new account here.
-            return true;
+            return result;
         }
 
         @Override
@@ -332,7 +339,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                finish();
+                //finish();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();

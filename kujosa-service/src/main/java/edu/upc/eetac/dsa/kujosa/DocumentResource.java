@@ -4,9 +4,13 @@ import edu.upc.eetac.dsa.kujosa.dao.DocumentDAO;
 import edu.upc.eetac.dsa.kujosa.dao.DocumentDAOImpl;
 import edu.upc.eetac.dsa.kujosa.entity.AuthToken;
 import edu.upc.eetac.dsa.kujosa.entity.Document;
+import edu.upc.eetac.dsa.kujosa.entity.DocumentCollection;
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
@@ -14,12 +18,6 @@ import java.sql.SQLException;
 /**    +-------------------------------------+
  *     |           KUJOSA PROJECT            |
  *     +-------------------------------------+
- *
- * READY FOR TEST
- * Create TEST->OK!
- * Get TEST->OK!
- * PUT ->OK!
- * DELETE ->OK!
  */
 @Path("documents")
 
@@ -27,23 +25,28 @@ public class DocumentResource {
     @Context
     private SecurityContext securityContext;
 
+    /*** OK ***/
+
     @POST
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Consumes (MediaType.MULTIPART_FORM_DATA)
     @Produces(KujosaMediaType.KUJOSA_DOCUMENT)
-    public Response createDocument(@FormParam("name") String name, @FormParam("description") String description, @FormParam("path") String path, @FormParam("userid") String username, @Context UriInfo uriInfo) throws URISyntaxException {
-        if (name == null || path == null)
+    public Response createDocument(@FormDataParam("name") String name, @FormDataParam("description") String description,
+                                 @FormDataParam("document") InputStream file, @FormDataParam("document") FormDataContentDisposition fileDetail, @Context UriInfo uriInfo) throws URISyntaxException {
+        if (name == null || file == null)
             throw new BadRequestException("all parameters are mandatory");
         DocumentDAO documentDAO = new DocumentDAOImpl();
         Document document = null;
         AuthToken authToken = null;
         try {
-            document = documentDAO.createDocument(username, name, description, path);
+            document = documentDAO.createDocument(securityContext.getUserPrincipal().getName(), name, description, file);
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + document.getId());
         return Response.created(uri).type(KujosaMediaType.KUJOSA_DOCUMENT).entity(document).build();
     }
+
+    /*** OK ***/
 
     @Path("/{id}")
     @GET
@@ -80,7 +83,23 @@ public class DocumentResource {
         }
     }
 
+    /*** OK ***/
 
+    @GET
+    @Produces(KujosaMediaType.KUJOSA_DOCUMENT_COLLECTION)
+    public DocumentCollection getDocuments(@QueryParam("timestamp") long timestamp, @DefaultValue("true") @QueryParam("before") boolean before) {
+        DocumentCollection documentCollection = null;
+        DocumentDAO documentDAO = new DocumentDAOImpl();
+        try {
+            if (before && timestamp == 0) timestamp = System.currentTimeMillis();
+            documentCollection = documentDAO.getDocuments(timestamp, before);
+        } catch (SQLException e) {
+            throw new InternalServerErrorException();
+        }
+        return documentCollection;
+    }
+
+    /*** OK ***/
 
     @Path("/{id}")
     @PUT
@@ -93,7 +112,7 @@ public class DocumentResource {
 
         DocumentDAO documentDAO = new DocumentDAOImpl();
         try {
-           document = documentDAO.updateDocument(id,name, description);
+           document = documentDAO.updateDocument(id, name, description);
             if (document == null)
                 throw new NotFoundException("Document with id = " + id + " doesn't exist");
         } catch (SQLException e) {
@@ -101,6 +120,8 @@ public class DocumentResource {
         }
         return document;
     }
+
+    /*** OK ***/
 
     @Path("/{id}")
     @DELETE

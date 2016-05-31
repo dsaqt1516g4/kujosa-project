@@ -1,5 +1,7 @@
 package edu.upc.eetac.dsa.kujosa.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.ws.rs.core.Link;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,11 +9,14 @@ import java.util.List;
 /**
  * Created by juan on 16/12/15.
  */
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class EventCollection {
+
     private List<Link> links;
     private long firstTimestamp;
     private long lastTimestamp;
-    private List<Event> events;
+    private List<Event> events = new ArrayList<>();
 
     public EventCollection() {
         super();

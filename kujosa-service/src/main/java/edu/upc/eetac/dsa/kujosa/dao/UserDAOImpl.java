@@ -26,18 +26,17 @@ import java.util.UUID;
  *     +-------------------------------------+
  *     DONE:
  *     -createUser
- *     -getUserByLoginid
- *     -updateUser
+ *     -getUserByLoginId
+ *     -updateProfile
  *     -deleteUser
  *     -checkPassword
  */
 public class UserDAOImpl implements UserDAO {
 
     /**
-     *
-     * @param loginid serà el nom d'usuari UNIC
+     * @param loginid  serà el nom d'usuari UNIC
      * @param fullname nom del manolo
-     * @param email correu de contacte
+     * @param email    correu de contacte
      * @param password clau d'accès als serveis
      * @param image
      * @return retorna l'usuari un cop creat
@@ -49,10 +48,10 @@ public class UserDAOImpl implements UserDAO {
             throws SQLException, UserAlreadyExistsException {
         Connection connection = null;
         PreparedStatement stmt = null;
-        UUID uuid =writeAndConvertImage(image);
+        UUID uuid = writeAndConvertImage(image);
         String id = null;
         try {
-            User user = getUserByLoginid(loginid);
+            User user = getUserByLoginId(loginid);
             if (user != null)
                 throw new UserAlreadyExistsException();
 
@@ -92,7 +91,7 @@ public class UserDAOImpl implements UserDAO {
                 connection.close();
             }
         }
-        return getUserById(id);
+        return getUserByLoginId(id);
     }
 
 
@@ -117,54 +116,45 @@ public class UserDAOImpl implements UserDAO {
 
         return uuid;
     }
+
     /**
-     *
-     * @param loginid nom d'usuari s'usara per a fer les cerques
+     * @param id    nom d'usuari s'usara per a fer les cerques
      * @param email correu si es vol modificar sino null
-     * @param password clau si es vol modificar sino null
      * @param image path de la imatge in server si no es vol modificar null
      * @return l'usuari un cop modificat
      * @throws SQLException
      */
-    @Override
-    public User updateUser(String loginid, String email, String password, String image) throws SQLException {
+    /* @Override
+    public User updateProfile(String id, String email, String fullname, String image) throws SQLException {
         User user = null;
 
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
-            user = getUserByLoginid(loginid);
+            user = getUserByLoginId(id);
 
             stmt = connection.prepareStatement(UserDAOQuery.UPDATE_USER);
             //CORREU
-            if(email !=null) {
+            if (email != null) {
                 stmt.setString(1, email);
-            }
-            else{
+            } else {
                 stmt.setString(1, user.getEmail());
 
             }
-            //PASS
-            if(password !=null) {
-                stmt.setString(2, password);
-            }
-            else{
-                //TODO
-            }
+            stmt.setString(2, fullname);
             //IMAGE
-            if(image !=null) {
+            if (image != null) {
                 stmt.setString(3, image);
-            }
-            else{
+            } else {
                 stmt.setString(3, user.getImageURL());
 
             }
-            stmt.setString(4, user.getLoginid());
+            stmt.setString(4, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)
-                user = getUserByLoginid(loginid);
+                user = getUserByLoginId(id);
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -173,14 +163,18 @@ public class UserDAOImpl implements UserDAO {
         }
 
         return user;
-    }
+    } */
 
+    /**
+     * @param id nom d'usuari a cercar
+     * @return torna la entitat usuari
+     * @throws SQLException
+     */
     @Override
     public User getUserById(String id) throws SQLException {
-       //getUserById acccepta username
-
         // Modelo a devolver
         User user = null;
+        PropertyResourceBundle prop = (PropertyResourceBundle) ResourceBundle.getBundle("kujosa");
 
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -202,6 +196,9 @@ public class UserDAOImpl implements UserDAO {
                 user.setLoginid(rs.getString("loginid"));
                 user.setEmail(rs.getString("email"));
                 user.setFullname(rs.getString("fullname"));
+                user.setFilename(rs.getString("image") + ".png");
+                user.setImageURL(prop.getString("imgBaseURL") + user.getFilename());
+                user.setAdmin(this.isAdmin(user.getId()));
             }
         } catch (SQLException e) {
             // Relanza la excepción
@@ -216,15 +213,8 @@ public class UserDAOImpl implements UserDAO {
         return user;
     }
 
-
-    /**
-     *
-     * @param loginid nom d'usuari a cercar
-     * @return torna la entitat usuari
-     * @throws SQLException
-     */
     @Override
-    public User getUserByLoginid(String loginid) throws SQLException {
+    public User getUserByLoginId(String loginid) throws SQLException {
         User user = null;
         PropertyResourceBundle prop = (PropertyResourceBundle) ResourceBundle.getBundle("kujosa");
 
@@ -244,8 +234,9 @@ public class UserDAOImpl implements UserDAO {
                 user.setLoginid(rs.getString("loginid"));
                 user.setEmail(rs.getString("email"));
                 user.setFullname(rs.getString("fullname"));
-                user.setFilename(rs.getString("image")+ ".png");
-                user.setImageURL(prop.getString("imgBaseURL")+ user.getFilename());            }
+                user.setFilename(rs.getString("image") + ".png");
+                user.setImageURL(prop.getString("imgBaseURL") + user.getFilename());
+            }
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -257,7 +248,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     /**
-     *
      * @param id ahí va el id de usuario que sera cogido de la URI.
      * @return torna un bool 1 si tot ha anat com el cul un 0 si tot ok
      * @throws SQLException
@@ -284,6 +274,7 @@ public class UserDAOImpl implements UserDAO {
 
     /**
      * +
+     *
      * @param username el nom d'usuari
      * @param password la clau d'accés
      * @return torna un bool
@@ -321,28 +312,64 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean isAdmin(String id) throws SQLException {
-
+    public User updateProfile(String id, String email, String fullname, InputStream image) throws SQLException {
+        User user = null;
+        UUID uuid = writeAndConvertImage(image);
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
-            String r=null;
+            user = getUserByLoginId(id);
+
+            stmt = connection.prepareStatement(UserDAOQuery.UPDATE_USER);
+            //CORREU
+            if (email != null) {
+                stmt.setString(1, email);
+            } else {
+                stmt.setString(1, user.getEmail());
+
+            }
+            stmt.setString(2, fullname);
+            //IMAGE
+            if (image != null) {
+                stmt.setString(3, uuid.toString());
+            } else {
+                stmt.setString(3, user.getFilename());
+
+            }
+            stmt.setString(4, id);
+
+            int rows = stmt.executeUpdate();
+            if (rows == 1)
+                user = getUserByLoginId(id);
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            if (stmt != null) stmt.close();
+            if (connection != null) connection.close();
+        }
+
+        return user;
+    }
+
+    public boolean isAdmin(String id) throws SQLException {
+        Connection connection = null;
+        PreparedStatement stmt = null;
+        try {
+            connection = Database.getConnection();
+            String r = null;
             stmt = connection.prepareStatement(UserDAOQuery.IS_ADMIN);
             stmt.setString(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                 r = (rs.getString("role"));
+                r = (rs.getString("role"));
             }
-            if (Role.admin.equals(r)){
-                    return true;
-                }
-            else {
-                return false;}
-
-        }
-
-        catch ( SQLException e) {
+            if (Role.admin.name().equals(r)) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
             throw e;
         } finally {
             if (stmt != null) stmt.close();
@@ -350,10 +377,3 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 }
-
-
-
-
-
-
-

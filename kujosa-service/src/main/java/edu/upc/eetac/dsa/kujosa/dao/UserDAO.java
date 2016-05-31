@@ -9,23 +9,20 @@ import java.sql.SQLException;
  *     +-------------------------------------+
  *     DONE:
  *     -createUser
- *     -getUserByLoginid
- *     -updateUser
+ *     -getUserByLoginId
+ *     -updateProfile
  *     -deleteUser
  *     -checkPassword
  */
 public interface UserDAO {
-    User createUser(String loginid, String password, String email, String fullname, InputStream image) throws SQLException, UserAlreadyExistsException ;
-
-    User updateUser(String loginid, String email ,String password, String image) throws SQLException;
-
+    User createUser(String loginid, String password, String email, String fullname, InputStream image) throws SQLException, UserAlreadyExistsException;
+    //User updateProfile(String id, String email, String fullname, String image) throws SQLException;
     User getUserById(String id) throws SQLException;
-
-    User getUserByLoginid(String loginid) throws SQLException;
-
+    User getUserByLoginId(String loginid) throws SQLException;
     boolean deleteUser(String id) throws SQLException;
-
     boolean checkPassword(String id, String password) throws SQLException;
-
     boolean isAdmin(String id) throws SQLException;
+
+    User updateProfile(String id, String email, String fullname, InputStream image) throws SQLException;
+
 }

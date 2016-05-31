@@ -22,8 +22,9 @@ import java.sql.*;
  *     -getUsersofEventId
  */
 public class EventDAOImpl implements EventDAO {
+
     @Override
-    public Event createEvent(String username, String titol, String text, long lat, long lon, long startDate, long endDate) throws SQLException{
+    public Event createEvent(String userid, String titol, String text, long lat, long lon, long startDate, long endDate) throws SQLException{
         Connection connection = null;
         PreparedStatement stmt = null;
         String id = null;
@@ -43,13 +44,9 @@ public class EventDAOImpl implements EventDAO {
             else
                 throw new SQLException();
 
-            UserDAO userdao = new UserDAOImpl();
-            User manolo = userdao.getUserByLoginid(username);
-
-
             stmt = connection.prepareStatement(EventDAOQuery.CREATE_EVENT);
             stmt.setString(1, id);
-            stmt.setString(2, username);
+            stmt.setString(2, userid);
             stmt.setString(3, titol);
             stmt.setString(4, text);
             stmt.setLong(5,lat);
@@ -57,7 +54,6 @@ public class EventDAOImpl implements EventDAO {
             stmt.setLong(7,startDate);
             stmt.setLong(8,endDate);
             stmt.setInt(9,0);
-            stmt.setInt(10,0);
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;
@@ -103,23 +99,26 @@ public class EventDAOImpl implements EventDAO {
     }
 
     @Override
-    public Event getEvent(String eventid) throws SQLException {
-        Event event = new Event();
+    public Event getEvent(String id) throws SQLException {
+        Event event = null;
 
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
             stmt = connection.prepareStatement(EventDAOQuery.GET_EVENT_BY_ID_QUERY);
-            stmt.setString(1, eventid);
+            stmt.setString(1, id);
+
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
+                event = new Event();
                 event.setId(rs.getString("id"));
                 event.setUserid(rs.getString("userid"));
                 event.setTitol(rs.getString("titol"));
                 event.setText(rs.getString("text"));
                 event.setLat(rs.getLong("lat"));
                 event.setLon(rs.getLong("lon"));
+                event.setRatio(rs.getInt("ratio"));
                 //event.setStartDate(rs.getTimestamp("start_date").getTime());
                 //event.setEndDate(rs.getTimestamp("end_date").getTime());
                 event.setLastModified(rs.getTimestamp("last_modified").getTime());
@@ -127,7 +126,6 @@ public class EventDAOImpl implements EventDAO {
             } else {
                 throw new NotFoundException();
             }
-
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -136,8 +134,6 @@ public class EventDAOImpl implements EventDAO {
         }
         return event;
     }
-
-
 
     @Override
     public EventCollection getEventsNow(int userid) throws SQLException {
@@ -180,16 +176,22 @@ public class EventDAOImpl implements EventDAO {
 
     @Override
     public EventCollection getEvents(int length, long before, long after) throws SQLException {
-        EventCollection events = new EventCollection();
+        EventCollection eventCollection = new EventCollection();
         Connection connection = null;
         PreparedStatement stmt = null;
         try {
             connection = Database.getConnection();
-            boolean updateFromLast = after > 0;
-            if (updateFromLast=true){
-            stmt = connection.prepareStatement(EventDAOQuery.GET_EVENT_FROM_LAST);}
-            else{
-                stmt = connection.prepareStatement(EventDAOQuery.GET_EVENT_FROM_FIRST);}
+            boolean updateFromLast;
+            if (!(after == 0)) {
+                updateFromLast = true;
+            } else {
+                updateFromLast = false;
+            }
+            if (updateFromLast = true) {
+                stmt = connection.prepareStatement(EventDAOQuery.GET_EVENT_FROM_LAST);
+            } else if(updateFromLast=false){
+                stmt = connection.prepareStatement(EventDAOQuery.GET_EVENT_FROM_FIRST);
+            }
             if (updateFromLast) {
                 stmt.setTimestamp(1, new Timestamp(after));
             } else {
@@ -211,14 +213,14 @@ public class EventDAOImpl implements EventDAO {
                 event.setLat(rs.getLong("lat"));
                 event.setLon(rs.getLong("lon"));
                 event.setRatio(rs.getInt("ratio"));
-                oldestTimestamp = rs.getTimestamp("startdate").getTime();
+                oldestTimestamp = rs.getTimestamp("start_date").getTime();
                 if (first) {
                     first = false;
-                    events.setFirstTimestamp(event.getStartDate());
+                    eventCollection.setFirstTimestamp(event.getStartDate());
                 }
-                events.addEvent(event);
+                eventCollection.addEvent(event);
             }
-            events.setLastTimestamp(oldestTimestamp);
+            eventCollection.setLastTimestamp(oldestTimestamp);
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -226,7 +228,7 @@ public class EventDAOImpl implements EventDAO {
             if (connection != null) connection.close();
         }
 
-        return events;
+        return eventCollection;
     }
 
     @Override
@@ -240,9 +242,10 @@ public class EventDAOImpl implements EventDAO {
 
             stmt = connection.prepareStatement(EventDAOQuery.UPDATE_EVENT_QUERY);
             stmt.setString(1, titol);
-            stmt.setLong(2, startDate);
-            stmt.setLong(3, endDate);
-            stmt.setString(4, id);
+            stmt.setString(2,text);
+            stmt.setLong(3, startDate);
+            stmt.setLong(4, endDate);
+            stmt.setString(5, id);
 
             int rows = stmt.executeUpdate();
             if (rows == 1)
@@ -281,32 +284,6 @@ public class EventDAOImpl implements EventDAO {
 
     }
 
- /*   @Override
-    public void createEvento(String eventid) throws SQLException {
-        UserCollection users;
-        users = getUsersofEventId(eventid);
-        Connection connection = null;
-        PreparedStatement stmt = null;
-        try {
-            connection = Database.getConnection();
-
-            for (int i = 0; i < users.getUsers().size(); i++) {
-                stmt = null;
-                stmt = connection.prepareStatement(EventDAOQuery.CREATE_EVENT_STATE_PENDING_QUERY,
-                        Statement.RETURN_GENERATED_KEYS);
-                stmt.setString(1, users.getUsers().get(i).getId());
-                stmt.setString(2, eventid);
-                stmt.executeUpdate();
-            }
-        }
-        catch (SQLException e) {
-            throw e;
-        } finally {
-            if (stmt != null) stmt.close();
-            if (connection != null) connection.close();
-        }
-    }*/
-
     @Override
     public UserCollection getUsersofEventId(String id) throws SQLException {
         UserCollection users = new UserCollection();
@@ -321,7 +298,7 @@ public class EventDAOImpl implements EventDAO {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
 
-                User user = userDAO.getUserById(rs.getString("userid"));
+                User user = userDAO.getUserByLoginId(rs.getString("userid"));
                 user.setId(rs.getString("userid"));
                 users.addUser(user);
             }

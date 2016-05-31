@@ -2,8 +2,6 @@ package edu.upc.eetac.dsa.kujosa.client.entity;
 
 import java.util.List;
 
-import edu.upc.eetac.dsa.kujosa.client.Link;
-
 /**
  * Created by root on 11/11/15.
  */

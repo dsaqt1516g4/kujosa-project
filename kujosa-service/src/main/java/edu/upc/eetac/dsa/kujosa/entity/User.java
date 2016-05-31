@@ -9,7 +9,6 @@ import org.glassfish.jersey.linking.InjectLink;
 import org.glassfish.jersey.linking.InjectLinks;
 
 import javax.ws.rs.core.Link;
-import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /**
@@ -40,14 +39,14 @@ public class User {
     private String fullname;
     private String imageURL;
     private String filename;
-    private boolean isAdmin;
+    private boolean admin;
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.admin = admin;
     }
 
     public List<Link> getLinks() {

@@ -11,11 +11,6 @@ import edu.upc.eetac.dsa.kujosa.dao.UserAlreadyExistsException;
 import edu.upc.eetac.dsa.kujosa.dao.UserDAOImpl;
 
 
-
-
-import javax.imageio.ImageIO;
-import javax.jws.soap.SOAPBinding;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -32,48 +27,37 @@ import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.GET;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.PUT;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
-import java.util.PropertyResourceBundle;
-import java.util.ResourceBundle;
-import java.util.UUID;
-
-import static javax.ws.rs.core.MediaType.MULTIPART_FORM_DATA;
 
 /**    +-------------------------------------+
  *     |           KUJOSA PROJECT            |
  *     +-------------------------------------+
- *     DONE:
- *     -registerUser TEST -> OK!
- *     -getUser TEST -> OK!
- *     -updateUser TEST -> To REPAIR!
- *     delete user TEST--?
- */
+*/
 @Path("users")
 public class UserResource {
     @Context
     private SecurityContext securityContext;
 
-    @POST
-    @Consumes (MULTIPART_FORM_DATA)
-    @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
-    public Response registerUser(@FormDataParam("username") String username,  @FormDataParam("email") String email,
-                                 @FormDataParam("password") String password, @FormDataParam("nombre") String fullname,
-                                 @FormDataParam("imagen") InputStream imagen, @FormDataParam("imagen") FormDataContentDisposition fileDetail, @Context UriInfo uriInfo) throws URISyntaxException {
-      System.out.println("username :"+username+" email :"+email+" password : "+password+" name :"+fullname);
+    /*** OK ****/
 
-       if(username == null || password == null || email == null || fullname == null)
-            throw new BadRequestException("S'han de plenar tots els camps 222");
+    @POST
+    @Consumes (MediaType.MULTIPART_FORM_DATA)
+    @Produces(KujosaMediaType.KUJOSA_AUTH_TOKEN)
+    public Response registerUser(@FormDataParam("loginid") String loginid,  @FormDataParam("email") String email,
+                                 @FormDataParam("password") String password, @FormDataParam("fullname") String fullname,
+                                 @FormDataParam("image") InputStream image, @FormDataParam("image") FormDataContentDisposition fileDetail, @Context UriInfo uriInfo) throws URISyntaxException {
+      System.out.println("username :"+loginid+" email :"+email+" password : "+password+" name :"+fullname);
+
+       if(loginid == null || password == null || email == null || fullname == null)
+            throw new BadRequestException("S'han d'emplenar tots els camps");
         UserDAO userDAO = new UserDAOImpl();
         User user = null;
         AuthToken authToken = null;
         try{
-            user = userDAO.createUser(username, fullname, email, password, imagen);
+            user = userDAO.createUser(loginid, fullname, email, password, image);
             authToken = (new AuthTokenDAOImpl()).createAuthToken(user.getId());
         }catch (UserAlreadyExistsException e){
             throw new WebApplicationException("Username already exists", Response.Status.CONFLICT);
@@ -83,90 +67,76 @@ public class UserResource {
             System.out.println(e.toString());
         }
         URI uri = new URI(uriInfo.getAbsolutePath().toString() + "/" + user.getId());
-        return Response.created(uri).type(KujosaMediaType.KUJOSA_AUTH_TOKEN+username).entity(authToken).build();
+        return Response.created(uri).type(KujosaMediaType.KUJOSA_AUTH_TOKEN).entity(authToken).build();
     }
-     private UUID writeAndConvertImage(InputStream file) {
-         BufferedImage image = null;
-         try {
-             image = ImageIO.read(file);
 
-         } catch (IOException e) {
-             throw new InternalServerErrorException("Something has been wrong when reading the file.");
-         }
-         UUID uuid = UUID.randomUUID();
-         String filename = uuid.toString() + ".png";
-
-         try {
-             PropertyResourceBundle prb = (PropertyResourceBundle) ResourceBundle.getBundle("kujosa");
-             ImageIO.write(image, "png", new File(prb.getString("uploadFolder") + filename));
-         } catch (IOException e) {
-             throw new InternalServerErrorException("Something has been wrong when converting the file.");
-         }
-
-         return uuid;
-     }
-
-
-
+    /*** OK ***/
 
     @Path("/{id}")
     @GET
     @Produces(KujosaMediaType.KUJOSA_USER)
-    public User getUser(@PathParam("username") String username) {
+    public User getUser(@PathParam("id") String id) {
         User user = null;
         try {
-            user = (new UserDAOImpl()).getUserByLoginid(username);
+            user = (new UserDAOImpl()).getUserById(id);
         } catch (SQLException e) {
             throw new InternalServerErrorException(e.getMessage());
         }
         if(user == null)
-            throw new NotFoundException("User with Username = "+ username +" doesn't exist");
+            throw new NotFoundException("User with id = "+ id +" doesn't exist");
         return user;
     }
 
-    @Path("/{username}")
+    /*** OK ***/
+
+    @Path("/{id}")
     @PUT
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    //@Consumes(KujosaMediaType.KUJOSA_USER)
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(KujosaMediaType.KUJOSA_USER)
-    public void updateUser(@PathParam("username") String username,@FormParam("correu") String correu, @FormParam("pass") String pass,@FormParam("image") String image) {
-       System.out.println("El user : "+username+" correu : "+correu+" pas :  "+pass+"image : "+image);
+    public User updateUser(@PathParam("id") String id, @FormDataParam("email") String email,
+                           @FormDataParam("fullname") String fullname,
+                           @FormDataParam("image") InputStream image, @FormDataParam("image") FormDataContentDisposition fileDetail, @Context UriInfo uriInfo) {
 
-        if(username == null)
-            throw new BadRequestException("entity is null");
+        String userid = securityContext.getUserPrincipal().getName();
+        if(!userid.equals(id))
+            throw new ForbiddenException("operation not allowed");
+
         UserDAO userDAO = new UserDAOImpl();
-
+        User user=null;
         try {
-            userDAO.updateUser(username,correu,pass,image);
+            user = userDAO.updateProfile(userid,email,fullname,image);
+            if(user==null){
+                throw new NotFoundException("User with id = "+id+" doesn't exist");
+            }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new InternalServerErrorException();
         }
+        return user;
 
     }
 
+    /*** OK ***/
+
     @Path("/{id}")
     @DELETE
-    public void deleteUser(@PathParam("id") String id, @Context UriInfo uriInfo){
-        //System.out.println("El usuario :"+id+" se fue a la puta.");
+    public void deleteUser(@PathParam("id") String id, @Context UriInfo uriInfo) throws SQLException {
         String userid = securityContext.getUserPrincipal().getName();
 
-        User us =getUser(userid);
-        //Falta comprobar
-        boolean ok = us.isAdmin();
-        if(!userid.equals(id) ) {
-            throw new ForbiddenException("Operation not allowed");
-        }
-         else if(!ok){
-            throw new ForbiddenException("Operation not allowed");
-        }
+        //if(!userid.equals(id) ) {
+        //    throw new ForbiddenException("Operation not allowed");
+        //}
 
         UserDAO userDAO = new UserDAOImpl();
         try {
+            boolean ok = userDAO.isAdmin(userid);
+            if(ok==false)
+                throw new ForbiddenException("No ets administrador");
             if(!userDAO.deleteUser(id))
                 throw new NotFoundException("User with Username = "+id+" doesn't exist");
         } catch (SQLException e) {
             throw new InternalServerErrorException();
         }
     }
+
 
 }

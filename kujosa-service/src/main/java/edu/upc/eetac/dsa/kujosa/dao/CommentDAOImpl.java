@@ -11,18 +11,16 @@ import java.sql.*;
  * Created by juan on 14/12/15.
  */
 
-
 public class CommentDAOImpl implements CommentDAO{
 
     @Override
-    public Comment createComment(String user, String eventid, String content) throws SQLException {
+    public Comment createComment(String userid, String eventid, String content) throws SQLException {
         Connection connection = null;
         PreparedStatement stmt = null;
         String id = null;
         try {
             connection = Database.getConnection();
-            UserDAO usd= new UserDAOImpl();
-            User us=  usd.getUserByLoginid(user);
+
             stmt = connection.prepareStatement(UserDAOQuery.UUID);
             ResultSet rs = stmt.executeQuery();
             if (rs.next())
@@ -32,7 +30,7 @@ public class CommentDAOImpl implements CommentDAO{
 
             stmt = connection.prepareStatement(CommentDAOQuery.INSERT_COMMENT_QUERY);
             stmt.setString(1, id);
-            stmt.setString(2, us.getId());
+            stmt.setString(2, userid);
             stmt.setString(3, eventid);
             stmt.setString(4, content);
             stmt.executeUpdate();

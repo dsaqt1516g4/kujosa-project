@@ -1,11 +1,15 @@
 package edu.upc.eetac.dsa.kujosa.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.ws.rs.core.Link;
 import java.util.List;
 
 /**
  * Created by juan on 16/12/15.
  */
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Document {
 
     private List<Link> links;
@@ -14,7 +18,6 @@ public class Document {
     private String name;
     private String description;
     private String path;
-
     private long creationTimestamp;
     private long lastModified;
 
@@ -41,8 +44,6 @@ public class Document {
     public void setLinks(List<Link> links) {
         this.links = links;
     }
-
-
 
     public String getUserid() {
         return userid;
