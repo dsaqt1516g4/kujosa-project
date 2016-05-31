@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -8,6 +8,79 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_news_detail"
-    tools:context=".NewsDetailActivity">
+    tools:context=".NewsDetailActivity"
+    android:orientation="vertical">
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text = "Kujosa"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        android:drawableBottom="@mipmap/ic_launcher"
+        android:padding="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:id="@+id/lname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="USER:"
+        />
+        //android:textColor="@color/colorAPP"
+
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/lDescrip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="HEADLINE:"
+        />
+        //android:textColor="@color/colorAPP"
+
+
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:id="@+id/llik"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="BODY:"
+        />
+        //android:textColor="@color/colorAPP"
+
+
+    <TextView
+        android:id="@+id/textViewLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/ladd"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="CREATION DATE:"/>
+        //android:textColor="@color/colorAPP"
+
+
+    <TextView
+        android:id="@+id/textViewAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
