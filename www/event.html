@@ -19,7 +19,7 @@
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="event.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -132,7 +132,7 @@
 						<div class="form-group">
 
 							<div class="col-xs-12">
-								<label for="Title"><h4>Títol</h4></label> <input
+								<label for="web"><h4>Títol</h4></label> <input
 									type="text" class="form-control" name="web" id="event_title"
 									placeholder="" title="tu_evento">
 							</div>
@@ -143,7 +143,7 @@
 							<div class="form-group">
 
 								<div class="col-xs-12">
-									<label for="Desc"><h4>Descripció</h4></label>
+									<label for="web"><h4>Descripció</h4></label>
 									<textarea class="form-control" rows="3" name="web"
 										id="event_description"
 										placeholder=""
@@ -155,16 +155,16 @@
 							<div class="form-group">
 
 								<div class="col-xs-6">
-									<label for="latitude"><h4>Latitud</h4></label> <input
-										type="text"  class="form-control" id="event_lat'"
+									<label for="first_name"><h4>Latitud</h4></label> <input
+										type="text" readonly="readonly" class="form-control" id="event_coordX"
 										placeholder="">
 								</div>
 							</div>
 							<div class="form-group">
 
 								<div class="col-xs-6">
-									<label for="longitudee"><h4>Longitud</h4></label> <input
-										type="text" class="form-control" id="event_lon"
+									<label for="last_name"><h4>Longitud</h4></label> <input
+										type="text" readonly="readonly" class="form-control" id="event_coordY"
 										placeholder="">
 								</div>
 							</div>
@@ -172,7 +172,7 @@
 							<div class="form-group">
 
 								<div class="col-xs-6">
-									<label for="Date"><h4>Data</h4></label> <input
+									<label for="phone"><h4>Data</h4></label> <input
 										class="form-control" name="phone" id="event_date" name="dofb"
 										placeholder="AAAA-MM-DD">
 								</div>
@@ -188,7 +188,7 @@
                         <div class="modal-footer">
 												<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 												<button class="btn btn-lg btn-success" type="submit"
-											id="create_btn" >Crea</button>
+											id="create_btn">Crea</button>
 											</div>
 										</div>
 									</div>
@@ -555,8 +555,13 @@
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <!-- KUJOSA -->
-           <script src="js/register.js"></script>
-
+    <script src="js/api.js"></script>
+    <script src="js/kujosa.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/documents.js"></script>
+    <script src="js/event.js"></script>
+    <script src="js/news.js"></script>
+    <script src="js/login.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 

@@ -1,5 +1,4 @@
 /* CREACIÓ d'ESDEVENIMENTS */
-var BASE_URL = "http://147.83.7.205:8080/kujosa";
 
 var map;
 var eventsURL;
@@ -7,6 +6,8 @@ var markers =[];
 $(document).ready(function(){
 	initialize();
 	loadRootAPI(function(rootAPI){
+		eventsURL = rootAPI.getLink('create-event');
+	});
 });
 
 $('#create_btn').click(function(e){
@@ -121,16 +122,13 @@ function createEvent2(){
 	event.lat = $('#event_lat').val();
 	event.lon = $('#event_lon').val();
 	event.text = $('#event_description').val();
-	//devent.owner = user.userid;
+	event.owner = user.userid;
 	event.eventDate = $('#event_date').val();
 	event.ratio = 0;
-	createEvent( event.title,event.lat,event.lon,event.text,event.eventDate,event.ratio){
+	createEvent(eventsURL.href, eventsURL.type, JSON.stringify(event), function(event){
 		window.location.replace("home.html");
 	});
 } 
-
-
-
 
 /* EDICIÓ d'ESDEVENIMENTS */
 

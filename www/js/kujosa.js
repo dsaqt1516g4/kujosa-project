@@ -104,10 +104,11 @@ function loadComments(url){
 	
 }
 
-//function loadMyProfile(url){
-//	getUser(url, function(user){
-          //  });
-//{}
+function loadMyProfile(url){
+	getUser(url, function(user){
+            });
+}
+
 function postComment(){
 		
 		var comment = new Object();

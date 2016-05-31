@@ -1,4 +1,4 @@
-var BASE_URL = "http://10.83.63.80:8080/kujosa";
+var BASE_URL = "http://localhost:8080/kujosa"
 
 /* API de BEETER */
 
@@ -62,23 +62,97 @@ function logout(complete){
   	}).fail(function(){});
 }
 
+function loadNews(uri){
+    $('#message').text(''); 
+    $('#pagination').text('');
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    $.ajax({
+        type : 'GET',
+        url : uri,
+        headers: {"X-Auth-Token":authToken.token}
+    
+    }).done(function(data, status, jqxhr){
+        data.links=linksToMap(data.links);
+        var response = data;
+        var newsCollection = new NewsCollection(response);
+        var html = newsCollection.toHTML();
+        $("#message").html(html);
+    }).fail(function(jqXHR, textStatus){
+        $("#estoseve").text("");
+        
+        $("#estoseve").append("<div class='alert alert-block alert-info'><p>You have to be login for see this page.</p></div>");
 
-function post_news(title,body){
-  news.title = title;
-  news.body = body;
-  var authToken = JSON.parse(sessionStorage["auth-token"]);
-  var uri = BASE_URL+"/news/"
-  $.post(uri,
-      {
-        title: news.title,
-        body: news.body,
-        userid = user;
-      }).done(function(data) { 
-      sessionStorage.removeItem("api");
-      sessionStorage.removeItem("auth-token");
-      complete();
-    }).fail(function(){});
+    });
 }
+
+function loadDocuments(uri){
+    $('#document').text('');
+    $('#pagination').text('');
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    $.ajax({
+        type : 'GET',
+        url : uri,
+        headers: {"X-Auth-Token":authToken.token}
+    }).done(function(data, status, jqxhr){
+        data.links=linksToMap(data.links);
+        var response = data;
+        var documentCollection = new DocumentCollection(response);
+        var html = documentCollection.toHTML();
+        $("#message").html(html);
+    }).fail(function(jqXHR, textStatus){
+        $("#estoseve").text("");
+        
+        $("#estoseve").append("<div class='alert alert-block alert-info'><p>You have to be login for see this page.</p></div>");
+
+    });
+}
+
+function crearDocument(formdata){
+    var authToken = JSON.parse(sessionStorage["auth-token"]);
+    $.ajax({
+        url: uri,
+        xhr: function(){
+                var myXhr=$.ajaxSettings.xhr();
+                if(myXhr.upload){
+                    myXhr.upload.addEventListener('progress',progressHandlingFunction,false);
+                }
+                return myXhr;
+            },
+        type: 'POST',
+        crossDomain: true,
+        data: formdata,
+        cache: false,
+        contentType: false,
+        processData: false
+        headers: {"X-Auth-Token":authToken.token}
+        }).done(function(data, status, jqxhr){
+            var response = $.parseJSON(jqxhr.responseText);
+            var lastfilename = response.filname;
+            $('progress').toggle();
+            window.location.replace('document.html');
+        }).fail(function(jqXHR, textStatus) {
+           var error = JSON.parse(jqXHR.responseText);
+            $("#vacios2").text("");
+            $("#vacios2").append('<div class="alert alert-block alert-info"><p><span style="color:red">'+error.reason+'</span></p></div>');
+    });
+}
+
+function crearNews (contenido, uri){
+    $.ajax({
+        url: uri,
+        type: 'POST',
+        crossDomain: true,
+        datatype: "json",
+        data: { content: contenido}
+        headers: {"X-Auth-Token":authToken.token}
+    }).done(function(data, status, jqxhr){
+        data.links=linksToMap(data.links);
+        window.location.reload();
+    }).fail(function(){
+        console.log('Error');
+    });
+}
+
 /* function getCurrentUserProfile(complete){
 	var authToken = JSON.parse(sessionStorage["auth-token"]);
 	var uri = authToken["links"]["user-profile"].uri;
@@ -89,30 +163,6 @@ function post_news(title,body){
 		})
 		.fail(function(){});
 } */
-
-function createEvent(title,lat,lon,text,eventDate,ratio){
-console.log(title);
-  var authToken = JSON.parse(sessionStorage["auth-token"]);
-  var uri = BASE_URL +"/events";
- // console.los(uri+authToken);
-    $.post(uri,
-      {
-        titul: event.title,
-        latitud: event.lat,
-        longitud:event.longitud,
-        text:event.text,
-        data:event.eventDate,
-        ratio:event.ratio,
-        userid = user;
-      })done(function(events) { 
-      sessionStorage.removeItem("api");
-      sessionStorage.removeItem("auth-token");
-      complete();
-
-    }).fail(function(){});
-}
-
-}
 
 function progressHandlingFunction(e){
     if(e.lengthComputable){

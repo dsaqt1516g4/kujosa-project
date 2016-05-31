@@ -1,4 +1,4 @@
-var BASE_URL = "http://80.83.63.80:8080/kujosa/";
+var API_URL = "http://147.83.7.205:8080/kujosa/"
 
 /* EDITAR USUARI v2 */
 
@@ -147,7 +147,7 @@ $("#register_btn").click(function(e){
 function registerUser(formdata){
     loadAPI(function(){
         var api = JSON.parse(sessionStorage.api);
-        var uri = BASE_URL+"users";
+        var uri = API_URL+'users';
         $.ajax({
             url: uri,
 		    type: 'POST',
@@ -184,7 +184,7 @@ $("#login_btn").click(function(e){
 	console.log("Function")
 	e.preventDefault();
 	login($("#username").val(), $("#password").val(),function(){
-		Console.log(username, password);
+            console.log("TODO CORRECTO");
             window.location.replace('kujosa.html');
             });
 });
@@ -204,7 +204,7 @@ function linksToMap(links){
 
 function loadAPI(complete){
 	console.log("Hfunction API");
-	$.get(BASE_URL)
+	$.get(API_URL)
 		.done(function(data){
 			var api = linksToMap(data.links);
 			sessionStorage["api"] = JSON.stringify(api);
@@ -214,13 +214,13 @@ function loadAPI(complete){
 		});
 }
 
-function login(loginid, password,complete){
-	console.log("Hfunction login: "+loginid+" amb password: " +password+"amb "+complete)
+function login(loginid, password, complete){
+	console.log("Hfunction login: "+loginid+" amb password: " +password+" complete: "+complete)
 	loadAPI(function(){
 		var api = JSON.parse(sessionStorage.api);
-		var uri = BASE_URL+"login";
+		var uri = API_URL+"login";
 		console.log("uri : "+uri);
-		$.POST(uri,
+		$.post(uri,
 			{
 				username: loginid,
 				password: password
@@ -228,7 +228,6 @@ function login(loginid, password,complete){
 				authToken.links = linksToMap(authToken.links);
 				sessionStorage["auth-token"] = JSON.stringify(authToken);
 				complete();
-				console.log("auth-token");
 			}).fail(function(jqXHR, textStatus, errorThrown){
 				var error = jqXHR.responseJSON;
 				alert(error.reason);
